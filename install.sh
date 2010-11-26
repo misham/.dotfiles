@@ -48,11 +48,11 @@ ln -s $HOME/.dotfiles/git/gitignore $HOME/.gitignore
 # -----------------------------------------------------------------------------
 # Setup Vim
 #
-if [[ -h $HOME/.vimrc ]]; then
-  rm $HOME/.vimrc
-elif [[ -e $HOME/.vimrc ]]; then
-  echo "vimrc exists, moving to $HOME/.vimrc.orig"
-  mv $HOME/.vimrc $HOME/.vimrc.orig
+if [[ -h $HOME/.vimrc.local ]]; then
+  rm $HOME/.vimrc.local
+elif [[ -e $HOME/.vimrc.local ]]; then
+  echo "vimrc.local exists, moving to $HOME/.vimrc.local.orig"
+  mv $HOME/.vimrc.local $HOME/.vimrc.local.orig
 fi
 ln -s $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
 # -----------------------------------------------------------------------------

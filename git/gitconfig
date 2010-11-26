@@ -1,0 +1,73 @@
+[user]
+  name = Misha Manulis
+  email = misha@manulis.com
+
+[core]
+	excludesfile = "~/.gitignore"
+  autocrlf = input
+  editor = vim
+  filemode = true
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  logallrefupdates = true
+
+[branch]
+  autosetupmerge = true
+
+[diff]
+  renames = copies
+  mnemonicprefix = true
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+	interactive = auto
+  pager = true
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old  = red bold
+  new  = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[alias]
+	ci = commit
+	stat = status
+	co = checkout
+	br = branch
+  # prune all tracking local branches that have been removed from remote:
+  prune-all = !git remote | xargs -n 1 git remote prune
+  # show list of contributors in descending order by number of commits
+  rank = shortlog -sn --no-merges
+  # given a string for an author, try to figure out full name and email:
+  whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+  # given any git object, try to show it briefly
+  whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+  # Search for a given string in all patches and print commit messages
+  # example: search for any commit that adds or removes string "foobar"
+  #     git searchcommits foobar
+  # example: search commits for string "foobar" in directory src/lib
+  #     git searchcommits foobar src/lib
+  # example: search commits for "foobar", print full diff of commit with 1 line context
+  #     git searchcommits foobar --pickaxe-all -U1 src/lib
+  searchcommits = "!f() { query=\"$1\"; shift; git log -S\"$query\" \"$@\"; }; f \"$@\""
+  info = !~/.dotfiles/git/git-info
+
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+
+[github]
+  user = misham
+  token = 

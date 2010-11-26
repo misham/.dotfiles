@@ -1,0 +1,71 @@
+#!/bin/bash
+#
+# https://github.com/misham/dotfiles
+#
+# Based on my fat-fingering and stuff I found on dotfiles.org
+# and github.com
+#
+# -----------------------------------------------------------------------------
+# Searches for a string in a directory and it's subdirectories
+#
+alias rgrep='find . -type f -print0 | xargs -0 grep --color=auto -i -n'
+# -----------------------------------------------------------------------------
+# Setup ping for only 5 pings
+#
+alias ping='ping -c 5'
+# -----------------------------------------------------------------------------
+# Create directories as needed
+#
+alias mkdir='mkdir -p -v'
+# -----------------------------------------------------------------------------
+# Use color for ls
+#
+alias ls='/bin/ls -FCp --color=tty'
+alias ll='/bin/ls -FCplh --color=tty'
+alias la='/bin/ls -FCpah --color=tty'
+# -----------------------------------------------------------------------------
+# Use color for grep
+#
+alias grep="grep --color=auto -n"
+# -----------------------------------------------------------------------------
+# Alias reconf to run autoreconf -i and configure scripts for me
+#
+alias reconf="autoreconf -i && ./configure"
+# -----------------------------------------------------------------------------
+# Go back to last directory
+#
+alias back='cd $OLDPWD'
+# -----------------------------------------------------------------------------
+# Some size information shortcuts
+#
+alias df='df -h'
+alias du='du -h -c'
+# -----------------------------------------------------------------------------
+# Nice to know what your copying and moving
+#
+alias cp='cp -v'
+alias mv='mv -v'
+# -----------------------------------------------------------------------------
+# Use nice delete
+#
+alias rm='rm -i'
+# -----------------------------------------------------------------------------
+# Sometimes lazy is good
+#
+alias ..='cd ..'
+# -----------------------------------------------------------------------------
+# SVN merging blows
+#
+if [[ -f $HOME/bin/svnmerge.py ]]; then
+    alias svnmerge='$HOME/bin/svnmerge.py -v'
+fi
+# -----------------------------------------------------------------------------
+# Project aliases for selecting projects, setting up environments, etc.
+#
+# alias project=':TODO:'
+
+# -----------------------------------------------------------------------------
+# Cent OS xemacs
+#
+alias xemacs='emacs-x'
+

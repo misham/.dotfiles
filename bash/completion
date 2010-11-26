@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+# https://github.com/misham/dotfiles
+#
+# Based on my fat-fingering and stuff I found on dotfiles.org
+# and github.com
+#
+# -----------------------------------------------------------------------------
+# enable programmable completion features
+#
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+# -----------------------------------------------------------------------------
+# Tab completion for killall
+#    Need function from .bash_functions
+#
+complete -F _killall killall killps
+# -----------------------------------------------------------------------------
+# Tab-complete for sudo and man
+#
+complete -cf sudo
+complete -cf man
+# -----------------------------------------------------------------------------
+# Configure SSH hostnames completion
+#
+if [ -e "$HOME/.ssh/config" ]; then
+  complete -W "$(echo `cat $HOME/.ssh/config | awk '/Host / {print $2}'`;)" ssh
+  complete -W "$(echo `cat $HOME/.ssh/config | awk '/Host / {print $2}'`;)" slogin
+else
+  complete -W "$(echo `cat $HOME/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
+  complete -W "$(echo `cat $HOME/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" slogin
+fi
+# -----------------------------------------------------------------------------
+# Completions
+#
+for i in $HOME/.dotfiles/bash/completion.d/*.conf; do
+  if [ -r $i ]; then
+    source $i
+  fi
+done
+unset i
+

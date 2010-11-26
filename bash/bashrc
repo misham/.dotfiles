@@ -1,0 +1,88 @@
+#
+# https://github.com/misham/dotfiles
+#
+# This is based on stock Ubuntu .bashrc and stuff I found on dotfiles.org
+# and github.com
+#
+# Make sure we're running interactively
+if [[ -n "$PS1" ]]; then
+# -----------------------------------------------------------------------------
+# Get colors
+#
+eval `dircolors -b $HOME/.dotfiles/bash/colors`
+# -----------------------------------------------------------------------------
+# Get aliases
+#
+source $HOME/.dotfiles/bash/aliases
+# -----------------------------------------------------------------------------
+# Get functions
+#
+source $HOME/.dotfiles/bash/functions
+# -----------------------------------------------------------------------------
+# Setup completion
+#
+source $HOME/.dotfiles/bash/completion
+# -----------------------------------------------------------------------------
+# Set Prompt
+#
+BLUE='\[\033[1;34m\]'
+RED='\[\033[1;31m\]'
+NORMAL='\[\033[00m\]'
+export PS1="${BLUE}[${RED}\w${BLUE}]\n[${NORMAL}\t${BLUE}]\n[${NORMAL}\u@\h${BLUE}]${NORMAL}$ "
+# -----------------------------------------------------------------------------
+# Using VIM for editing
+#
+export EDITOR="vim"
+# -----------------------------------------------------------------------------
+# notify of bg job completion immediately
+#
+set -o notify
+# -----------------------------------------------------------------------------
+# Some housekeeping for history
+#
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+PROMPT_COMMAND='history -a'
+export HISTCONTROL=ignoredboth
+shopt -s histappend histreedit histverify
+# -----------------------------------------------------------------------------
+# Set some options for bash
+#
+shopt -s cdspell
+shopt -s dotglob
+shopt -s checkwinsize
+shopt -s cdable_vars
+shopt -s checkhash
+shopt -s cmdhist
+shopt -s extglob
+shopt -s hostcomplete
+shopt -s no_empty_cmd_completion
+# -----------------------------------------------------------------------------
+# Some ignore stuff
+#
+FIGNORE="~:CVS:#:.pyc:.swp"
+# -----------------------------------------------------------------------------
+# make less more friendly for non-text input files, see lesspipe(1)
+#
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# -----------------------------------------------------------------------------
+# set variable identifying the chroot you work in (used in the prompt below)
+#
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+# -----------------------------------------------------------------------------
+# Setup SVN
+#
+source $HOME/.dotfiles/svn/config
+# -----------------------------------------------------------------------------
+# Setup Git
+#
+source $HOME/.dotfiles/git/config
+# -----------------------------------------------------------------------------
+# Setup Ruby
+#
+source $HOME/.dotfiles/ruby/config
+#
+fi
+

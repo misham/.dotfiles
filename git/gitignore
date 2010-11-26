@@ -1,0 +1,8 @@
+*.ko
+*.o
+*.cmd
+*.mod.*
+*.a
+*.so
+._*
+.DS_Store

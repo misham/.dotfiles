@@ -1,0 +1,43 @@
+= Misha Manulis Dot Files
+
+My various system and config files
+
+== Installation
+
+  git clone git://github.com/misham/dotfiles $HOME/.dotfiles
+  # or for firewall-challenged
+  # git clone https://github.com/misham/dotfiles
+  cd $HOME/.dotfiles
+  ./install.sh
+
+== Environment
+
+I am running primarily on Ubuntu, though this should work on Mac OS X with
+some minor tweaking. I use Bash for 99% of my work with Bourne Shell (sh)
+occasionaly.
+
+== Features
+
+I place my projects in $HOME/Projects, so this directory can be easily
+accessed via project <my project with tab-completion>.  This will cd into
+the project directory and run any setup.env and .setup.env files present.
+
+There are a few more tab-completions turned on for git, rake, capistrano
+(thanks to Ryan Bates: https://github.com/ryanb/dotfiles), ssh hosts, etc.
+
+== :TODO:
+
+* Setup automatic setup of gitconfig with GitHub info
+  Take a look at ryanb scripts for his solution or use
+  http://progit.org/book/ch7-2.html
+* Setup project autocompletion
+* Setup vim stuff
+
+= Credits
+
+This has been taken from many sources. I've tried to document them here as best I can.
+
+* http://dotfiles.org
+* https://github.com/ryanb/dotfiles
+* https://github.com/rtomayko/dotfiles
+

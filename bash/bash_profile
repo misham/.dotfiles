@@ -1,0 +1,24 @@
+#
+# My bash_profile - https://github.com/misham/dotfiles
+#
+# This is based on stock Ubuntu .profile
+#
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    #
+    # Check for custom dotfiles, otherwise, use the system ones
+    #
+    if [ -f "$HOME/.dotfiles/bash/bashrc" ]; then
+        . "$HOME/.dotfiles/bash/bashrc"
+    elif [ -f "$HOME/.bashrc" ]; then
+	    . "$HOME/.bashrc"
+    fi
+fi
+
+if [ -d "$HOME/bin" ] ; then
+    tmp_path="$HOME/bin"
+    tmp_path="$tmp_path:$HOME/bin/android-sdk-linux_x86/tools"
+    PATH="$PATH:$tmp_path"
+fi
+

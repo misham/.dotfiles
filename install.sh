@@ -46,7 +46,7 @@ fi
 ln -s $HOME/.dotfiles/git/gitconfig $HOME/.gitconfig
 ln -s $HOME/.dotfiles/git/gitignore $HOME/.gitignore
 # -----------------------------------------------------------------------------
-# Setup Vim
+# Setup vim local configs
 #
 if [[ -h $HOME/.vimrc.local ]]; then
   rm $HOME/.vimrc.local
@@ -56,6 +56,37 @@ elif [[ -e $HOME/.vimrc.local ]]; then
 fi
 ln -s $HOME/.dotfiles/vim/vimrc.local $HOME/.vimrc.local
 # -----------------------------------------------------------------------------
-# Setup Ruby and friends
+# Setup janus vim stuff
+#   From: git://github.com/misham/janus.git
 #
+# Setup .vim
+#
+if [[ -h $HOME/.vim ]]; then
+  rm $HOME/.vim
+elif [[ -e $HOME/.vim ]]; then
+  echo ".vim/ exists, moving to $HOME/.vim.orig/"
+  mv $HOME/.vim $HOME/.vim.orig
+fi
+ln -s $HOME/.dotfiles/janus $HOME/.vim
+#
+# Setup vimrc and gvimrc
+#
+if [[ -h $HOME/.vimrc ]]; then
+  rm $HOME/.vimrc
+elif [[ -e $HOME/.vimrc ]]; then
+  echo "vimrc exists, moving to $HOME/.vimrc.orig"
+  mv $HOME/.vimrc $HOME/.vimrc.orig
+fi
+if [[ -h $HOME/.gvimrc ]]; then
+  rm $HOME/.gvimrc
+elif [[ -e $HOME/.gvimrc ]]; then
+  echo "vimrc exists, moving to $HOME/.vimrc.orig"
+  mv $HOME/.gvimrc $HOME/.gvimrc.orig
+fi
+ln -s $HOME/.vim/vimrc $HOME/.vimrc
+ln -s $HOME/.vim/gvimrc $HOME/.gvimrc
+#
+# Install plugins, etc.
+#
+cd $HOME/.vim && rake
 

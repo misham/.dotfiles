@@ -17,6 +17,7 @@ elif [[ -e $HOME/.bashrc ]]; then
   echo "bashrc exists, moving to $HOME/.bashrc.orig"
   mv $HOME/.bashrc $HOME/.bashrc.orig
 fi
+ln -s $HOME/.dotfiles/bash/bash_profile $HOME/.bash_profile
 ln -s $HOME/.dotfiles/bash/bashrc $HOME/.bashrc
 # -----------------------------------------------------------------------------
 # Setup project config

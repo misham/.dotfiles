@@ -18,20 +18,35 @@ occasionaly.
 
 == Features
 
+=== Projects
+
 I place my projects in $HOME/Projects, so this directory can be easily
 accessed via project <my project with tab-completion>.  This will cd into
-the project directory and run any setup.env and .setup.env files present.
+the project directory and run .project.local if it's present.  I'm using
+PROJECT_DIR environment variable, set in bashrc to specify my project folder,
+change this if using something other than ~/Projects.
 
-There are a few more tab-completions turned on for git, rake, capistrano
-(thanks to Ryan Bates: https://github.com/ryanb/dotfiles), ssh hosts, etc.
+=== Tab-Completion
+
+* Git
+* Rake
+* SSH hosts
+* Projects (see above)
+
+=== Vim
+
+I am using my own fork of Janus project (https://github.com/carlhuda/janus)
+for Vim plugins and vimrc settings.  I've added vimrc.local for my
+modifications.  At present, I'm having issues with the arrow keys printing
+letters, though I'm sure it's a configuration issue between Janus,
+which is setup for Mac and I'm running Ubuntu.
 
 == :TODO:
 
 * Setup automatic setup of gitconfig with GitHub info
   Take a look at ryanb scripts for his solution or use
   http://progit.org/book/ch7-2.html
-* Setup project autocompletion
-* Setup vim stuff
+* Fix arrow keys in Vim
 
 = Credits
 
@@ -40,4 +55,5 @@ This has been taken from many sources. I've tried to document them here as best 
 * http://dotfiles.org
 * https://github.com/ryanb/dotfiles
 * https://github.com/rtomayko/dotfiles
+* https://github.com/carlhuda/janus
 

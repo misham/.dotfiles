@@ -81,7 +81,8 @@ psgrep()
 # Push SSH public key to another box
 #   from https://github.com/rtomayko/dotfiles
 #
-push_ssh_cert() {
+push_ssh_cert()
+{
     local _host
     test -f ~/.ssh/id_rsa.pub || ssh-keygen -t rsa
     for _host in "$@";
@@ -89,5 +90,20 @@ push_ssh_cert() {
         echo $_host
         ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
     done
+}
+
+# -----------------------------------------------------------------------------
+# Setup project environment
+#
+# @param Name of project, case sensitive
+#
+project()
+{
+  if [[ -e "$HOME/$PROJECT_DIR/$1" && -d "$HOME/$PROJECT_DIR/$1" ]]; then
+    cd "$HOME/$PROJECT_DIR/$1"
+    if [[ -e .project.local ]]; then
+      source .project.local
+    fi
+  fi
 }
 

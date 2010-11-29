@@ -60,11 +60,6 @@ if [[ -f $HOME/bin/svnmerge.py ]]; then
     alias svnmerge='$HOME/bin/svnmerge.py -v'
 fi
 # -----------------------------------------------------------------------------
-# Project aliases for selecting projects, setting up environments, etc.
-#
-# alias project=':TODO:'
-
-# -----------------------------------------------------------------------------
 # Cent OS xemacs
 #
 alias xemacs='emacs-x'

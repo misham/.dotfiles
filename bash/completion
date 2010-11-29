@@ -34,10 +34,8 @@ fi
 # -----------------------------------------------------------------------------
 # Completions
 #
-for i in $HOME/.dotfiles/bash/completion.d/*.conf; do
-  if [ -r $i ]; then
-    source $i
-  fi
+for i in $(ls $HOME/.dotfiles/bash/completion.d/*.conf); do
+  complete -C $i -o default $(basename $i | cut -d '.' -f 1)
 done
 unset i
 

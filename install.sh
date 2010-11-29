@@ -11,7 +11,23 @@ elif [[ -e $HOME/.bash_profile ]]; then
   echo "bash_profile exists, moving to $HOME/.bash_profile.orig"
   mv $HOME/.bash_profile $HOME/.bash_profile.orig
 fi
-ln -s $HOME/.dotfiles/bash/bash_profile $HOME/.bash_profile
+if [[ -h $HOME/.bashrc ]]; then
+  rm $HOME/.bashrc
+elif [[ -e $HOME/.bashrc ]]; then
+  echo "bashrc exists, moving to $HOME/.bashrc.orig"
+  mv $HOME/.bashrc $HOME/.bashrc.orig
+fi
+ln -s $HOME/.dotfiles/bash/bashrc $HOME/.bashrc
+# -----------------------------------------------------------------------------
+# Setup project config
+#
+if [[ -h $HOME/.project.env ]]; then
+  rm $HOME/.project.env
+elif [[ -e $HOME/.project.env ]]; then
+  echo "project.env exists, moving to $HOME/.project.env.orig"
+  mv $HOME/.project.env $HOME/.project.env.orig
+fi
+ln -s $HOME/.dotfiles/bash/project.env $HOME/.project.env
 # -----------------------------------------------------------------------------
 # Setup SSH
 #

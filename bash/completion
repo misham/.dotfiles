@@ -12,6 +12,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 # -----------------------------------------------------------------------------
+# Tab completion only for directories when using 'cd'
+#
+complete -d cd
+# -----------------------------------------------------------------------------
 # Tab completion for killall
 #    Need function from .bash_functions
 #

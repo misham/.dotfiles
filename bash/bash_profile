@@ -17,6 +17,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 if [ -d "$HOME/bin" ] ; then
+    tmp_path="/sbin:/usr/sbin"
     tmp_path="$HOME/bin"
     tmp_path="$tmp_path:$HOME/bin/android-sdk-linux_x86/tools"
     PATH="$PATH:$tmp_path"

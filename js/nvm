@@ -4,6 +4,8 @@
 #
 
 NVM_DIR=$HOME/.nvm
-. $NVM_DIR/nvm.sh
-nvm use
+if [[ -e $NVM_DIR ]]; then
+  . $NVM_DIR/nvm.sh
+  nvm use
+fi
 

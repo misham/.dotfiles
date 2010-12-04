@@ -25,7 +25,7 @@ highlight Search ctermfg=Blue ctermbg=LightGrey
 autocmd FileType text setlocal textwidth=78
 
 " Stop VIM from auto-inserting C++ '//' comments
-set comments=sr:/*,mb:*,el:*/ 
+set comments=sr:/*,mb:*,el:*/
 set fo-=c fo-=r fo-=o
 
 " Start NERDTree
@@ -41,18 +41,9 @@ function! <SID>StripTrailingWhitespaces()
   let c = col(".")
   " Do the business:
   %s/\s\+$//e
-  " Clean up:
-  restore previous
-  search history,
-  and cursor
-  position
+  " Clean up: restore previous search history, and cursor position
   let @/=_s
-  call
-  cursor(l,
-  c)
+  call cursor(l,c)
 endfunction
-autocmd
-BufWritePre
-*
-:call
-<SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+

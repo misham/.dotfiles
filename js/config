@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Setup various JavaScript stuff
+#
+
+# -----------------------------------------------------------------------------
+# Setup nvm
+#  https://github.com/creationix/nvm
+#
+source nvm
+

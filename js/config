@@ -7,5 +7,5 @@
 # Setup nvm
 #  https://github.com/creationix/nvm
 #
-source nvm
+source $HOME/.dotfiles/js/nvm
 

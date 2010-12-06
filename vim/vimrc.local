@@ -16,6 +16,10 @@ set showcmd		      " display incomplete commands
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
+" Remap F1 to Esc
+map <F1> <Esc>
+imap <F1> <Esc>
+
 " Set the colors
 colorscheme evening
 highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
@@ -27,6 +31,11 @@ autocmd FileType text setlocal textwidth=78
 " Stop VIM from auto-inserting C++ '//' comments
 set comments=sr:/*,mb:*,el:*/
 set fo-=c fo-=r fo-=o
+
+" From http://www.pixelbeat.org/settings/.vimrc
+if v:version >= 700
+  set cursorline   "highlight current line
+endif
 
 " Start NERDTree
 autocmd VimEnter * NERDTree

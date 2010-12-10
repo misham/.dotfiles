@@ -10,6 +10,12 @@
 #
 alias rgrep='find . -type f -print0 | xargs -0 grep --color=auto -i -n'
 # -----------------------------------------------------------------------------
+# use colordiff if it's available
+#
+if [[ -f /usr/bin/colordiff ]]; then
+    alias diff='colordiff'
+fi
+# -----------------------------------------------------------------------------
 # Setup ping for only 5 pings
 #
 alias ping='ping -c 5'

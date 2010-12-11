@@ -65,8 +65,4 @@ alias ..='cd ..'
 if [[ -f $HOME/bin/svnmerge.py ]]; then
     alias svnmerge='$HOME/bin/svnmerge.py -v'
 fi
-# -----------------------------------------------------------------------------
-# Cent OS xemacs
-#
-alias xemacs='emacs-x'
 

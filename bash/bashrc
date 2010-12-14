@@ -102,5 +102,12 @@ source $HOME/.dotfiles/ruby/config
 #
 source $HOME/.dotfiles/js/config
 #
+# -----------------------------------------------------------------------------
+# Get local modifications for bash, if they exist
+#
+if [[ -e $HOME/.bashrc.local ]]; then
+  source $HOME/.bashrc.local
+fi
+#
 fi
 

@@ -78,6 +78,7 @@ elif [[ -e $HOME/.gvimrc.local ]]; then
   mv $HOME/.gvimrc.local $HOME/.gvimrc.local.orig
 fi
 ln -s $HOME/.dotfiles/vim/gvimrc.local $HOME/.gvimrc.local
+ln -s $HOME/.dotfiles/vim/vimrc.local $HOME/.vimrc.local
 # -----------------------------------------------------------------------------
 # Setup janus vim stuff
 #   From: git://github.com/misham/janus.git

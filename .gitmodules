@@ -4,3 +4,6 @@
 [submodule "nave"]
 	path = nave
 	url = git@github.com:misham/nave.git
+[submodule "nvm"]
+	path = nvm
+	url = git@github.com:misham/nvm.git

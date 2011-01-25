@@ -113,10 +113,4 @@ ln -s $HOME/.vim/gvimrc $HOME/.gvimrc
 # Install plugins, etc.
 #
 cd $HOME/.vim && rake
-# -----------------------------------------------------------------------------
-# Setup Node.js stuff
-#
-ln -s $HOME/.dotfiles/js/npmrc $HOME/.npmrc
-mkdir -p $HOME/.npm/bin
-mkdir -p $HOME/.npm/man
 

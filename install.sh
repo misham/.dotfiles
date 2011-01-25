@@ -117,4 +117,7 @@ cd $HOME/.vim && rake
 # Setup Node.js stuff
 #
 ln -s $HOME/.dotfiles/nave/nave.sh $HOME/bin/nave
+ln -s $HOME/.dotfiles/js/npmrc $HOME/.npmrc
+mkdir -p $HOME/.npm/bin
+mkdir -p $HOME/.npm/man
 

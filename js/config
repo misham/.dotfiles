@@ -9,3 +9,10 @@
 #
 source $HOME/.dotfiles/js/nvm
 
+# -----------------------------------------------------------------------------
+# Setup npm
+#
+if [[ -e $HOME/.npm ]]; then
+  export MANPAT=$MANPATH:$HOME/.npm/man
+fi
+

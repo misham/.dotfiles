@@ -113,4 +113,8 @@ ln -s $HOME/.vim/gvimrc $HOME/.gvimrc
 # Install plugins, etc.
 #
 cd $HOME/.vim && rake
+# -----------------------------------------------------------------------------
+# Install nvm
+#
+git clone git://github.com/creationix/nvm.git $HOME/.nvm
 

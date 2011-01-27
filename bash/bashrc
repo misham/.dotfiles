@@ -101,6 +101,10 @@ source $HOME/.dotfiles/ruby/config
 # Setup JavaScript
 #
 source $HOME/.dotfiles/js/config
+# -----------------------------------------------------------------------------
+# Setup Database stuff
+#
+source $HOME/.dotfiles/db/config
 #
 # -----------------------------------------------------------------------------
 # Get local modifications for bash, if they exist

@@ -4,8 +4,10 @@
 #
 
 NVM_DIR=$HOME/.nvm
+NVM_VER=v0.4.0
+
 if [[ -e $NVM_DIR ]]; then
   . $NVM_DIR/nvm.sh
-  nvm use
+  nvm use $NVM_VER
 fi
 

@@ -20,6 +20,9 @@ map Q gq
 map <F1> <Esc>
 imap <F1> <Esc>
 
+" Use bash as the vim shell: http://bit.ly/ezxLUf
+set shell=bash
+
 " Set the colors
 colorscheme evening
 highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray

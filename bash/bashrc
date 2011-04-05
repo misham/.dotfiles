@@ -4,24 +4,26 @@
 # This is based on stock Ubuntu .bashrc and stuff I found on dotfiles.org
 # and github.com
 #
+DOTFILES=$HOME/.dotfiles
+#-----------------------------------------------------------------------------
 # Make sure we're running interactively
 if [[ -n "$PS1" ]]; then
 # -----------------------------------------------------------------------------
 # Get colors
 #
-eval `dircolors -b $HOME/.dotfiles/bash/colors`
+eval `dircolors -b $DOTFILES/bash/colors`
 # -----------------------------------------------------------------------------
 # Get aliases
 #
-source $HOME/.dotfiles/bash/aliases
+source $DOTFILES/bash/aliases
 # -----------------------------------------------------------------------------
 # Get functions
 #
-source $HOME/.dotfiles/bash/functions
+source $DOTFILES/bash/functions
 # -----------------------------------------------------------------------------
 # Setup completion
 #
-source $HOME/.dotfiles/bash/completion
+source $DOTFILES/bash/completion
 # -----------------------------------------------------------------------------
 # Set Prompt
 #
@@ -86,26 +88,16 @@ fi
 #
 export PROJECT_DIR="Projects"
 # -----------------------------------------------------------------------------
-# Setup SVN
+# Setup all environments
 #
-source $HOME/.dotfiles/svn/config
-# -----------------------------------------------------------------------------
-# Setup Git
-#
-source $HOME/.dotfiles/git/config
-# -----------------------------------------------------------------------------
-# Setup Ruby
-#
-source $HOME/.dotfiles/ruby/config
-# -----------------------------------------------------------------------------
-# Setup JavaScript
-#
-source $HOME/.dotfiles/js/config
-# -----------------------------------------------------------------------------
-# Setup Database stuff
-#
-source $HOME/.dotfiles/db/config
-#
+ENVIRONMENTS=`ls $DOTFILES/ | grep -v janus`
+for env in $ENVIRONMENTS; do
+  if [[ -d "$DOTFILES/$env" ]] ; then
+    if [ -e "$DOTFILES/$env/config" ]; then
+      source $DOTFILES/$env/config
+    fi
+  fi
+done
 # -----------------------------------------------------------------------------
 # Get local modifications for bash, if they exist
 #

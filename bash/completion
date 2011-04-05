@@ -36,10 +36,14 @@ else
   complete -W "$(echo `cat $HOME/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" slogin
 fi
 # -----------------------------------------------------------------------------
-# Completions
+# My Completions
 #
 for i in $(ls $HOME/.dotfiles/bash/completion.d/*.conf); do
   complete -C $i -o default $(basename $i | cut -d '.' -f 1)
 done
 unset i
+# -----------------------------------------------------------------------------
+# rvm completion
+#
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 

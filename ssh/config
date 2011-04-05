@@ -1,7 +1,4 @@
-Host *
-  ServerAliveInterval 30
-  ServerAliveCountMax 120
-  Compression yes
-  CompressionLevel 4
-
-
+#!/bin/bash
+#
+# General configuration options for ssh
+#

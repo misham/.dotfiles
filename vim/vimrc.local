@@ -41,8 +41,8 @@ if v:version >= 700
 endif
 
 " Start NERDTree
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
 
 " Strip trailing whitespace
 " http://rails-bestpractices.com/posts/60-remove-trailing-whitespace

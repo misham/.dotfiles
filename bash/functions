@@ -53,6 +53,12 @@ extract ()
       *.Z)
         uncompress $1
         ;;
+      *.rpm)
+        rpm2cpio $1 | cpio -idmv
+        ;;
+      *.deb)
+        ar p $1 data.tar.gz | tar zx
+        ;;
       *)
         echo "'$1' cannot be extracted via extract()"
         ;;

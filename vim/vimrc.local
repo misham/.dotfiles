@@ -19,6 +19,7 @@ map Q gq
 " Remap F1 to Esc
 map <F1> <Esc>
 imap <F1> <Esc>
+nmap <F1> <Esc>
 
 " Use bash as the vim shell: http://bit.ly/ezxLUf
 set shell=bash
@@ -57,7 +58,8 @@ function! <SID>StripTrailingWhitespaces()
   let @/=_s
   call cursor(l,c)
 endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Setting status line for rvm.vim: https://github.com/csexton/rvm.vim
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+

@@ -7,7 +7,7 @@
   autocrlf = input
   editor = vim
   filemode = true
-  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  #whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
   logallrefupdates = true
 
 [branch]

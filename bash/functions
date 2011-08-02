@@ -24,44 +24,44 @@ extract ()
   if [ -f $1 ] ; then
     case $1 in
       *.tar.bz2)
-        tar -xjvpf $1
-        ;;
+      tar -xjvpf $1
+      ;;
       *.tar.gz)
-        tar -xzvpf $1
-        ;;
+      tar -xzvpf $1
+      ;;
       *.bz2)
-        bunzip2 $1
-        ;;
+      bunzip2 $1
+      ;;
       *.rar)
-        rar x $1
-        ;;
+      rar x $1
+      ;;
       *.gz)
-        gunzip $1
-        ;;
+      gunzip $1
+      ;;
       *.tar)
-        tar -xvpf $1
-        ;;
+      tar -xvpf $1
+      ;;
       *.tbz2)
-        tar -xjvpf $1
-        ;;
+      tar -xjvpf $1
+      ;;
       *.tgz)
-        tar xzf $1
-        ;;
+      tar xzf $1
+      ;;
       *.zip)
-        unzip $1
-        ;;
+      unzip $1
+      ;;
       *.Z)
-        uncompress $1
-        ;;
+      uncompress $1
+      ;;
       *.rpm)
-        rpm2cpio $1 | cpio -idmv
-        ;;
+      rpm2cpio $1 | cpio -idmv
+      ;;
       *.deb)
-        ar p $1 data.tar.gz | tar zx
-        ;;
+      ar p $1 data.tar.gz | tar zx
+      ;;
       *)
-        echo "'$1' cannot be extracted via extract()"
-        ;;
+      echo "'$1' cannot be extracted via extract()"
+      ;;
     esac
   else
     echo "'$1' is not a valid file"
@@ -89,13 +89,13 @@ psgrep()
 #
 push_ssh_cert()
 {
-    local _host
-    test -f ~/.ssh/id_rsa.pub || ssh-keygen -t rsa
-    for _host in "$@";
-    do
-        echo $_host
-        ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
-    done
+  local _host
+  test -f ~/.ssh/id_rsa.pub || ssh-keygen -t rsa
+  for _host in "$@";
+  do
+    echo $_host
+    ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
+  done
 }
 
 # -----------------------------------------------------------------------------
@@ -123,3 +123,38 @@ function myip()
   IP=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`;
   echo $IP
 }
+
+BLUE='\[\033[1;34m\]'
+RED='\[\033[1;31m\]'
+NORMAL='\[\033[00m\]'
+NORMAL_BOLD='\[\033[00;01m\]'
+
+# -----------------------------------------------------------------------------
+# SVN prompt helper
+#
+function svn_prompt()
+{
+  svn info 2>/dev/null | awk '/URL/ {print $2}'
+}
+
+# -----------------------------------------------------------------------------
+# Git prompt helper
+#
+function git_prompt()
+{
+  git name-rev HEAD 2>/dev/null | awk '{print $2}'
+}
+
+# -----------------------------------------------------------------------------
+# RVM prompt helper
+#
+function rvm_prompt()
+{
+  if [ -e "$HOME/.rvm" ] ; then
+    local cur_ruby=$($HOME/.rvm/bin/rvm-prompt)
+    local cur_gemset=$($HOME/.rvm/bin/rvm gemset name)
+    [ "$cur_gemset" != "" ] || cur_gemset="global"
+    echo "${cur_ruby}-${cur_gemset}"
+  fi
+}
+

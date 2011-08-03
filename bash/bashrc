@@ -83,7 +83,8 @@ export PROJECT_DIR="Projects"
 # -----------------------------------------------------------------------------
 # Setup all environments
 #
-ENVIRONMENTS=`ls $DOTFILES/ | grep -v janus`
+ENVIRONMENTS=`ls $DOTFILES`
+echo "$ENVIRONMENTS"
 for env in $ENVIRONMENTS; do
   if [[ -d "$DOTFILES/$env" ]] ; then
     if [ -e "$DOTFILES/$env/config" ]; then

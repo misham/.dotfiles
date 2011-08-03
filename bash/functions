@@ -142,7 +142,7 @@ function svn_prompt()
 #
 function git_prompt()
 {
-  git name-rev HEAD 2>/dev/null | awk '{print $2}'
+  __git_ps1 "%s"
 }
 
 # -----------------------------------------------------------------------------
@@ -151,5 +151,24 @@ function git_prompt()
 function rvm_prompt
 {
   $HOME/.rvm/bin/rvm-prompt
+}
+
+# -----------------------------------------------------------------------------
+# Command history logger
+#
+function command_log
+{
+  case $1 in
+    "init")
+      echo "init $2" >> $HOME/.command_logger
+      ;;
+
+    "stop")
+      sed -i "/$init/d" $HOME/.command_logger
+      ;;
+
+    *)
+      ;;
+  esac
 }
 

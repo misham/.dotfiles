@@ -103,28 +103,7 @@ CUR_PWD="${BLUE}[${RED}\w${BLUE}]"
 CUR_TIME="${BLUE}[${NORMAL}\t${BLUE}]"
 CUR_USER_HOST="${BLUE}[${NORMAL}\u${NORMAL_BOLD}@${NORMAL}\h${BLUE}]"
 
-prompt=$(rvm_prompt)
-if [ "$prompt" != "" ] ; then
-  RVM_PROMPT="${BLUE}[${NORMAL}${prompt}${BLUE}]"
-else
-  RVM_PROMPT=""
-fi
-
-prompt=$(git_prompt)
-if [ "$prompt" != "" ] ; then
-  GIT_PROMPT="${BLUE}[${NORMAL}${prompt}${BLUE}]"
-else
-  GIT_PROMPT=""
-fi
-
-prompt=$(svn_prompt)
-if [ "$prompt" != "" ] ; then
-  SVN_PROMPT="${BLUE}[${NORMAL}${prompt}${BLUE}]"
-else
-  SVN_PROMPT=""
-fi
-
-export PS1="${CUR_PWD} ${GIT_PROMPT}\n${CUR_TIME} ${RVM_PROMPT} ${SVN_PROMPT}\n${CUR_USER_HOST} ${NORMAL}$ "
+export PS1="${CUR_PWD} ${BLUE}[${NORMAL}\$(git_prompt)\$(svn_prompt)${BLUE}]\n${CUR_TIME} ${BLUE}[${NORMAL}\$(rvm_prompt)${BLUE}]\n${CUR_USER_HOST} ${NORMAL}$ "
 # -----------------------------------------------------------------------------
 # Get local modifications for bash, if they exist
 #

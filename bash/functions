@@ -148,13 +148,8 @@ function git_prompt()
 # -----------------------------------------------------------------------------
 # RVM prompt helper
 #
-function rvm_prompt()
+function rvm_prompt
 {
-  if [ -e "$HOME/.rvm" ] ; then
-    local cur_ruby=$($HOME/.rvm/bin/rvm-prompt)
-    local cur_gemset=$($HOME/.rvm/bin/rvm gemset name)
-    [ "$cur_gemset" != "" ] || cur_gemset="global"
-    echo "${cur_ruby}-${cur_gemset}"
-  fi
+  $HOME/.rvm/bin/rvm-prompt
 }
 

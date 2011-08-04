@@ -2,12 +2,8 @@
 #
 # General configuration options for Git
 #
-
-<<<<<<< HEAD
-. git_complete
-=======
+#
 # Setup completion
 #
 source $DOTFILES/git/git_completion
 
->>>>>>> 990875bd512c5f84f2c36d9c91b14399a2b6e0a0

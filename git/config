@@ -2,3 +2,5 @@
 #
 # General configuration options for Git
 #
+
+. git_complete

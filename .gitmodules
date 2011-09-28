@@ -2,3 +2,6 @@
 	path = janus
 	url = https://misham@github.com/misham/janus.git
 
+[submodule "gist"]
+	path = gist
+	url = https://github.com/gmarik/gist.sh.git

@@ -28,6 +28,9 @@ set shell=bash
 colorscheme evening
 highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
 highlight Search ctermfg=Blue ctermbg=LightGrey
+" Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
@@ -41,9 +44,11 @@ if v:version >= 700
   set cursorline   "highlight current line
 endif
 
-" Start NERDTree
-" autocmd VimEnter * NERDTree
-" autocmd VimEnter * wincmd p
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
 
 " Strip trailing whitespace
 " http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
@@ -58,7 +63,7 @@ function! <SID>StripTrailingWhitespaces()
   let @/=_s
   call cursor(l,c)
 endfunction
-" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Setting status line for rvm.vim: https://github.com/csexton/rvm.vim
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P

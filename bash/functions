@@ -111,6 +111,10 @@ project()
     if [[ -e .project.local ]]; then
       source .project.local
     fi
+
+    if [[ -e "$HOME/$PROJECT_DIR/$1/bin" && -d "$HOME/$PROJECT_DIR/$1/bin" ]]; then
+      export PATH=$HOME/$PROJECT_DIR/$1/bin:$PATH
+    fi
   fi
 }
 

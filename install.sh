@@ -9,7 +9,7 @@
 # -----------------------------------------------------------------------------
 # Install environments
 #
-ENVIRONMENTS=`ls $DOTFILES/ | grep -v janus`
+ENVIRONMENTS=`ls $DOTFILES/`
 for env in $ENVIRONMENTS; do
   if [[ -d "$DOTFILES/$env" ]] ; then
     if [ -e "$DOTFILES/$env/install.sh" ]; then

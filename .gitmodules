@@ -10,3 +10,9 @@
 [submodule "vim/vim/bundle/nerdcommenter"]
 	path = vim/vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/vim/bundle/vim-rails"]
+	path = vim/vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule "vim/vim/bundle/supertab"]
+	path = vim/vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git

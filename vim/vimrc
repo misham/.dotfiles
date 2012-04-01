@@ -30,9 +30,6 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-" Status bar
-set laststatus=2
-
 " Show (partial) command in the status line
 set showcmd
 
@@ -123,7 +120,7 @@ if has("statusline") && !&cp
   " set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
 endif
 
-set scrolloff=5 " Keep 5 lines below and above the cursor
+set scrolloff=3 " Keep 5 lines below and above the cursor
 
 set backupdir=~/.vim/backup    " where to put backup files.
 set directory=~/.vim/tmp       " where to put swap files.
@@ -137,6 +134,9 @@ au FocusLost * :wa  " Save on loosing focus
 
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+set wildmode=longest,list,full
+set wildmenu
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))

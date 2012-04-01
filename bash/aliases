@@ -65,4 +65,11 @@ alias ..='cd ..'
 if [[ -f $HOME/bin/svnmerge.py ]]; then
     alias svnmerge='$HOME/bin/svnmerge.py -v'
 fi
+# -----------------------------------------------------------------------------
+# Cause Ubuntu/Debian uses ack-grep
+#
+which ack-grep &> /dev/null
+if [[ "0" -eq "$?" ]]; then
+  alias ack='ack-grep'
+fi
 

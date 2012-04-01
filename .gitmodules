@@ -16,3 +16,9 @@
 [submodule "vim/vim/bundle/supertab"]
 	path = vim/vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "vim/vim/bundle/vim-repeat"]
+	path = vim/vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "vim/vim/bundle/headlights"]
+	path = vim/vim/bundle/headlights
+	url = https://github.com/mbadran/headlights.git

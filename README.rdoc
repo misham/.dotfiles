@@ -4,24 +4,6 @@ My various system and config files
 
 == Installation
 
-  git clone git://github.com/misham/dotfiles $HOME/.dotfiles
-  # or for firewall-challenged
-  # git clone https://github.com/misham/dotfiles
-  cd $HOME/.dotfiles
-  git submodule init
-  git submodule update
-  cd janus
-  git checkout master
-  cd ..
-  ./install.sh
-
-== Environment
-
-I am running primarily on Ubuntu, though this should work on Mac OS X with
-some minor tweaking. I use Bash for 99% of my work with Bourne Shell (sh)
-occasionaly.
-
-== Features
 
 === Projects
 
@@ -30,28 +12,6 @@ accessed via project <my project with tab-completion>.  This will cd into
 the project directory and run .project.local if it's present.  I'm using
 PROJECT_DIR environment variable, set in bashrc to specify my project folder,
 change this if using something other than ~/Projects.
-
-=== Tab-Completion
-
-* Git
-* Rake
-* SSH hosts
-* Projects (see above)
-
-=== Vim
-
-I am using my own fork of Janus project (https://github.com/carlhuda/janus)
-for Vim plugins and vimrc settings.  I've added vimrc.local for my
-modifications.  At present, I'm having issues with the arrow keys printing
-letters, though I'm sure it's a configuration issue between Janus,
-which is setup for Mac and I'm running Ubuntu.
-
-== :TODO:
-
-* Setup automatic setup of gitconfig with GitHub info
-  Take a look at ryanb scripts for his solution or use
-  http://progit.org/book/ch7-2.html
-* Fix arrow keys in Vim
 
 = Credits
 

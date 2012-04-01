@@ -1,3 +1,4 @@
 *~
 *.swp
 bin/gist.sh
+vim/vim/bundle/*

@@ -1,0 +1,145 @@
+""
+"" Thanks:
+""   Mislav Marohnic <https://github.com/mislav/>
+""   Janus <github.com/carlhuda/janus>
+""
+
+set nocompatible                " choose no compatibility with legacy vi
+
+set number
+set ruler
+syntax enable
+set encoding=utf-8
+
+filetype off
+call pathogen#infect()
+filetype plugin indent on       " load file type plugins + indentation
+
+set showcmd                     " display incomplete commands
+
+"" Whitespace
+set nowrap                      " don't wrap lines
+set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
+set expandtab                   " use spaces, not tabs (optional)
+set softtabstop=2
+set backspace=indent,eol,start  " backspace through everything in insert mode
+
+"" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
+
+" Show (partial) command in the status line
+set showcmd
+
+set undofile
+
+" Remap F1 to Esc
+map <F1> <Esc>
+imap <F1> <Esc>
+nmap <F1> <Esc>
+
+" Use bash as the vim shell: http://bit.ly/ezxLUf
+set shell=bash
+
+" Set the colors
+set background=dark
+colorscheme evening
+highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
+highlight Search ctermfg=Blue ctermbg=LightGrey
+" Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
+" For all text files set 'textwidth' to 79 characters.
+autocmd FileType text setlocal textwidth=79
+
+" From http://www.pixelbeat.org/settings/.vimrc
+if v:version >= 700
+  set cursorline   "highlight current line
+endif
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+" Strip trailing whitespace
+" http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l,c)
+endfunction
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+function s:setupWrapping()
+  set wrap
+  set wrapmargin=2
+  set textwidth=72
+endfunction
+call s:setupWrapping()
+
+if has("autocmd")
+  " In Makefiles, use real tabs, not tabs expanded to spaces
+  au FileType make set noexpandtab
+
+  " Treat JSON files like JavaScript
+  au BufNewFile,BufRead *.json set ft=javascript
+
+  " Remember last location in file, but not for commit messages.
+  " see :help last-position-jump
+  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g`\"" | endif
+endif
+
+" clear the search buffer when hitting return
+:nnoremap <CR> :nohlsearch<cr>
+
+if has("statusline") && !&cp
+  set laststatus=2  " always show the status bar
+
+  " Start the status line
+  set statusline=%f\ %m\ %r
+
+  " Add fugitive
+  set statusline+=%{fugitive#statusline()}
+
+  " Finish the statusline
+  set statusline+=Line:%l/%L[%p%%]
+  set statusline+=Col:%v
+  set statusline+=Buf:#%n
+  set statusline+=[%b][0x%B]
+
+  " Setting status line for rvm.vim: https://github.com/csexton/rvm.vim
+  " set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+endif
+
+set scrolloff=3 " Keep 5 lines below and above the cursor
+
+set backupdir=~/.vim/backup    " where to put backup files.
+set directory=~/.vim/tmp       " where to put swap files.
+
+map <leader>n :NERDTreeToggle<cr>
+
+map <leader>/ <plug>NERDCommenterToggle<CR>
+imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
+
+au FocusLost * :wa  " Save on loosing focus
+
+" strip all trailing whitespace in the current file
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+set wildmode=longest,list,full
+set wildmenu
+
+" Include user's local vim config
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+

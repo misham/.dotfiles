@@ -25,6 +25,14 @@ source $DOTFILES/bash/functions
 #
 source $DOTFILES/bash/completion
 # -----------------------------------------------------------------------------
+# Set vi as my security blanket with some options
+#
+set -o vi
+set editing-mode vi # I'd like all readline programs to use vi mode
+set keymap vi
+set convert-meta on
+bind -m vi-insert "\C-l":clear-screen # Ctrl-l is still nice though
+# -----------------------------------------------------------------------------
 # Using VIM for editing
 #
 export EDITOR="vim"

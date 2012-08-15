@@ -64,6 +64,7 @@
   searchcommits = "!f() { query=\"$1\"; shift; git log -S\"$query\" \"$@\"; }; f \"$@\""
   info = !~/.dotfiles/git/git-info
   ctags = !.git/hooks/ctags
+  rm-remote = push origin --delete
 
 [branch "master"]
   remote = origin

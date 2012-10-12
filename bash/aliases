@@ -72,4 +72,10 @@ which ack-grep &> /dev/null
 if [[ "0" -eq "$?" ]]; then
   alias ack='ack-grep'
 fi
+# -----------------------------------------------------------------------------
+# Setup Labrador https://github.com/chrismccord/labrador
+#
+if [[ -d $HOME/.labrador ]] ; then
+  alias labrador-start="cd $HOME/.labrador && bundle exec rails s -e production -p 7488 -d"
+fi
 

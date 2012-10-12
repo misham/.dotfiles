@@ -65,6 +65,7 @@
   info = !~/.dotfiles/git/git-info
   ctags = !.git/hooks/ctags
   rm-remote = push origin --delete
+  wc = whatchanged -p --abbrev-commit --pretty=medium
 
 [branch "master"]
   remote = origin

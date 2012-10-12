@@ -31,3 +31,12 @@
 [submodule "vim/vim/bundle/rubytest"]
 	path = vim/vim/bundle/rubytest
 	url = https://github.com/janx/vim-rubytest.git
+[submodule "vim/vim/bundle/scratch"]
+	path = vim/vim/bundle/scratch
+	url = https://github.com/vim-scripts/scratch.vim.git
+[submodule "vim/vim/bundle/vim-javascript"]
+	path = vim/vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/vim/bundle/vim-jst"]
+	path = vim/vim/bundle/vim-jst
+	url = https://github.com/briancollins/vim-jst.git

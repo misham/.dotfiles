@@ -11,7 +11,10 @@ if [[ -n "$PS1" ]]; then
 # -----------------------------------------------------------------------------
 # Get colors
 #
-eval `dircolors -b $DOTFILES/bash/colors`
+#eval `dircolors -b $DOTFILES/bash/colors`
+source "`brew --prefix grc`/etc/grc.bashrc"
+export CLICOLOR=1
+export LSCOLORS=Exfxcxdxbxegedabagacad
 # -----------------------------------------------------------------------------
 # Get aliases
 #

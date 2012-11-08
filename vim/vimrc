@@ -39,6 +39,9 @@ map <F1> <Esc>
 imap <F1> <Esc>
 nmap <F1> <Esc>
 
+" Remap ESC
+imap jj <Esc>
+
 " Use bash as the vim shell: http://bit.ly/ezxLUf
 set shell=bash
 
@@ -50,6 +53,7 @@ highlight Search ctermfg=Blue ctermbg=LightGrey
 " Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+
 
 " For all text files set 'textwidth' to 79 characters.
 autocmd FileType text setlocal textwidth=79
@@ -147,4 +151,11 @@ if filereadable(expand("~/.vim/syntax/scons.vim"))
 endif
 
 let g:rubytest_in_quickfix = 0
+
+
+highlight Normal ctermbg=black ctermfg=white
+
+" Rspec
+autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+highlight def link rubyRspec Function
 

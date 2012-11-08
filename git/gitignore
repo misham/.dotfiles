@@ -13,3 +13,4 @@
 *.dep
 *.pyc
 a.out
+.powrc

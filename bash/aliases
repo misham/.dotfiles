@@ -26,9 +26,9 @@ alias mkdir='mkdir -p -v'
 # -----------------------------------------------------------------------------
 # Use color for ls
 #
-alias ls='/bin/ls -FCp --color=tty'
-alias ll='/bin/ls -FCplh --color=tty'
-alias la='/bin/ls -FCpah --color=tty'
+#alias ls='/bin/ls -FCp --color=tty'
+#alias ll='/bin/ls -FCplh --color=tty'
+#alias la='/bin/ls -FCpah --color=tty'
 # -----------------------------------------------------------------------------
 # Use color for grep
 #

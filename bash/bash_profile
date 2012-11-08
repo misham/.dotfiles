@@ -22,3 +22,6 @@ if [ -d "$HOME/bin" ] ; then
 fi
 PATH="$PATH:$tmp_path"
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

@@ -4,4 +4,5 @@ Host *
   Compression yes
   CompressionLevel 4
 
-
+Host brewbit-device-server
+  54.200.62.105

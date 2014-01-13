@@ -40,3 +40,12 @@
 [submodule "vim/vim/bundle/vim-jst"]
 	path = vim/vim/bundle/vim-jst
 	url = https://github.com/briancollins/vim-jst.git
+[submodule "vim/vim/bundle/vim-proto"]
+	path = vim/vim/bundle/vim-proto
+	url = git@github.com:garyharan/vim-proto.git
+[submodule "vim/vim/bundle/vim-ruby"]
+	path = vim/vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "vim/vim/bundle/html5"]
+	path = vim/vim/bundle/html5
+	url = git@github.com:othree/html5.vim.git

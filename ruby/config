@@ -4,10 +4,6 @@
 #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 # -----------------------------------------------------------------------------
-# Don't have to require rubygems always
-#
-export RUBYOPT=rubygems
-# -----------------------------------------------------------------------------
 # Tired of typing rspec spec
 #
 alias spec='/usr/bin/env rspec spec'

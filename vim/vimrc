@@ -47,7 +47,7 @@ set shell=bash
 
 " Set the colors
 set background=dark
-colorscheme evening
+colorscheme solarized
 highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
 highlight Search ctermfg=Blue ctermbg=LightGrey
 " Invisible character colors
@@ -154,6 +154,9 @@ let g:rubytest_in_quickfix = 0
 
 
 highlight Normal ctermbg=black ctermfg=white
+
+" Python
+autocmd BufNewFile,BufRead *.py set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 smarttab expandtab
 
 " Rspec
 autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let

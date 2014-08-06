@@ -49,3 +49,12 @@
 [submodule "vim/vim/bundle/html5"]
 	path = vim/vim/bundle/html5
 	url = git@github.com:othree/html5.vim.git
+[submodule "vim/vim/bundle/python-sytax"]
+	path = vim/vim/bundle/python-sytax
+	url = https://github.com/hdima/python-syntax.git
+[submodule "vim/vim/bundle/vim-colors-solarized"]
+	path = vim/vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/vim/bundle/vim-golang"]
+	path = vim/vim/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git

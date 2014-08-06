@@ -16,3 +16,5 @@ a.out
 .powrc
 *.lck
 .agignore
+tags
+.powenv

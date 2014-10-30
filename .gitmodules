@@ -58,3 +58,9 @@
 [submodule "vim/vim/bundle/vim-golang"]
 	path = vim/vim/bundle/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "vim/vim/bundle/vim-buffergator"]
+	path = vim/vim/bundle/vim-buffergator
+	url = https://github.com/jeetsukumaran/vim-buffergator.git
+[submodule "vim/vim/bundle/vim-airline"]
+	path = vim/vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline.git

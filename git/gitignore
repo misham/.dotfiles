@@ -18,3 +18,4 @@ a.out
 .agignore
 tags
 .powenv
+.rvmrc

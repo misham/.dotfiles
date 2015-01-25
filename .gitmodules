@@ -64,3 +64,12 @@
 [submodule "vim/vim/bundle/vim-airline"]
 	path = vim/vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
+[submodule "vim/vim/bundle/vim-coffee-script"]
+	path = vim/vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/vim/bundle/vim-scala"]
+	path = vim/vim/bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala.git
+[submodule "vim/vim/bundle/vimerl"]
+	path = vim/vim/bundle/vimerl
+	url = https://github.com/jimenezrick/vimerl.git

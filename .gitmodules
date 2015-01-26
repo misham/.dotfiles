@@ -1,6 +1,3 @@
-[submodule "gist"]
-	path = gist
-	url = https://github.com/gmarik/gist.sh.git
 [submodule "vim/vim/bundle/vim-fugitive"]
 	path = vim/vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git

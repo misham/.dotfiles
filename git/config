@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# General configuration options for Git
-#
-#
-# Setup completion
-#
-source $DOTFILES/git/git_completion
-

@@ -1,8 +1,0 @@
-Host *
-  ServerAliveInterval 30
-  ServerAliveCountMax 120
-  Compression yes
-  CompressionLevel 4
-
-Host brewbit-device-server
-  54.200.62.105

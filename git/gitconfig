@@ -1,5 +1,5 @@
 [user]
-	name = Misha Manulis
+  name = Misha Manulis
   email = misha@manulis.com
 
 [core]
@@ -18,11 +18,11 @@
   mnemonicprefix = true
 
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = true
-	interactive = auto
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+  interactive = auto
   pager = true
 
 [color "branch"]
@@ -73,7 +73,6 @@
 
 [github]
   user = misham
-  token =
 [init]
   templatedir = ~/.git
 

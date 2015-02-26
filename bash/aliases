@@ -24,12 +24,6 @@ alias ping='ping -c 5'
 #
 alias mkdir='mkdir -p -v'
 # -----------------------------------------------------------------------------
-# Use color for ls
-#
-#alias ls='/bin/ls -FCp --color=tty'
-#alias ll='/bin/ls -FCplh --color=tty'
-#alias la='/bin/ls -FCpah --color=tty'
-# -----------------------------------------------------------------------------
 # Use color for grep
 #
 alias grep="grep --color=auto -n"
@@ -59,23 +53,4 @@ alias rm='rm -i'
 # Sometimes lazy is good
 #
 alias ..='cd ..'
-# -----------------------------------------------------------------------------
-# SVN merging blows
-#
-if [[ -f $HOME/bin/svnmerge.py ]]; then
-    alias svnmerge='$HOME/bin/svnmerge.py -v'
-fi
-# -----------------------------------------------------------------------------
-# Cause Ubuntu/Debian uses ack-grep
-#
-which ack-grep &> /dev/null
-if [[ "0" -eq "$?" ]]; then
-  alias ack='ack-grep'
-fi
-# -----------------------------------------------------------------------------
-# Setup Labrador https://github.com/chrismccord/labrador
-#
-if [[ -d $HOME/.labrador ]] ; then
-  alias labrador-start="cd $HOME/.labrador && bundle exec rails s -e production -p 7488 -d"
-fi
 

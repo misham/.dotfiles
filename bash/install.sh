@@ -16,4 +16,4 @@ elif [[ -e $HOME/.bashrc ]]; then
 fi
 ln -s $DOTFILES/bash/bash_profile $HOME/.bash_profile
 ln -s $DOTFILES/bash/bashrc $HOME/.bashrc
-
+ln -s $DOTFILES/bash/tmux.conf $HOME/.tmux.conf

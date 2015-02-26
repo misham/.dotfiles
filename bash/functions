@@ -107,9 +107,8 @@ project()
 {
   if [[ -e "$HOME/$PROJECT_DIR/$1" && -d "$HOME/$PROJECT_DIR/$1" ]]; then
     cd "$HOME/$PROJECT_DIR/$1"
-    source $HOME/.project.env
-    if [[ -e .project.local ]]; then
-      source .project.local
+    if [[ -e .project.env ]]; then
+      source .project.env
     fi
 
     if [[ -e "$HOME/$PROJECT_DIR/$1/bin" && -d "$HOME/$PROJECT_DIR/$1/bin" ]]; then

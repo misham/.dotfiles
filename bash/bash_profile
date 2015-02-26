@@ -33,7 +33,15 @@ PATH="/usr/local/heroku/bin:$PATH"
 # Add CodeSourcery Light path
 PATH="/Users/misham/gcc-arm-none-eabi-4_7-2013q3/bin:$PATH"
 
+# Add CoreUtils for Mac
+#PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
 export PATH="$PATH"
 
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export MATHPATH="$MANPATH"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 

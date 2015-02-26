@@ -125,6 +125,7 @@ endif
 
 set scrolloff=5
 
+set undodir=~/.vim/tmp
 set backupdir=~/.vim/backup    " where to put backup files.
 set directory=~/.vim/tmp       " where to put swap files.
 
@@ -164,4 +165,8 @@ highlight def link rubyRspec Function
 
 " Silver Searchers instead of Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" VimClojure support
+let g:vimclojure#HighlightBuiltins = 1
+let g:vimclojure#ParenRainbow = 1
 

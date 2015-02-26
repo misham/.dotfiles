@@ -11,10 +11,9 @@ if [[ -n "$PS1" ]]; then
 # -----------------------------------------------------------------------------
 # Get colors
 #
-#eval `dircolors -b $DOTFILES/bash/colors`
 source "`brew --prefix grc`/etc/grc.bashrc"
 export CLICOLOR=1
-export LSCOLORS=Exfxcxdxbxegedabagacad
+export LSCOLORS=exfxcxdxbxegedabagacad
 # -----------------------------------------------------------------------------
 # Get aliases
 #
@@ -31,7 +30,7 @@ source $DOTFILES/bash/completion
 # Set vi as my security blanket with some options
 #
 set -o vi
-set editing-mode vi # I'd like all readline programs to use vi mode
+set editing-mode vi # I like all readline programs to use vi mode
 set keymap vi
 set convert-meta on
 bind -m vi-insert "\C-l":clear-screen # Ctrl-l is still nice though
@@ -64,10 +63,6 @@ shopt -s extglob
 shopt -s hostcomplete
 shopt -s no_empty_cmd_completion
 # -----------------------------------------------------------------------------
-# Some ignore stuff
-#
-FIGNORE="~:CVS:#:.pyc:.swp"
-# -----------------------------------------------------------------------------
 # make less more friendly for non-text input files, see lesspipe(1)
 #
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -92,16 +87,11 @@ fi
 #
 export PROJECT_DIR="Projects"
 # -----------------------------------------------------------------------------
-# Setup all environments
+# Setup bash completion
 #
-ENVIRONMENTS=`ls $DOTFILES`
-for env in $ENVIRONMENTS; do
-  if [[ -d "$DOTFILES/$env" ]] ; then
-    if [ -e "$DOTFILES/$env/config" ]; then
-      source $DOTFILES/$env/config
-    fi
-  fi
-done
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
 # -----------------------------------------------------------------------------
 # Set Prompt
 #

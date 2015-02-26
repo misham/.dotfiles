@@ -52,9 +52,6 @@
 [submodule "vim/vim/bundle/vim-colors-solarized"]
 	path = vim/vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/vim/bundle/vim-golang"]
-	path = vim/vim/bundle/vim-golang
-	url = https://github.com/jnwhiteh/vim-golang.git
 [submodule "vim/vim/bundle/vim-buffergator"]
 	path = vim/vim/bundle/vim-buffergator
 	url = https://github.com/jeetsukumaran/vim-buffergator.git
@@ -70,3 +67,6 @@
 [submodule "vim/vim/bundle/vimerl"]
 	path = vim/vim/bundle/vimerl
 	url = https://github.com/jimenezrick/vimerl.git
+[submodule "vim/vim/bundle/vim-clojure"]
+	path = vim/vim/bundle/vim-clojure
+	url = git@github.com:vim-scripts/VimClojure.git

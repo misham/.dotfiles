@@ -170,3 +170,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
+" Packer files
+au BufNewFile,BufRead *.packer set filetype=json
+

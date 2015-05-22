@@ -70,3 +70,9 @@
 [submodule "vim/vim/bundle/vim-clojure"]
 	path = vim/vim/bundle/vim-clojure
 	url = git@github.com:vim-scripts/VimClojure.git
+[submodule "vim/vim/bundle/vim-json"]
+	path = vim/vim/bundle/vim-json
+	url = git@github.com:elzr/vim-json.git
+[submodule "vim/vim/bundle/handlebars"]
+	path = vim/vim/bundle/handlebars
+	url = git://github.com/nono/vim-handlebars.git

@@ -9,8 +9,7 @@
 #
 # @param $* What to calculate
 #
-calc()
-{
+function calc {
   echo "$*" | bc -l ;
 } # calc
 
@@ -19,8 +18,7 @@ calc()
 #
 # @param $1 File to uncompress
 #
-extract ()
-{
+function extract {
   if [ -f $1 ] ; then
     case $1 in
       *.tar.bz2)
@@ -73,8 +71,7 @@ extract ()
 #
 # @param $1 Process to grep for
 #
-psgrep()
-{
+function psgrep {
   if [ ! -z $1 ] ; then
     echo "Grepping for processes matching $1..."
     ps aux | grep $1 | grep -v grep
@@ -87,8 +84,7 @@ psgrep()
 # Push SSH public key to another box
 #   from https://github.com/rtomayko/dotfiles
 #
-push_ssh_cert()
-{
+function push_ssh_cert {
   local _host
   test -f ~/.ssh/id_rsa.pub || ssh-keygen -t rsa
   for _host in "$@";
@@ -103,8 +99,7 @@ push_ssh_cert()
 #
 # @param Name of project, case sensitive
 #
-project()
-{
+function project {
   if [[ -e "$HOME/$PROJECT_DIR/$1" && -d "$HOME/$PROJECT_DIR/$1" ]]; then
     cd "$HOME/$PROJECT_DIR/$1"
     if [[ -e .project.env ]]; then
@@ -121,8 +116,7 @@ project()
 # Get IP
 #   From: https://github.com/mileszs/dotfiles
 #
-function myip()
-{
+function myip {
   IP=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`;
   echo $IP
 }
@@ -135,32 +129,28 @@ NORMAL_BOLD='\[\033[00;01m\]'
 # -----------------------------------------------------------------------------
 # SVN prompt helper
 #
-function svn_prompt()
-{
+function svn_prompt {
   svn info 2>/dev/null | awk '/URL/ {print $2}'
 }
 
 # -----------------------------------------------------------------------------
 # Git prompt helper
 #
-function git_prompt()
-{
+function git_prompt {
   __git_ps1 "%s"
 }
 
 # -----------------------------------------------------------------------------
 # RVM prompt helper
 #
-function rvm_prompt
-{
+function rvm_prompt {
   $HOME/.rvm/bin/rvm-prompt
 }
 
 # -----------------------------------------------------------------------------
 # Command history logger
 #
-function command_log
-{
+function command_log {
   case $1 in
     "init")
       echo "init $2" >> $HOME/.command_logger
@@ -175,3 +165,9 @@ function command_log
   esac
 }
 
+# -----------------------------------------------------------------------------
+# Set GOPATH
+#
+function set_gopath {
+  export GOPATH=$(pwd)
+}

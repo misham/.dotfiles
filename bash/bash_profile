@@ -20,6 +20,9 @@ tmp_path="/sbin:/usr/sbin"
 if [ -d "/usr/local/bin" ] ; then
   tmp_path="/usr/local/bin:$tmp_path"
 fi
+if [ -d "/usr/local/sbin" ] ; then
+  tmp_path="/usr/local/sbin:$tmp_path"
+fi
 if [ -d "$HOME/bin" ] ; then
   tmp_path="$HOME/bin:$tmp_path"
 fi
@@ -35,10 +38,10 @@ PATH="/Users/misham/gcc-arm-none-eabi-4_7-2013q3/bin:$PATH"
 
 # Add CoreUtils for Mac
 #PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+#MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export PATH="$PATH"
 
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export MATHPATH="$MANPATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

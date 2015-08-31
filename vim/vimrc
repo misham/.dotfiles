@@ -173,3 +173,5 @@ let g:vimclojure#ParenRainbow = 1
 " Packer files
 au BufNewFile,BufRead *.packer set filetype=json
 
+au BufNewFile,BufRead *.sjs set filetype=javascript
+

@@ -22,3 +22,5 @@ tags
 .env
 *.beam
 .vagrant
+.ruby-gemset
+.ruby-version

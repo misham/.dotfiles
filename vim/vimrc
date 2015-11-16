@@ -17,10 +17,13 @@ filetype plugin indent on       " load file type plugins + indentation
 
 set showcmd                     " display incomplete commands
 
+set wildmenu                    " visual autocomplete for command menu
+set showmatch                   " highlight matching [{()}]
+
 "" Whitespace
-set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
+set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
-set softtabstop=2
+set softtabstop=4
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
 "" Searching
@@ -47,7 +50,7 @@ set shell=bash
 
 " Set the colors
 set background=dark
-colorscheme solarized
+colorscheme molokai
 highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
 highlight Search ctermfg=Blue ctermbg=LightGrey
 " Invisible character colors
@@ -57,6 +60,13 @@ highlight SpecialKey guifg=#4a4a59
 
 " For all text files set 'textwidth' to 79 characters.
 autocmd FileType text setlocal textwidth=79
+
+" Set vertical line at 80 chars
+set colorcolumn=100
+
+" Highlight any line over 100 chars
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%101v.\+/
 
 " From http://www.pixelbeat.org/settings/.vimrc
 if v:version >= 700
@@ -83,12 +93,12 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-function s:setupWrapping()
-  set wrap
-  set wrapmargin=2
-  set textwidth=72
-endfunction
-call s:setupWrapping()
+"function s:setupWrapping()
+  "set wrap
+  "set wrapmargin=2
+  "set textwidth=72
+"endfunction
+"call s:setupWrapping()
 
 if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
@@ -134,7 +144,7 @@ map <leader>n :NERDTreeToggle<cr>
 map <leader>/ <plug>NERDCommenterToggle<CR>
 imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
 
-au FocusLost * :wa  " Save on loosing focus
+"au FocusLost * :wa  " Save on loosing focus
 
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>

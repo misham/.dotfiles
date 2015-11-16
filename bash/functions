@@ -170,4 +170,5 @@ function command_log {
 #
 function set_gopath {
   export GOPATH=$(pwd)
+  export PATH=$GOPATH/bin:$PATH
 }

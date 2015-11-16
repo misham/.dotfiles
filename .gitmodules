@@ -79,3 +79,9 @@
 [submodule "vim/vim/bundle/vim-terraform"]
 	path = vim/vim/bundle/vim-terraform
 	url = https://github.com/markcornick/vim-terraform.git
+[submodule "vim/vim/bundle/vim-ginkogo"]
+	path = vim/vim/bundle/vim-ginkogo
+	url = https://github.com/gevans/vim-ginkgo.git
+[submodule "vim/vim/bundle/molokai"]
+	path = vim/vim/bundle/molokai
+	url = https://github.com/tomasr/molokai.git

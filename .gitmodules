@@ -88,3 +88,6 @@
 [submodule "vim/vim/bundle/vim-carthage"]
 	path = vim/vim/bundle/vim-carthage
 	url = git@github.com:cfdrake/vim-carthage.git
+[submodule "vim/vim/bundle/vim-swift"]
+	path = vim/vim/bundle/vim-swift
+	url = https://github.com/keith/swift.vim.git

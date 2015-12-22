@@ -85,3 +85,6 @@
 [submodule "vim/vim/bundle/molokai"]
 	path = vim/vim/bundle/molokai
 	url = https://github.com/tomasr/molokai.git
+[submodule "vim/vim/bundle/vim-carthage"]
+	path = vim/vim/bundle/vim-carthage
+	url = git@github.com:cfdrake/vim-carthage.git

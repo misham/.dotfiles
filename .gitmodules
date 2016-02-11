@@ -88,3 +88,6 @@
 [submodule "vim/vim/bundle/vim-swift"]
 	path = vim/vim/bundle/vim-swift
 	url = https://github.com/keith/swift.vim.git
+[submodule "vim/vim/bundle/molokai"]
+	path = vim/vim/bundle/molokai
+	url = https://github.com/tomasr/molokai.git

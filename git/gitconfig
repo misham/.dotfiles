@@ -1,6 +1,7 @@
 [user]
   name = Misha Manulis
   email = misha@manulis.com
+	signingkey = 2048R
 
 [core]
 	excludesfile = /Users/misham/.gitignore

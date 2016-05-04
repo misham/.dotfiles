@@ -91,3 +91,9 @@
 [submodule "vim/vim/bundle/molokai"]
 	path = vim/vim/bundle/molokai
 	url = https://github.com/tomasr/molokai.git
+[submodule "vim/vim/bundle/salt-vim"]
+	path = vim/vim/bundle/salt-vim
+	url = git@github.com:saltstack/salt-vim.git
+[submodule "vim/vim/bundle/vim-go"]
+	path = vim/vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git

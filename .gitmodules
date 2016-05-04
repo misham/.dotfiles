@@ -97,3 +97,6 @@
 [submodule "vim/vim/bundle/vim-go"]
 	path = vim/vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule "vim/vim/bundle/vim-jinja2"]
+	path = vim/vim/bundle/vim-jinja2
+	url = git@github.com:Glench/Vim-Jinja2-Syntax.git

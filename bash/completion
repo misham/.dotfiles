@@ -35,6 +35,9 @@ else
   complete -W "$(echo `cat $HOME/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
   complete -W "$(echo `cat $HOME/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" slogin
 fi
+
+complete -C aws_completer aws
+
 # -----------------------------------------------------------------------------
 # My Completions
 #

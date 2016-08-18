@@ -77,12 +77,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 # -----------------------------------------------------------------------------
-# set variable identifying the chroot you work in (used in the prompt below)
-#
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-  debian_chroot=$(cat /etc/debian_chroot)
-fi
-# -----------------------------------------------------------------------------
 # Setup project stuff
 #
 export PROJECT_DIR="Projects"
@@ -111,16 +105,20 @@ export PS1="${CUR_PWD} ${BLUE}[${NORMAL}\$(git_prompt)\$(svn_prompt)${BLUE}]\n${
 if [[ -e $HOME/.bashrc.local ]]; then
   source $HOME/.bashrc.local
 fi
+# -----------------------------------------------------------------------------
+# RVM completion
 #
-fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
+# -----------------------------------------------------------------------------
+# Homebrew options
+#
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+# -----------------------------------------------------------------------------
+# Setup NVM
+#
 export NVM_DIR="/Users/misham/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# -----------------------------------------------------------------------------
+fi
+

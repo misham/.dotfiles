@@ -100,3 +100,12 @@
 [submodule "vim/vim/bundle/vim-jinja2"]
 	path = vim/vim/bundle/vim-jinja2
 	url = git@github.com:Glench/Vim-Jinja2-Syntax.git
+[submodule "vim/vim/bundle/vim-vagrant"]
+	path = vim/vim/bundle/vim-vagrant
+	url = git@github.com:hashivim/vim-vagrant.git
+[submodule "vim/vim/bundle/vim-systemd"]
+	path = vim/vim/bundle/vim-systemd
+	url = git@github.com:Matt-Deacalion/vim-systemd-syntax.git
+[submodule "vim/vim/bundle/typescript-vim"]
+	path = vim/vim/bundle/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git

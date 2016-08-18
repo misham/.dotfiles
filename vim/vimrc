@@ -185,3 +185,6 @@ au BufNewFile,BufRead *.packer set filetype=json
 
 au BufNewFile,BufRead *.sjs set filetype=javascript
 
+" JavaScript stuff
+au BufNewFile,BufRead &.ts set filetype=typescript
+

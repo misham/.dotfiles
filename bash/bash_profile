@@ -29,10 +29,6 @@ fi
 
 PATH="$tmp_path:$PATH"
 
-
-### Added by the Heroku Toolbelt
-PATH="/usr/local/heroku/bin:$PATH"
-
 # Add CodeSourcery Light path
 PATH="/Users/misham/gcc-arm-none-eabi-4_7-2013q3/bin:$PATH"
 
@@ -40,11 +36,12 @@ PATH="/Users/misham/gcc-arm-none-eabi-4_7-2013q3/bin:$PATH"
 #PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 #MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-export PATH="$PATH"
-
 export MATHPATH="$MANPATH"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+# ----- LAST LINE -----
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

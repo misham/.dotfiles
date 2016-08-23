@@ -2,3 +2,4 @@
 *.swp
 bin/gist.sh
 vim/vim/tmp
+vim/vim/bundle

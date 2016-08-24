@@ -13,6 +13,7 @@ Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'hdima/python-syntax'
+Plugin 'majutsushi/tagbar'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -153,6 +154,7 @@ set backupdir=~/.vim/tmp    " where to put backup files.
 set directory=~/.vim/tmp    " where to put swap files.
 
 map <leader>f :CommandT<cr>
+map <leader>T :TagbarToggle<cr>
 
 map <leader>n :NERDTreeToggle<cr>
 

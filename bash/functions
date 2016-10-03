@@ -19,43 +19,43 @@ function calc {
 # @param $1 File to uncompress
 #
 function extract {
-  if [ -f $1 ] ; then
+  if [ -f "$1" ] ; then
     case $1 in
       *.tar.bz2)
-      tar -xjvpf $1
+      tar -xjvpf "$1"
       ;;
       *.tar.gz)
-      tar -xzvpf $1
+      tar -xzvpf "$1"
       ;;
       *.bz2)
-      bunzip2 $1
+      bunzip2 "$1"
       ;;
       *.rar)
-      rar x $1
+      rar x "$1"
       ;;
       *.gz)
-      gunzip $1
+      gunzip "$1"
       ;;
       *.tar)
-      tar -xvpf $1
+      tar -xvpf "$1"
       ;;
       *.tbz2)
-      tar -xjvpf $1
+      tar -xjvpf "$1"
       ;;
       *.tgz)
-      tar xzf $1
+      tar xzf "$1"
       ;;
       *.zip)
-      unzip $1
+      unzip "$1"
       ;;
       *.Z)
-      uncompress $1
+      uncompress "$1"
       ;;
       *.rpm)
-      rpm2cpio $1 | cpio -idmv
+      rpm2cpio "$1" | cpio -idmv
       ;;
       *.deb)
-      ar p $1 data.tar.gz | tar zx
+      ar p "$1" data.tar.gz | tar zx
       ;;
       *)
       echo "'$1' cannot be extracted via extract()"
@@ -67,20 +67,6 @@ function extract {
 } # extract
 
 # -----------------------------------------------------------------------------
-# Grep for the specified process
-#
-# @param $1 Process to grep for
-#
-function psgrep {
-  if [ ! -z $1 ] ; then
-    echo "Grepping for processes matching $1..."
-    ps aux | grep $1 | grep -v grep
-  else
-    echo "!! Need name to grep for"
-  fi
-} # psgrep
-
-# -----------------------------------------------------------------------------
 # Push SSH public key to another box
 #   from https://github.com/rtomayko/dotfiles
 #
@@ -89,8 +75,8 @@ function push_ssh_cert {
   test -f ~/.ssh/id_rsa.pub || ssh-keygen -t rsa
   for _host in "$@";
   do
-    echo $_host
-    ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
+    echo "$_host"
+    ssh "$_host" 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
   done
 }
 
@@ -117,14 +103,9 @@ function project {
 #   From: https://github.com/mileszs/dotfiles
 #
 function myip {
-  IP=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`;
-  echo $IP
+  IP=$(ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print "$1"}')
+  echo "$IP"
 }
-
-BLUE='\[\033[1;34m\]'
-RED='\[\033[1;31m\]'
-NORMAL='\[\033[00m\]'
-NORMAL_BOLD='\[\033[00;01m\]'
 
 # -----------------------------------------------------------------------------
 # SVN prompt helper
@@ -144,7 +125,7 @@ function git_prompt {
 # RVM prompt helper
 #
 function rvm_prompt {
-  $HOME/.rvm/bin/rvm-prompt
+  "$HOME"/.rvm/bin/rvm-prompt
 }
 
 # -----------------------------------------------------------------------------
@@ -153,11 +134,11 @@ function rvm_prompt {
 function command_log {
   case $1 in
     "init")
-      echo "init $2" >> $HOME/.command_logger
+      echo "init $2" >> "$HOME"/.command_logger
       ;;
 
     "stop")
-      sed -i "/$init/d" $HOME/.command_logger
+      sed -i "/$init/d" "$HOME"/.command_logger
       ;;
 
     *)
@@ -171,4 +152,8 @@ function command_log {
 function set_gopath {
   export GOPATH=$(pwd)
   export PATH=$GOPATH/bin:$PATH
+
+  if [ ! -e .lvimrc ]; then
+      echo "let \$GOPATH=\"$(pwd)\"" > .lvimrc
+  fi
 }

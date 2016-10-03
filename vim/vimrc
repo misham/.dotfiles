@@ -10,15 +10,17 @@ Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 Plugin 'othree/html5.vim'
 Plugin 'pallets/jinja'
 Plugin 'tomasr/molokai'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'hdima/python-syntax'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-bundler'
-Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'vim-scripts/VimClojure'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-endwise'
@@ -26,15 +28,24 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
 Plugin 'elzr/vim-json'
+Plugin 'embear/vim-localvimrc'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rvm'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'hashivim/vim-terraform'
 Plugin 'hashivim/vim-vagrant'
+Plugin 'hashivim/vim-vaultproject'
 
 call vundle#end()
 filetype plugin indent on       " load file type plugins + indentation
+
+" Turn off bell
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
 
 set number
 set ruler
@@ -107,6 +118,9 @@ set listchars=tab:▸\ ,eol:¬,trail:⋅,nbsp:⋅
 " Autosave on make and other similar commands
 set autowrite
 
+" Enable commands in Vim
+set modelines
+
 " Strip trailing whitespace
 " http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
 function! <SID>StripTrailingWhitespaces()
@@ -154,7 +168,7 @@ set backupdir=~/.vim/tmp    " where to put backup files.
 set directory=~/.vim/tmp    " where to put swap files.
 
 map <leader>f :CommandT<cr>
-map <leader>T :TagbarToggle<cr>
+map <leader>t :TagbarToggle<cr>
 
 map <leader>n :NERDTreeToggle<cr>
 
@@ -197,6 +211,16 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
+" Syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " Packer files
 au BufNewFile,BufRead *.packer set filetype=json
 
@@ -207,4 +231,7 @@ au BufNewFile,BufRead &.ts set filetype=typescript
 
 " Don't conceal JSON quotes
 let g:vim_json_syntax_conceal = 0
+
+" Disable asking loading local vimrc files
+let g:localvimrc_whitelist='/Users/misham/Dropbox/Projects/*'
 

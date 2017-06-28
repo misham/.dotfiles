@@ -9,12 +9,6 @@ DOTFILES=$HOME/.dotfiles
 # Make sure we're running interactively
 if [[ -n "$PS1" ]]; then
 # -----------------------------------------------------------------------------
-# Get colors
-#
-source "`brew --prefix grc`/etc/grc.bashrc"
-export CLICOLOR=1
-export LSCOLORS=exfxcxdxbxegedabagacad
-# -----------------------------------------------------------------------------
 # Get aliases
 #
 source $DOTFILES/bash/aliases
@@ -81,12 +75,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 #
 export PROJECT_DIR="Projects"
 # -----------------------------------------------------------------------------
-# Setup bash completion
-#
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
-# -----------------------------------------------------------------------------
 # Set Prompt
 #
 BLUE='\[\033[1;34m\]'
@@ -110,15 +98,19 @@ fi
 #
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+
+
+
+test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # -----------------------------------------------------------------------------
-# Homebrew options
+# Get colors
 #
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-# -----------------------------------------------------------------------------
-# Setup NVM
-#
-export NVM_DIR="/Users/misham/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-# -----------------------------------------------------------------------------
+eval `dircolors /home/misham/.dir_colors/dircolors`
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 fi
 

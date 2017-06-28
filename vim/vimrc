@@ -42,6 +42,8 @@ Plugin 'hashivim/vim-vaultproject'
 call vundle#end()
 filetype plugin indent on       " load file type plugins + indentation
 
+set linespace=2
+
 " Turn off bell
 set noerrorbells visualbell t_vb=
 if has('autocmd')
@@ -59,9 +61,9 @@ set wildmenu                    " visual autocomplete for command menu
 set showmatch                   " highlight matching [{()}]
 
 "" Whitespace
-set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
+set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
-set softtabstop=4
+set softtabstop=2
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
 "" Searching
@@ -121,7 +123,7 @@ set listchars=tab:▸\ ,eol:¬,trail:⋅,nbsp:⋅
 set autowrite
 
 " Enable commands in Vim
-set modelines
+" set modelines
 
 " Strip trailing whitespace
 " http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
@@ -169,6 +171,9 @@ set undodir=~/.vim/tmp
 set backupdir=~/.vim/tmp    " where to put backup files.
 set directory=~/.vim/tmp    " where to put swap files.
 
+" Use system clipboard as default one
+set clipboard=unnamed
+
 map <leader>f :CommandT<cr>
 map <leader>t :TagbarToggle<cr>
 
@@ -184,11 +189,6 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 set wildmode=longest,list,full
 set wildmenu
-
-" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
 
 if filereadable(expand("~/.vim/syntax/scons.vim"))
   au BufNewFile,BufRead SCons* set filetype=scons
@@ -231,4 +231,9 @@ let g:vim_json_syntax_conceal = 0
 
 " Disable asking loading local vimrc files
 let g:localvimrc_whitelist='/Users/misham/Dropbox/Projects/*'
+
+" Include user's local vim config
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
 

@@ -2,5 +2,6 @@ export rvmmake_flags="-j 4"
 export rvm_path="$HOME/.rvm"
 export rvm_pretty_print_flag=1
 export rvm_trust_rvmrcs_flag=1
+export rvm_autoupdate_flag=2
 
 export rvm_with_gems="bundle rubygems-bundler rake rvm pry chef"

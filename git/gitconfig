@@ -73,24 +73,11 @@
 
 [github]
   user = misham
-[init]
-  templatedir = ~/.git
 
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
 [filter "lfs"]
     clean = git lfs clean %f
     smudge = git lfs smudge %f
     required = true
+
 [http]
-    cookiefile = /Users/misham/.gitcookies
-[pager]
-    log = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
-    show = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
-    diff = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
-[interactive]
-    diffFilter = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight
+    cookiefile = /home/misham/.gitcookies

@@ -23,18 +23,15 @@ fi
 if [ -d "/usr/local/sbin" ] ; then
   tmp_path="/usr/local/sbin:$tmp_path"
 fi
+
+tmp_path=$tmp_path:/opt/OpenPrinting-Gutenprint/sbin:/opt/OpenPrinting-Gutenprint/bin
+tmp_path=$tmp_path:/snap/bin
+
 if [ -d "$HOME/bin" ] ; then
   tmp_path="$HOME/bin:$tmp_path"
 fi
 
 PATH="$tmp_path:$PATH"
-
-# Add CodeSourcery Light path
-PATH="/Users/misham/gcc-arm-none-eabi-4_7-2013q3/bin:$PATH"
-
-# Add CoreUtils for Mac
-#PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-#MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export MATHPATH="$MANPATH"
 

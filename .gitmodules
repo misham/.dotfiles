@@ -1,3 +1,0 @@
-[submodule "vim/vim/bundle/vim-ginkogo"]
-	path = vim/vim/bundle/vim-ginkogo
-	url = https://github.com/gevans/vim-ginkgo.git

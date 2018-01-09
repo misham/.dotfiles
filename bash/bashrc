@@ -114,3 +114,11 @@ eval `dircolors /home/misham/.dir_colors/dircolors`
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 fi
 
+# -----------------------------------------------------------------------------
+# Setup SSH
+#
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent`
+    ssh-add
+    ssh-add "$HOME/.ssh/*.pem"
+fi

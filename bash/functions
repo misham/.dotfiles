@@ -103,7 +103,7 @@ function project {
 #   From: https://github.com/mileszs/dotfiles
 #
 function myip {
-  IP=$(ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print "$1"}')
+  IP=$(ifconfig  | /bin/grep 'inet addr:'| /bin/grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}')
   echo "$IP"
 }
 
@@ -156,4 +156,13 @@ function set_gopath {
   if [ ! -e .lvimrc ]; then
       echo "let \$GOPATH=\"$(pwd)\"" > .lvimrc
   fi
+}
+
+# -----------------------------------------------------------------------------
+# Switch between AWS credentials
+#
+function select_aws {
+  available=$(cat ~/.bashrc.local | /bin/grep -v export | awk -F= '/AWS/ {print $1}' | awk -F_ '{print $1}' | uniq )
+
+  echo $available
 }

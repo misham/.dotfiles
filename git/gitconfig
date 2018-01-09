@@ -1,10 +1,14 @@
+
+[init]
+  templateDir = ~/.git_template
+
 [user]
   name = Misha Manulis
   email = misha@manulis.com
   signingkey = 2048R
 
 [core]
-  excludesfile = /Users/misham/.gitignore
+  excludesfile = /home/misham/.gitignore
   autocrlf = input
   filemode = true
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -63,7 +67,7 @@
   #     git searchcommits foobar --pickaxe-all -U1 src/lib
   searchcommits = "!f() { query=\"$1\"; shift; git log -S\"$query\" \"$@\"; }; f \"$@\""
   info = !~/.dotfiles/git/git-info
-  ctags = !.git/hooks/ctags
+	ctags = !.git/hooks/ctags
   rm-remote = push origin --delete
   wc = whatchanged -p --abbrev-commit --pretty=medium
 

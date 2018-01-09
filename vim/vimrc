@@ -7,9 +7,11 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'wincent/command-t'
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 Plugin 'othree/html5.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pallets/jinja'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdcommenter'
@@ -17,19 +19,21 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-bundler'
 Plugin 'vim-scripts/VimClojure'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
+Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'elzr/vim-json'
 Plugin 'embear/vim-localvimrc'
+Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
@@ -38,6 +42,7 @@ Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'hashivim/vim-terraform'
 Plugin 'hashivim/vim-vagrant'
 Plugin 'hashivim/vim-vaultproject'
+Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
 filetype plugin indent on       " load file type plugins + indentation
@@ -106,8 +111,8 @@ autocmd FileType text setlocal textwidth=79
 set colorcolumn=100
 
 " Highlight any line over 100 chars
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%101v.\+/
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%121v.\+/
 
 " From http://www.pixelbeat.org/settings/.vimrc
 if v:version >= 700
@@ -115,15 +120,16 @@ if v:version >= 700
 endif
 
 " Use the same symbols as TextMate for tabstops and EOLs
-"display tabs and trailing spaces
+" display tabs and trailing spaces
 set list
 set listchars=tab:▸\ ,eol:¬,trail:⋅,nbsp:⋅
 
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
+
 " Autosave on make and other similar commands
 set autowrite
-
-" Enable commands in Vim
-" set modelines
 
 " Strip trailing whitespace
 " http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
@@ -148,8 +154,7 @@ au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= l
 " clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
 
-" :TODO: Move all of this into it's own file
-"        and customize it with some examples from:
+" :TODO: Move all of this into it's own file and customize it with some examples from:
 "        https://github.com/scrooloose/vimfiles/blob/master/vimrc#L78
 "        http://got-ravings.blogspot.com/search/label/statuslines
 "        http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
@@ -182,8 +187,6 @@ map <leader>n :NERDTreeToggle<cr>
 map <leader>/ <plug>NERDCommenterToggle<CR>
 imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
 
-"au FocusLost * :wa  " Save on loosing focus
-
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -195,7 +198,6 @@ if filereadable(expand("~/.vim/syntax/scons.vim"))
 endif
 
 let g:rubytest_in_quickfix = 0
-
 
 highlight Normal ctermbg=black ctermfg=white
 
@@ -230,7 +232,18 @@ au BufNewFile,BufRead &.ts set filetype=typescript
 let g:vim_json_syntax_conceal = 0
 
 " Disable asking loading local vimrc files
-let g:localvimrc_whitelist='/Users/misham/Dropbox/Projects/*'
+let g:localvimrc_whitelist='/home/misham/Projects/.*'
+
+" Enable AngularJS
+autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
+
+" Setup JS pretty templates
+autocmd FileType javascript JsPreTmpl html
+autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript syn clear foldBraces
+
+" Include - in tab-completion
+set iskeyword+=-
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))

@@ -24,19 +24,28 @@ if [ -d "/usr/local/sbin" ] ; then
   tmp_path="/usr/local/sbin:$tmp_path"
 fi
 
-tmp_path=$tmp_path:/opt/OpenPrinting-Gutenprint/sbin:/opt/OpenPrinting-Gutenprint/bin
-tmp_path=$tmp_path:/snap/bin
+tmp_path="$tmp_path:/opt/OpenPrinting-Gutenprint/sbin:/opt/OpenPrinting-Gutenprint/bin"
+tmp_path="$tmp_path:/snap/bin"
 
 if [ -d "$HOME/bin" ] ; then
   tmp_path="$HOME/bin:$tmp_path"
 fi
 
+tmp_path="$tmp_path:/usr/local/heroku/bin"
+
+tmp_path="$tmp_path:/opt/android-studio/bin"
+tmp_path="$tmp_path:$HOME/Android/Sdk/tools"
+tmp_path="$tmp_path:$HOME/Android/Sdk/tools/bin"
+tmp_path="$tmp_path:$HOME/Android/Sdk/platform-tools"
+tmp_path="$tmp_path:/opt/android-studio/gradle/gradle-4.1/bin"
+tmp_path="$tmp_path:$HOME/.local/bin"
+
 PATH="$tmp_path:$PATH"
 
 export MATHPATH="$MANPATH"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export ANDROID_HOME="$HOME/Android/Sdk"
+
 
 # ----- LAST LINE -----
 

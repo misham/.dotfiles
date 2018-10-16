@@ -25,3 +25,4 @@ tags
 .ruby-gemset
 .ruby-version
 node_modules
+.lvimrc

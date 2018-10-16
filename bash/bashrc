@@ -87,12 +87,7 @@ CUR_TIME="${BLUE}[${NORMAL}\t${BLUE}]"
 CUR_USER_HOST="${BLUE}[${NORMAL}\u${NORMAL_BOLD}@${NORMAL}\h${BLUE}]"
 
 export PS1="${CUR_PWD} ${BLUE}[${NORMAL}\$(git_prompt)\$(svn_prompt)${BLUE}]\n${CUR_TIME} ${BLUE}[${NORMAL}\$(rvm_prompt)${BLUE}]\n${CUR_USER_HOST} ${NORMAL}$ "
-# -----------------------------------------------------------------------------
-# Get local modifications for bash, if they exist
-#
-if [[ -e $HOME/.bashrc.local ]]; then
-  source $HOME/.bashrc.local
-fi
+
 # -----------------------------------------------------------------------------
 # RVM completion
 #
@@ -112,13 +107,4 @@ test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors
 eval `dircolors /home/misham/.dir_colors/dircolors`
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-fi
-
-# -----------------------------------------------------------------------------
-# Setup SSH
-#
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent`
-    ssh-add
-    ssh-add "$HOME/.ssh/*.pem"
 fi

@@ -4,7 +4,7 @@
 # email: duane.johnson@gmail.com
 # date: 2008 Jun 12
 # license: MIT
-# 
+#
 # Based on discussion at http://kerneltrap.org/mailarchive/git/2007/11/12/406496
 
 pushd . >/dev/null
@@ -14,7 +14,9 @@ while [ ! -d .git ] && [ ! `pwd` = "/" ]; do cd ..; done
 
 # Show various information about this git directory
 if [ -d .git ]; then
-  echo "== Remote URL: `git remote -v`"
+  echo "== Remote URL: "
+  echo "`git remote -v`"
+  echo
 
   echo "== Remote Branches: "
   git branch -r

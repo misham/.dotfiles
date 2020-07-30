@@ -15,7 +15,8 @@ if [ -n "$BASH_VERSION" ]; then
     . "$HOME/.bashrc"
   fi
 fi
-
+# -----------------------------------------------------------------------------
+# Setup sbin stuff
 tmp_path="/sbin:/usr/sbin"
 if [ -d "/usr/local/bin" ] ; then
   tmp_path="/usr/local/bin:$tmp_path"
@@ -23,31 +24,50 @@ fi
 if [ -d "/usr/local/sbin" ] ; then
   tmp_path="/usr/local/sbin:$tmp_path"
 fi
-
+# -----------------------------------------------------------------------------
+# Printer stuff
 tmp_path="$tmp_path:/opt/OpenPrinting-Gutenprint/sbin:/opt/OpenPrinting-Gutenprint/bin"
+# -----------------------------------------------------------------------------
+# Setup snap
 tmp_path="$tmp_path:/snap/bin"
-
+# -----------------------------------------------------------------------------
+# Setup $HOME/bin folder for personal stuff
 if [ -d "$HOME/bin" ] ; then
   tmp_path="$HOME/bin:$tmp_path"
 fi
-
+# -----------------------------------------------------------------------------
+# Setup heroku tools
 tmp_path="$tmp_path:/usr/local/heroku/bin"
-
+# -----------------------------------------------------------------------------
+# Setup Android stuff
 tmp_path="$tmp_path:/opt/android-studio/bin"
 tmp_path="$tmp_path:$HOME/Android/Sdk/tools"
 tmp_path="$tmp_path:$HOME/Android/Sdk/tools/bin"
 tmp_path="$tmp_path:$HOME/Android/Sdk/platform-tools"
 tmp_path="$tmp_path:/opt/android-studio/gradle/gradle-4.1/bin"
+# -----------------------------------------------------------------------------
+# There's stuff in $HOME/.local that needs to be referenced
 tmp_path="$tmp_path:$HOME/.local/bin"
-
+# -----------------------------------------------------------------------------
+# Still using RVM
+tmp_path="$tmp_path:$HOME/.rvm/bin"
+# -----------------------------------------------------------------------------
+# Golang stuff
+export GOPATH="$HOME/go"
+tmp_path="$tmp_path:$GOPATH/bin"
+# -----------------------------------------------------------------------------
+# Done with PATH
 PATH="$tmp_path:$PATH"
-
+# -----------------------------------------------------------------------------
 export MATHPATH="$MANPATH"
-
+# -----------------------------------------------------------------------------
 export ANDROID_HOME="$HOME/Android/Sdk"
+# -----------------------------------------------------------------------------
+# Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export PATH=$N_PREFIX/bin:$PATH
+# -----------------------------------------------------------------------------
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-
-# ----- LAST LINE -----
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

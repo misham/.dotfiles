@@ -7,14 +7,14 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'pearofducks/ansible-vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'wincent/command-t'
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
-Plugin 'chrisbra/histwin.vim'
+Plugin 'morhetz/gruvbox'
 Plugin 'othree/html5.vim'
+Plugin 'Yggdroot/indentLine'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pallets/jinja'
-Plugin 'AndrewRadev/linediff.vim'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
@@ -28,12 +28,13 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-bundler'
 Plugin 'vim-scripts/VimClojure'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'tpope/vim-db'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
-Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'elzr/vim-json'
 Plugin 'embear/vim-localvimrc'
 Plugin 'severin-lemaignan/vim-minimap'
@@ -45,14 +46,19 @@ Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'tpope/vim-surround'
 Plugin 'hashivim/vim-packer'
 Plugin 'hashivim/vim-terraform'
+Plugin 'cespare/vim-toml'
 Plugin 'hashivim/vim-vagrant'
 Plugin 'hashivim/vim-vaultproject'
 Plugin 'vimwiki/vimwiki'
+Plugin 'othree/xml.vim'
+Plugin 'sukima/xmledit'
 
 call vundle#end()
 filetype plugin indent on       " load file type plugins + indentation
 
-set linespace=2
+autocmd vimenter * colorscheme gruvbox
+
+set linespace=4
 
 " Turn off bell
 set noerrorbells visualbell t_vb=
@@ -96,12 +102,15 @@ nmap <F1> <Esc>
 " Remap ESC
 imap jj <Esc>
 
+" Save a little easier
+imap <Esc><Esc> :w<CR>
+
 " Use bash as the vim shell: http://bit.ly/ezxLUf
 set shell=bash
 
 " Set the colors
 set background=dark
-colorscheme molokai
+"colorscheme molokai
 highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
 highlight Search ctermfg=Blue ctermbg=LightGrey
 " Invisible character colors
@@ -132,6 +141,13 @@ set listchars=tab:▸\ ,eol:¬,trail:⋅,nbsp:⋅
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j
 endif
+
+augroup vimrc_todo
+    au!
+    au Syntax * syn match MyTodo /\v<(FIXME|NOTE|TODO|OPTIMIZE|ASSUMPTION|HACK|DEBUG|XXX)/
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link MyTodo Todo
 
 " Autosave on make and other similar commands
 set autowrite
@@ -192,6 +208,11 @@ map <leader>n :NERDTreeToggle<cr>
 map <leader>/ <plug>NERDCommenterToggle<CR>
 imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
 
+map ,tn :tabnew<CR>
+map ,tc :tabclose<CR>
+map ,t[ :tabprevious<CR>
+map ,t] :tabnext<CR>
+
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -224,10 +245,9 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:go_fmt_command = "goimports"
+
+set tags^=./.git/tags;
 
 " Packer files
 au BufNewFile,BufRead *.packer set filetype=json
@@ -241,14 +261,17 @@ au BufNewFile,BufRead &.ts set filetype=typescript
 let g:vim_json_syntax_conceal = 0
 
 " Disable asking loading local vimrc files
-let g:localvimrc_whitelist='/home/misham/Projects/.*'
+let g:localvimrc_enable=1
+let g:localvimrc_ask=0
 
 " Enable AngularJS
 autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
 " Setup JS pretty templates
-autocmd FileType javascript JsPreTmpl html
 autocmd FileType typescript syn clear foldBraces
+
+" Setup Ansible
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 
 " Include - in tab-completion
 set iskeyword+=-

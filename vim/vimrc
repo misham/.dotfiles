@@ -9,6 +9,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'pearofducks/ansible-vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 Plugin 'morhetz/gruvbox'
 Plugin 'othree/html5.vim'
@@ -60,6 +61,8 @@ autocmd vimenter * colorscheme gruvbox
 
 set linespace=4
 
+set foldcolumn=3
+
 " Turn off bell
 set noerrorbells visualbell t_vb=
 if has('autocmd')
@@ -110,8 +113,7 @@ set shell=bash
 
 " Set the colors
 set background=dark
-"colorscheme molokai
-highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
+
 highlight Search ctermfg=Blue ctermbg=LightGrey
 " Invisible character colors
 highlight NonText guifg=#4a4a59
@@ -179,6 +181,7 @@ au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= l
 "        https://github.com/scrooloose/vimfiles/blob/master/vimrc#L78
 "        http://got-ravings.blogspot.com/search/label/statuslines
 "        http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
+highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
 if has("statusline") && !&cp
   set laststatus=2  " always show the status bar
 
@@ -207,6 +210,14 @@ map <leader>n :NERDTreeToggle<cr>
 
 map <leader>/ <plug>NERDCommenterToggle<CR>
 imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 map ,tn :tabnew<CR>
 map ,tc :tabclose<CR>

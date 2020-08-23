@@ -18,3 +18,10 @@ elif [[ -e $HOME/.vim ]]; then
 fi
 ln -s $DOTFILES/vim/vim $HOME/.vim
 
+if [[ -h $HOME/.ctags ]]; then
+  rm $HOME/.ctags
+elif [[ -e $HOME/.ctags ]]; then
+  echo "ctags exists, moving to $HOME/.ctags.orig"
+  mv $HOME/.ctags $HOME/.ctags.orig
+fi
+ln -s $DOTFILES/vim/ctags $HOME/.ctags

@@ -17,3 +17,4 @@ fi
 ln -s $DOTFILES/git/gitconfig $HOME/.gitconfig
 ln -s $DOTFILES/git/gitignore $HOME/.gitignore
 
+ln -s $DOTFILES/git/git_template $HOME/.git_template

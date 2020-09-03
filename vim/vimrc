@@ -58,8 +58,7 @@ call vundle#end()
 filetype plugin indent on       " load file type plugins + indentation
 
 autocmd vimenter * colorscheme gruvbox
-
-set linespace=4
+set guifont=Monaco\ 10
 
 set foldcolumn=3
 
@@ -177,12 +176,26 @@ au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= l
 " clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
 
-" :TODO: Move all of this into it's own file and customize it with some examples from:
-"        https://github.com/scrooloose/vimfiles/blob/master/vimrc#L78
-"        http://got-ravings.blogspot.com/search/label/statuslines
-"        http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
-highlight StatusLine ctermfg=DarkBlue ctermbg=LightGray
+
 if has("statusline") && !&cp
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme='solarized'
+  let g:airline_solarized_bg='dark'
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '☰'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.whitespace = 'Ξ'
+
   set laststatus=2  " always show the status bar
 
   " Start the status line

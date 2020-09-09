@@ -21,6 +21,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'hdima/python-syntax'
+Plugin 'tmhedberg/SimplyFold'
 Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
@@ -38,7 +39,6 @@ Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
 Plugin 'elzr/vim-json'
 Plugin 'embear/vim-localvimrc'
-Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
@@ -51,6 +51,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'hashivim/vim-vagrant'
 Plugin 'hashivim/vim-vaultproject'
 Plugin 'vimwiki/vimwiki'
+Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'othree/xml.vim'
 Plugin 'sukima/xmledit'
 
@@ -58,7 +59,7 @@ call vundle#end()
 filetype plugin indent on       " load file type plugins + indentation
 
 autocmd vimenter * colorscheme gruvbox
-set guifont=Monaco\ 10
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Book\ 11
 
 set foldcolumn=3
 
@@ -182,19 +183,24 @@ if has("statusline") && !&cp
   let g:airline_theme='solarized'
   let g:airline_solarized_bg='dark'
 
+
+  let g:airline#extensions#nerdtree_statusline = 1
+  let g:NERDTreeStatusline="NERD"
+
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif
 
-  let g:airline_left_sep = '▶'
-  let g:airline_right_sep = '◀'
+  let g:airline_left_sep = ''
+  let g:airline_right_sep = ''
   let g:airline_symbols.branch = ''
   let g:airline_symbols.crypt = '🔒'
-  let g:airline_symbols.linenr = '☰'
+  let g:airline_symbols.linenr = '☰ '
   let g:airline_symbols.paste = 'ρ'
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.spell = 'Ꞩ'
   let g:airline_symbols.whitespace = 'Ξ'
+  let g:airline_symbols.maxlinenr = ''
 
   set laststatus=2  " always show the status bar
 
@@ -283,6 +289,8 @@ au BufNewFile,BufRead &.ts set filetype=typescript
 
 " Don't conceal JSON quotes
 let g:vim_json_syntax_conceal = 0
+let g:indentLine_noConcealCursor=""
+
 
 " Disable asking loading local vimrc files
 let g:localvimrc_enable=1

@@ -8,11 +8,12 @@
   signingkey = 2048R
 
 [core]
-  excludesfile = /home/misham/.gitignore
+  excludesfile = ~/.gitignore
   autocrlf = input
   filemode = true
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
   logallrefupdates = true
+  attributesfile = ~/.gitattributes
 
 [branch]
   autosetupmerge = true
@@ -20,6 +21,9 @@
 [diff]
   renames = copies
   mnemonicprefix = true
+
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 
 [color]
   diff = auto
@@ -47,7 +51,7 @@
 
 [alias]
   ci = commit
-  stat = status
+  st = status
   co = checkout
   br = branch
   # prune all tracking local branches that have been removed from remote:
@@ -84,7 +88,7 @@
     required = true
 
 [http]
-    cookiefile = /home/misham/.gitcookies
+    cookiefile = ~/.gitcookies
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/

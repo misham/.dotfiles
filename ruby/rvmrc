@@ -5,3 +5,4 @@ export rvm_trust_rvmrcs_flag=1
 export rvm_autoupdate_flag=2
 
 export rvm_with_gems="bundle rubygems-bundler rake rvm pry chef"
+rvm_silence_path_mismatch_check_flag=1

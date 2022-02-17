@@ -8,18 +8,24 @@ DOTFILES=$HOME/.dotfiles
 #-----------------------------------------------------------------------------
 # Make sure we're running interactively
 if [[ -n "$PS1" ]]; then
+
+#TODO make this mac-specific
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # -----------------------------------------------------------------------------
 # Get aliases
 #
 source $DOTFILES/bash/aliases
 # -----------------------------------------------------------------------------
-# Get functions
-#
-source $DOTFILES/bash/functions
-# -----------------------------------------------------------------------------
 # Setup completion
 #
 source $DOTFILES/bash/completion
+#
+source $(brew --prefix)/etc/bash_completion
+# -----------------------------------------------------------------------------
+# Get functions
+#
+source $DOTFILES/bash/functions
 # -----------------------------------------------------------------------------
 # Set vi as my security blanket with some options
 #
@@ -86,14 +92,19 @@ CUR_PWD="${BLUE}[${RED}\w${BLUE}]"
 CUR_TIME="${BLUE}[${NORMAL}\t${BLUE}]"
 CUR_USER_HOST="${BLUE}[${NORMAL}\u${NORMAL_BOLD}@${NORMAL}\h${BLUE}]"
 
-export PS1="${CUR_PWD} ${BLUE}[${NORMAL}\$(git_prompt)\$(svn_prompt)${BLUE}]\n${CUR_TIME} ${BLUE}[${NORMAL}\$(rvm_prompt)${BLUE}]\n${CUR_USER_HOST} ${NORMAL}$ "
+# NOTE using starship instead
+#export PS1="${CUR_PWD} ${BLUE}[${NORMAL}\$(git_prompt)\$(svn_prompt)${BLUE}]\n${CUR_TIME} ${BLUE}[${NORMAL}\$(rvm_prompt)${BLUE}]\n${CUR_USER_HOST} ${NORMAL}$ "
 
 # -----------------------------------------------------------------------------
 # RVM completion
 #
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
-test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+# -----------------------------------------------------------------------------
+# NVM completion
+#
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -101,7 +112,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # -----------------------------------------------------------------------------
 # Get colors
 #
-eval `dircolors /home/misham/.dir_colors/dircolors`
+# TODO make this Linux specific
+#test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#eval `dircolors $HOME/.dir_colors/dircolors`
 
 fi
 
@@ -119,4 +132,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+eval "$(starship init bash)"
 

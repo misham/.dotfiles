@@ -14,8 +14,8 @@ elif [[ -e $HOME/.gitignore ]]; then
   echo "gitignore exists, moving to $HOME/.gitignore.orig"
   mv $HOME/.gitignore $HOME/.gitignore.orig
 fi
-ln -s $DOTFILES/git/gitconfig $HOME/.gitconfig
-ln -s $DOTFILES/git/gitignore $HOME/.gitignore
+ln -fs $DOTFILES/git/gitconfig $HOME/.gitconfig
+ln -fs $DOTFILES/git/gitignore $HOME/.gitignore
 
-ln -s $DOTFILES/git/git_template $HOME/.git_template
-ln -s $DOTFILES/git/gitattributes $HOME/.gitattributes
+ln -fs $DOTFILES/git/git_template $HOME/.git_template
+ln -fs $DOTFILES/git/gitattributes $HOME/.gitattributes

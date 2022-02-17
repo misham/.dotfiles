@@ -5,15 +5,6 @@
 # Based on stuff I found on dotfiles.org and github.com
 #
 # -----------------------------------------------------------------------------
-# Calculator function
-#
-# @param $* What to calculate
-#
-function calc {
-  echo "$*" | bc -l ;
-} # calc
-
-# -----------------------------------------------------------------------------
 # Uncompress a passed in file
 #
 # @param $1 File to uncompress
@@ -65,21 +56,6 @@ function extract {
     echo "'$1' is not a valid file"
   fi
 } # extract
-
-# -----------------------------------------------------------------------------
-# Push SSH public key to another box
-#   from https://github.com/rtomayko/dotfiles
-#
-function push_ssh_cert {
-  local _host
-  test -f ~/.ssh/id_rsa.pub || ssh-keygen -t rsa
-  for _host in "$@";
-  do
-    echo "$_host"
-    ssh "$_host" 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
-  done
-}
-
 # -----------------------------------------------------------------------------
 # Setup project environment
 #
@@ -97,16 +73,6 @@ function project {
     fi
   fi
 }
-
-# -----------------------------------------------------------------------------
-# Get IP
-#   From: https://github.com/mileszs/dotfiles
-#
-function myip {
-  IP=$(ifconfig  | /bin/grep 'inet addr:'| /bin/grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}')
-  echo "$IP"
-}
-
 # -----------------------------------------------------------------------------
 # SVN prompt helper
 #
@@ -126,43 +92,4 @@ function git_prompt {
 #
 function rvm_prompt {
   "$HOME"/.rvm/bin/rvm-prompt
-}
-
-# -----------------------------------------------------------------------------
-# Command history logger
-#
-function command_log {
-  case $1 in
-    "init")
-      echo "init $2" >> "$HOME"/.command_logger
-      ;;
-
-    "stop")
-      sed -i "/$init/d" "$HOME"/.command_logger
-      ;;
-
-    *)
-      ;;
-  esac
-}
-
-# -----------------------------------------------------------------------------
-# Set GOPATH
-#
-function set_gopath {
-  export GOPATH=$(pwd)
-  export PATH=$GOPATH/bin:$PATH
-
-  if [ ! -e .lvimrc ]; then
-      echo "let \$GOPATH=\"$(pwd)\"" > .lvimrc
-  fi
-}
-
-# -----------------------------------------------------------------------------
-# Switch between AWS credentials
-#
-function select_aws {
-  available=$(cat ~/.bashrc.local | /bin/grep -v export | awk -F= '/AWS/ {print $1}' | awk -F_ '{print $1}' | uniq )
-
-  echo $available
 }

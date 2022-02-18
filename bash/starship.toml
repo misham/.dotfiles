@@ -1,0 +1,57 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+format = """
+$time\n
+$directory $git_branch$git_commit$git_state$git_status\n
+($go )($ruby${custom.gemset} )($nodejs )($python)\n
+$username@$hostname $jobs $character"""
+
+[character]
+success_symbol = "[\\$](bold green)"
+
+[directory]
+truncation_length = 8
+truncation_symbol = "../"
+truncate_to_repo = false
+use_logical_path = false
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[time]
+format = "[$time]($style)"
+disabled = false
+use_12hr = true
+time_format = "%D %r"
+
+[hostname]
+format = "[$hostname]($style)[\\]](bold bright-blue)"
+style = "bold cyan"
+ssh_only = false
+
+[username]
+format = "[\\[](bold bright-blue)[$user]($style)"
+style_user = "bold cyan"
+style_root = "red bold"
+show_always = true
+
+[ruby]
+format = "[$symbol($version)]($style)"
+
+[nodejs]
+format = "[$symbol($version)]($style)"
+
+[jobs]
+format = "\\[[$symbol$number](red)\\]"
+threshold = 1
+
+[custom.gemset]
+command = "rvm-prompt g"
+when = "which rvm"
+description = "show RVM gemset name"
+symbol = "@"
+style = "bold red"
+format = "[$symbol($output )]($style)"
+shell = "/bin/bash"

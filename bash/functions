@@ -73,23 +73,3 @@ function project {
     fi
   fi
 }
-# -----------------------------------------------------------------------------
-# SVN prompt helper
-#
-function svn_prompt {
-  svn info 2>/dev/null | awk '/URL/ {print $2}'
-}
-
-# -----------------------------------------------------------------------------
-# Git prompt helper
-#
-function git_prompt {
-  __git_ps1 "%s"
-}
-
-# -----------------------------------------------------------------------------
-# RVM prompt helper
-#
-function rvm_prompt {
-  "$HOME"/.rvm/bin/rvm-prompt
-}

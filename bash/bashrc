@@ -5,10 +5,9 @@
 # and github.com
 #
 DOTFILES=$HOME/.dotfiles
-
+# -----------------------------------------------------------------------------
 #TODO make this mac-specific
 export BASH_SILENCE_DEPRECATION_WARNING=1
-
 # -----------------------------------------------------------------------------
 # Get aliases
 #
@@ -78,55 +77,14 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 #
 export PROJECT_DIR="Projects"
 # -----------------------------------------------------------------------------
-# Set Prompt
-#
-BLUE='\[\033[1;34m\]'
-RED='\[\033[1;31m\]'
-NORMAL='\[\033[00m\]'
-NORMAL_BOLD='\[\033[00;01m\]'
-
-CUR_PWD="${BLUE}[${RED}\w${BLUE}]"
-CUR_TIME="${BLUE}[${NORMAL}\t${BLUE}]"
-CUR_USER_HOST="${BLUE}[${NORMAL}\u${NORMAL_BOLD}@${NORMAL}\h${BLUE}]"
-
-# NOTE using starship instead
-#export PS1="${CUR_PWD} ${BLUE}[${NORMAL}\$(git_prompt)\$(svn_prompt)${BLUE}]\n${CUR_TIME} ${BLUE}[${NORMAL}\$(rvm_prompt)${BLUE}]\n${CUR_USER_HOST} ${NORMAL}$ "
-
-# -----------------------------------------------------------------------------
-# RVM completion
-#
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-
-# -----------------------------------------------------------------------------
-# NVM completion
-#
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
 # -----------------------------------------------------------------------------
-# Get colors
-#
-# TODO make this Linux specific
-#test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-#eval `dircolors $HOME/.dir_colors/dircolors`
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$("$HOME/anaconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
+# RVM completion
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+# -----------------------------------------------------------------------------
+# Setup any machine-specific configs
+[[ -s "$HOME/.bashrc.local" ]] && . "$HOME/.bashrc.local"
+# -----------------------------------------------------------------------------
 eval "$(starship init bash)"
 

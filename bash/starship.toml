@@ -4,7 +4,7 @@ add_newline = true
 format = """
 $time\n
 $directory $git_branch$git_commit$git_state$git_status\n
-($go )($ruby${custom.gemset} )($nodejs )($python)\n
+($go )($ruby${custom.gemset} )($nodejs )($python )($conda)\n
 $username@$hostname $jobs $character"""
 
 [character]

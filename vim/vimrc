@@ -282,6 +282,17 @@ let g:go_fmt_command = "goimports"
 
 set tags^=./.git/tags;
 
+" Make git blame easier
+function! s:ToggleBlame()
+    if &l:filetype ==# 'fugitiveblame'
+        close
+    else
+        Git blame
+    endif
+endfunction
+
+nnoremap <leader>b :call <SID>ToggleBlame()<CR>
+
 " Packer files
 au BufNewFile,BufRead *.packer set filetype=json
 

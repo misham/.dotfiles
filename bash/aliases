@@ -9,7 +9,7 @@
 # use colordiff if it's available
 #
 if [[ -f "$(brew --prefix)/bin/colordiff" ]]; then
-    alias diff='colordiff -u'
+  alias diff='colordiff -u'
 fi
 # -----------------------------------------------------------------------------
 # Setup ping for only 5 pings
@@ -45,9 +45,12 @@ alias rm='rm -i'
 # Sometimes lazy is good
 #
 alias ..='cd ..'
-
+# -----------------------------------------------------------------------------
 # some more ls aliases
 alias ls='ls -G'
 alias ll='ls -GlhF'
 alias la='ls -Ga'
+# -----------------------------------------------------------------------------
+# Use bat instead of cat for better UX
+alias cat='bat'
 

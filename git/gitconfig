@@ -15,6 +15,7 @@
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
   logallrefupdates = true
   attributesfile = ~/.gitattributes
+  pager = delta
 
 [branch]
   autosetupmerge = true
@@ -22,6 +23,7 @@
 [diff]
   renames = copies
   mnemonicprefix = true
+  colorMoved = default
 
 [diff "rspec"]
   xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
@@ -33,6 +35,16 @@
   ui = true
   interactive = auto
   pager = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  line-numbers = true
+
+[merge]
+  conflictstyle = diff3
 
 [color "branch"]
   current = yellow reverse
@@ -84,19 +96,19 @@
   user = misham
 
 [filter "lfs"]
-    clean = git lfs clean %f
-    smudge = git lfs smudge %f
-    required = true
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
 
 [http]
-    cookiefile = ~/.gitcookies
+  cookiefile = ~/.gitcookies
 
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 
 [url "git@gitlab.com:"]
-	insteadOf = https://gitlab.com/
+  insteadOf = https://gitlab.com/
 
 [commit]
-	verbose = true
+  verbose = true
   gpgsign = false

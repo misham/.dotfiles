@@ -5,8 +5,9 @@
 
 [user]
   name = Misha Manulis
-  email = misha@manulis.com
-  signingkey = DBF5C6DB9D39CB23
+
+[include]
+  path = ~/.gitconfig.local
 
 [core]
   excludesfile = ~/.gitignore
@@ -110,5 +111,10 @@
   insteadOf = https://gitlab.com/
 
 [commit]
-  verbose = true
-  gpgsign = false
+	verbose = true
+
+[credential]
+	helper = osxkeychain
+
+[log]
+	showSignature = true

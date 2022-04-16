@@ -19,3 +19,5 @@ ln -fs $DOTFILES/git/gitignore $HOME/.gitignore
 
 ln -fs $DOTFILES/git/git_template $HOME/.git_template
 ln -fs $DOTFILES/git/gitattributes $HOME/.gitattributes
+
+echo "Set your email: git config --global user.email \"youremail@yourdomain.com\""

@@ -10,7 +10,7 @@
   path = ~/.gitconfig.local
 
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = /Users/misham/.gitignore
   autocrlf = input
   filemode = true
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol

@@ -36,9 +36,6 @@ tmp_path="$tmp_path:$GOPATH/bin"
 # Poetry
 export tmp_path="$tmp_path:$HOME/.poetry/bin"
 # -----------------------------------------------------------------------------
-# Spicetify
-export tmp_path="$tmp_path:$HOME/.spicetify"
-# -----------------------------------------------------------------------------
 # RVM
 export tmp_path="$tmp_path:$HOME/.rvm/bin"
 # -----------------------------------------------------------------------------

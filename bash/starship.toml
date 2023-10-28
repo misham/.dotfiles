@@ -3,9 +3,18 @@ add_newline = true
 
 format = """
 $time\n
-$directory $git_branch$git_commit$git_state$git_status\n
-($go )($ruby${custom.gemset} )($nodejs )($python )($conda)\n
+$directory $sudo $git_branch$git_commit$git_state$git_status\n
+($aws )($c )($golang )($ruby ${custom.gemset} )($nodejs )($python )($terraform )\n
 $username@$hostname $jobs $character"""
+
+[aws]
+format = '[$symbol($profile )(\($region\) )]($style)'
+style = 'bold blue'
+force_display = true
+
+[c]
+symbol = " "
+format = '[ $symbol ($version) ]($style)'
 
 [character]
 success_symbol = "[\\$](bold green)"
@@ -15,10 +24,55 @@ truncation_length = 8
 truncation_symbol = "../"
 truncate_to_repo = false
 use_logical_path = false
+format = "[ $path ]($style)"
+
+[docker_context]
+symbol = " "
+format = '[ $symbol $context ]($style)'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+[git_branch]
+symbol = ""
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+format = "[\\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\\]]($style)"
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+[golang]
+symbol = " "
+format = '[ $symbol ($version) ]($style)'
+
+[hostname]
+format = "[$hostname]($style)[\\]](bold bright-blue)"
+style = "bold cyan"
+ssh_only = false
+
+[jobs]
+format = "\\[[$symbol$number](red)\\]"
+threshold = 1
+
+[nodejs]
+symbol = ""
+format = '[ $symbol ($version) ]($style)'
+
+[ruby]
+symbol = " "
+format = '[ $symbol ($version) ]($style)'
+
+[sudo]
+style = 'bold green'
+symbol = '👩‍💻 '
+disabled = false
+
+[terraform]
+format = '[🏎💨 $version$workspace]($style) '
+detect_folders = ['.terraform', 'terraform']
 
 [time]
 format = "[$time]($style)"
@@ -26,32 +80,17 @@ disabled = false
 use_12hr = true
 time_format = "%D %r"
 
-[hostname]
-format = "[$hostname]($style)[\\]](bold bright-blue)"
-style = "bold cyan"
-ssh_only = false
-
 [username]
 format = "[\\[](bold bright-blue)[$user]($style)"
 style_user = "bold cyan"
 style_root = "red bold"
 show_always = true
 
-[ruby]
-format = "[$symbol($version)]($style)"
-
-[nodejs]
-format = "[$symbol($version)]($style)"
-
-[jobs]
-format = "\\[[$symbol$number](red)\\]"
-threshold = 1
-
 [custom.gemset]
+detect_files = ['Gemfile', '.ruby-version', '.ruby-gemset']
 command = "rvm-prompt g"
 when = "which rvm"
 description = "show RVM gemset name"
-symbol = "@"
 style = "bold red"
 format = "[$symbol($output )]($style)"
 shell = "/bin/bash"

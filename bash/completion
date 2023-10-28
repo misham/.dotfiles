@@ -38,8 +38,6 @@ fi
 
 complete -C aws_completer aws
 
-complete -C /home/misham/bin/terraform terraform
-
 # -----------------------------------------------------------------------------
 # My Completions
 #

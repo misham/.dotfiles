@@ -1,7 +1,7 @@
 
 [init]
+	defaultBranch = main
   templateDir = ~/.git_template
-	defaultBranch = master
 
 [user]
   name = Misha Manulis
@@ -9,43 +9,24 @@
 [include]
   path = ~/.gitconfig.local
 
-[core]
-  excludesfile = /Users/misham/.gitignore
-  autocrlf = input
-  filemode = true
-  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  logallrefupdates = true
-  attributesfile = ~/.gitattributes
-  pager = delta
-
 [branch]
   autosetupmerge = true
 
-[diff]
-  renames = copies
-  mnemonicprefix = true
-  colorMoved = default
+[branch "master"]
+  merge = refs/heads/master
+  remote = origin
 
-[diff "rspec"]
-  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+[branch "main"]
+  merge = refs/heads/main
+  remote = origin
 
 [color]
-  diff = auto
-  status = auto
   branch = auto
-  ui = true
+  diff = auto
   interactive = auto
   pager = true
-
-[interactive]
-  diffFilter = delta --color-only
-
-[delta]
-  navigate = true  # use n and N to move between diff sections
-  line-numbers = true
-
-[merge]
-  conflictstyle = diff3
+  status = auto
+  ui = true
 
 [color "branch"]
   current = yellow reverse
@@ -53,15 +34,81 @@
   remote = green
 
 [color "diff"]
-  meta = yellow bold
   frag = magenta bold
-  old  = red bold
+  meta = yellow bold
   new  = green bold
+  old  = red bold
 
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
+
+[commit]
+	verbose = true
+
+[core]
+  attributesfile = ~/.gitattributes
+  autocrlf = input
+  excludesfile = ~/.gitignore
+  filemode = true
+  logallrefupdates = true
+  pager = delta
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[credential]
+	helper = osxkeychain
+
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  line-numbers = true
+
+[diff]
+  algorithm = histogram
+  colorMoved = default
+  mnemonicprefix = true
+  renames = copies
+
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+
+[github]
+  user = misham
+
+[fetch]
+  fsckobjects = true
+
+[filter "lfs"]
+  clean = git lfs clean %f
+  required = true
+  smudge = git lfs smudge %f
+
+[http]
+  cookiefile = ~/.gitcookies
+
+[interactive]
+  diffFilter = delta --color-only
+
+[log]
+	showSignature = true
+
+[merge]
+  conflictstyle = zdiff3
+
+[rebase]
+  autostash = true
+
+[receive]
+  fsckObjects = true
+
+[transfer]
+  fsckobjects = true
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
+[url "git@gitlab.com:"]
+  insteadOf = https://gitlab.com/
 
 [alias]
   ci = commit
@@ -89,32 +136,3 @@
   rm-remote = push origin --delete
   wc = whatchanged -p --abbrev-commit --pretty=medium
 
-[branch "master"]
-  remote = origin
-  merge = refs/heads/master
-
-[github]
-  user = misham
-
-[filter "lfs"]
-  clean = git lfs clean %f
-  smudge = git lfs smudge %f
-  required = true
-
-[http]
-  cookiefile = ~/.gitcookies
-
-[url "git@github.com:"]
-  insteadOf = https://github.com/
-
-[url "git@gitlab.com:"]
-  insteadOf = https://gitlab.com/
-
-[commit]
-	verbose = true
-
-[credential]
-	helper = osxkeychain
-
-[log]
-	showSignature = true

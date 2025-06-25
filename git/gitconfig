@@ -135,4 +135,5 @@
 	ctags = !.git/hooks/ctags
   rm-remote = push origin --delete
   wc = whatchanged -p --abbrev-commit --pretty=medium
+  files = diff-tree --no-commit-id --name-only -r
 

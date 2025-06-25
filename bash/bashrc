@@ -16,8 +16,10 @@ source $DOTFILES/bash/aliases
 # Setup completion
 #
 source $DOTFILES/bash/completion
+# -----------------------------------------------------------------------------
 #
-source $(brew --prefix)/etc/bash_completion
+export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 # -----------------------------------------------------------------------------
 # Get functions
 #
@@ -95,5 +97,13 @@ source $(brew --prefix nvm)/nvm.sh
 [[ -s "$HOME/.bashrc.local" ]] && . "$HOME/.bashrc.local"
 # -----------------------------------------------------------------------------
 eval "$(starship init bash)"
-
+# -----------------------------------------------------------------------------
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# -----------------------------------------------------------------------------
+. "$HOME/.posthog/env"
+# -----------------------------------------------------------------------------
+# Enable shell command completion for gcloud.
+if [ -f '/Users/misham/google-cloud-sdk/completion.bash.inc' ]; then
+  . '/Users/misham/google-cloud-sdk/completion.bash.inc'
+fi
+

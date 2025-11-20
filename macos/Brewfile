@@ -2,211 +2,116 @@ tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "stripe/stripe-cli"
-# Search tool like grep, but optimized for programmers
 brew "ack"
-# Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Automatic configure script builder
 brew "autoconf"
-# Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# Text processing scripting language
 brew "awk"
-# Library for command-line editing
 brew "readline"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
-# Official Amazon AWS command-line interface
 brew "awscli"
-# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Programmable completion for Bash 4.2+
 brew "bash-completion@2"
-# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Fish completion for brew-cask
 brew "brew-cask-completion"
-# Vector graphics library with cross-device output support
 brew "cairo"
-# Enables you to reproduce the CircleCI environment locally
 brew "circleci"
-# Color-highlighted diff(1) output
 brew "colordiff"
-# GNU File, Shell, and Text utilities
 brew "coreutils"
-# Reimplementation of ctags(1)
 brew "ctags"
-# Bash, Zsh and Fish completion for Docker
 brew "docker-completion"
-# Docker Credential Helper for Amazon ECR
 brew "docker-credential-helper-ecr"
-# Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
-# Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
-# Command-line fuzzy finder written in Go
 brew "fzf"
-# Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
-# GitHub command-line tool
 brew "gh"
-# Distributed revision control system
 brew "git"
-# Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Render markdown on the CLI
+brew "git-secrets"
 brew "glow"
-# Passphrase entry dialog utilizing the Assuan protocol
 brew "pinentry"
-# GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Generate introspection data for GObject libraries
 brew "gobject-introspection"
-# Database migrations CLI tool
 brew "golang-migrate"
-# Fast linters runner for Go
 brew "golangci-lint"
-# Library to render SVG files using Cairo
 brew "librsvg"
-# Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-# Uses CSS selectors to extract bits content from HTML files
 brew "htmlq"
-# Improved top (interactive process viewer)
 brew "htop"
-# Database of common MIME types
 brew "shared-mime-info"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
-# LLVM's OpenMP runtime library
 brew "libomp", link: true
-# Command-line tool to export and inspect local iMessage database
 brew "imessage-exporter"
-# Lightweight and flexible command-line JSON processor
 brew "jq"
-# Template-free customization of Kubernetes YAML manifests
 brew "kustomize"
-# Postgres C API library
 brew "libpq", link: true
-# YAML Parser
 brew "libyaml"
-# Network grep
 brew "ngrep"
-# Port scanning utility for large networks
 brew "nmap"
-# Manage multiple Node.js versions
 brew "nvm"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Bash completion for Packer
 brew "packer-completion"
-# CLI for Postgres with auto-completion and syntax highlighting
 brew "pgcli"
-# Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Fast, disk space efficient package manager
 brew "pnpm"
-# Python version management
 brew "pyenv"
-# Persistent key-value database, with built-in net interface
 brew "redis"
-# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Ncurses BitTorrent client based on libtorrent-rakshasa
 brew "rtorrent"
-# Install various Ruby versions and implementations
 brew "ruby-build"
-# Bash completion for Ruby
 brew "ruby-completion"
-# Safe, concurrent, practical language
 brew "rust"
-# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
-# Cross-shell prompt for astronauts
 brew "starship"
-# Version control system designed to be a better CVS
 brew "subversion"
-# User interface to the TELNET protocol
 brew "telnet"
-# Send macOS User Notifications from the command-line
 brew "terminal-notifier"
-# Code-search similar to ack
 brew "the_silver_searcher"
-# Terminal multiplexer
 brew "tmux"
-# NetBSD's FTP client
 brew "tnftp"
-# Lightweight BitTorrent client
 brew "transmission-cli"
-# Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Image processing library
 brew "vips"
-# Internet file retriever
 brew "wget"
-# Linter for YAML files
 brew "yamllint"
-# General-purpose lossless data-compression library
 brew "zlib"
-# Packer
 brew "hashicorp/tap/packer"
-# Terraform
 brew "hashicorp/tap/terraform"
-# Stripe CLI utility
 brew "stripe/stripe-cli/stripe"
-# Application uninstaller
 cask "appcleaner"
-# Securely stores and accesses AWS credentials in a development environment
 cask "aws-vault-binary"
-# Monitors common persistence locations
 cask "blockblock"
-# Virtual monitor for screen sharing
 cask "deskpad"
-# Voice and text chat software
 cask "discord"
 cask "font-dejavu-sans-mono-for-powerline"
 cask "font-hack-nerd-font"
-# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Menu bar manager
 cask "jordanbaird-ice"
-# Utility for comparing and merging files and directories
 cask "kdiff3"
-# Animated screen capture application
 cask "licecap"
-# Clipboard manager
 cask "maccy"
-# Open-source Markdown editor
 cask "macdown"
-# Text editor
 cask "macvim-app"
-# Minimal installer for conda specific to conda-forge
 cask "miniforge"
-# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-# App to write, plan, collaborate, and get organised
 cask "notion"
-# Scans, detects, and monitors keyboard taps
 cask "reikey"
-# Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
-# Music streaming service
 cask "spotify"
-# Open-source BitTorrent client
 cask "transmission"
-# Development environment
 cask "vagrant"
-# Multimedia player
+cask "virtualbox"
 cask "vlc"
 vscode "aki77.rails-db-schema"
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "anthropic.claude-code"
-vscode "anysphere.pyright"
+vscode "anysphere.cursorpyright"
+vscode "anysphere.remote-containers"
+vscode "auxislabs.python-uv-toolkit"
 vscode "bierner.markdown-mermaid"
+vscode "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
 vscode "bradlc.vscode-tailwindcss"
 vscode "chrislajoie.vscode-modelines"
 vscode "christian-kohler.npm-intellisense"
@@ -218,7 +123,6 @@ vscode "craigmaslowski.erb"
 vscode "csstools.postcss"
 vscode "cweijan.vscode-redis-client"
 vscode "dbaeumer.vscode-eslint"
-vscode "dewski.simplecov"
 vscode "donjayamanne.githistory"
 vscode "donjayamanne.python-environment-manager"
 vscode "dwtexe.cursor-stats"
@@ -242,21 +146,24 @@ vscode "kevinrose.vsc-python-indent"
 vscode "linear.linear-connect"
 vscode "linear.linear-open-issue"
 vscode "mechatroner.rainbow-csv"
+vscode "mermaidchart.vscode-mermaid-chart"
+vscode "mhutchie.git-graph"
 vscode "mikestead.dotenv"
 vscode "ms-azuretools.vscode-azureresourcegroups"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-playwright.playwright"
 vscode "ms-python.autopep8"
+vscode "ms-python.black-formatter"
 vscode "ms-python.debugpy"
+vscode "ms-python.flake8"
 vscode "ms-python.isort"
+vscode "ms-python.pylint"
 vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
 vscode "ms-toolsai.jupyter"
 vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
 vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
-vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode-remote.remote-ssh"
 vscode "ms-vscode-remote.vscode-remote-extensionpack"
 vscode "ms-vscode.azure-account"
@@ -272,9 +179,7 @@ vscode "msyrus.go-doc"
 vscode "nhoizey.gremlins"
 vscode "ninoseki.vscode-mogami"
 vscode "nonylene.dark-molokai-theme"
-vscode "nrwl.angular-console"
 vscode "pomdtr.excalidraw-editor"
-vscode "postman.postman-for-vscode"
 vscode "praveencrony.total-lines"
 vscode "quicktype.quicktype"
 vscode "redhat.vscode-yaml"
@@ -285,6 +190,7 @@ vscode "sianglim.slim"
 vscode "sissel.shopify-liquid"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "tamasfe.even-better-toml"
+vscode "timonwong.shellcheck"
 vscode "tomoki1207.selectline-statusbar"
 vscode "tuxtina.json2yaml"
 vscode "vitest.explorer"
@@ -293,3 +199,22 @@ vscode "waderyan.gitblame"
 vscode "yokoe.vscode-postfix-go"
 vscode "yutengjing.open-in-external-app"
 vscode "yzhang.markdown-all-in-one"
+go "github.com/klauspost/asmfmt/cmd/asmfmt"
+go "github.com/go-delve/delve/cmd/dlv"
+go "github.com/kisielk/errcheck"
+go "github.com/davidrjenni/reftools/cmd/fillstruct"
+go "github.com/rogpeppe/godef"
+go "golang.org/x/tools/cmd/goimports"
+go "github.com/golangci/golangci-lint/cmd/golangci-lint"
+go "golang.org/x/lint/golint"
+go "github.com/fatih/gomodifytags"
+go "golang.org/x/tools/gopls"
+go "golang.org/x/tools/cmd/gorename"
+go "github.com/jstemmer/gotags"
+go "golang.org/x/tools/cmd/guru"
+go "github.com/koron/iferr"
+go "github.com/josharian/impl"
+go "honnef.co/go/tools/cmd/keyify"
+go "github.com/fatih/motion"
+go "github.com/mgechev/revive"
+go "honnef.co/go/tools/cmd/staticcheck"

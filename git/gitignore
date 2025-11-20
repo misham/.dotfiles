@@ -19,7 +19,6 @@ a.out
 tags
 .powenv
 .rvmrc
-.env
 *.beam
 .vagrant
 .ruby-gemset
@@ -43,3 +42,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 Brewfile.lock.json
+.env
+.playwright-mcp

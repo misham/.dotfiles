@@ -94,6 +94,7 @@
 
 [merge]
   conflictstyle = zdiff3
+  driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 
 [rebase]
   autostash = true
@@ -139,7 +140,6 @@
   info = !~/.dotfiles/git/git-info
 	ctags = !.git/hooks/ctags
   rm-remote = push origin --delete
-  wc = whatchanged -p --abbrev-commit --pretty=medium
   files = diff-tree --no-commit-id --name-only -r
 
 [secrets]

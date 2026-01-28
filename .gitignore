@@ -1,5 +1,7 @@
 *~
 *.swp
-bin/gist.sh
 vim/vim/tmp
 vim/vim/bundle
+
+# Build artifacts
+bin/

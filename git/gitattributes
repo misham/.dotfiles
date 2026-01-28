@@ -1,3 +1,4 @@
+# Diff drivers for better hunk headers
 *.c     diff=cpp
 *.c++   diff=cpp
 *.cc    diff=cpp
@@ -25,3 +26,30 @@
 *.rs    diff=rust
 *.xhtml diff=html
 *_spec.rb  diff=rspec
+
+# Mergiraf: syntax-aware merge driver
+# Install: cargo install mergiraf
+# Reduces merge conflicts by understanding code structure
+*.c      merge=mergiraf
+*.cc     merge=mergiraf
+*.cpp    merge=mergiraf
+*.cs     merge=mergiraf
+*.css    merge=mergiraf
+*.go     merge=mergiraf
+*.h      merge=mergiraf
+*.hpp    merge=mergiraf
+*.html   merge=mergiraf
+*.java   merge=mergiraf
+*.js     merge=mergiraf
+*.json   merge=mergiraf
+*.jsx    merge=mergiraf
+*.lua    merge=mergiraf
+*.py     merge=mergiraf
+*.rb     merge=mergiraf
+*.rs     merge=mergiraf
+*.swift  merge=mergiraf
+*.tf     merge=mergiraf
+*.ts     merge=mergiraf
+*.tsx    merge=mergiraf
+*.yaml   merge=mergiraf
+*.yml    merge=mergiraf

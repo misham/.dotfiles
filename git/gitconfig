@@ -68,6 +68,7 @@
   colorMoved = default
   mnemonicprefix = true
   renames = copies
+  tool = nvimdiff
 
 [diff "rspec"]
   xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
@@ -94,7 +95,28 @@
 
 [merge]
   conflictstyle = zdiff3
+  tool = nvimdiff
+
+# Mergiraf: syntax-aware merge driver (reduces conflicts)
+# Install: cargo install mergiraf
+# Runs automatically during merge/rebase/cherry-pick
+[merge "mergiraf"]
+  name = mergiraf
   driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+
+# Neovim as merge tool (for remaining conflicts)
+[mergetool]
+  prompt = false
+  keepBackup = false
+
+[mergetool "nvimdiff"]
+  cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd l' -c 'wincmd J'
+
+[difftool]
+  prompt = false
+
+[difftool "nvimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE
 
 [rebase]
   autostash = true

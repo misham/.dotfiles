@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.21'
+
+      - name: Build all binaries
+        run: make build-all
+
+      - name: Create checksums
+        run: |
+          cd bin
+          sha256sum dotfiles-* > checksums.txt
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            bin/dotfiles-darwin-amd64
+            bin/dotfiles-darwin-arm64
+            bin/dotfiles-linux-amd64
+            bin/dotfiles-linux-arm64
+            bin/checksums.txt
+          generate_release_notes: true

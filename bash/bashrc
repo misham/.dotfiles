@@ -6,8 +6,15 @@
 #
 DOTFILES=$HOME/.dotfiles
 # -----------------------------------------------------------------------------
-#TODO make this mac-specific
-export BASH_SILENCE_DEPRECATION_WARNING=1
+# OS Detection
+#
+_is_macos() { [[ "$(uname -s)" == "Darwin" ]]; }
+_is_linux() { [[ "$(uname -s)" == "Linux" ]]; }
+# -----------------------------------------------------------------------------
+# macOS: Silence bash deprecation warning
+if _is_macos; then
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
 # -----------------------------------------------------------------------------
 # Get aliases
 #
@@ -17,9 +24,11 @@ source $DOTFILES/bash/aliases
 #
 source $DOTFILES/bash/completion
 # -----------------------------------------------------------------------------
-#
-export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
-[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+# Homebrew bash completion (macOS)
+if _is_macos && command -v brew >/dev/null 2>&1; then
+  export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
+  [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+fi
 # -----------------------------------------------------------------------------
 # Get functions
 #
@@ -87,8 +96,12 @@ export PROJECT_DIR="Projects"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 # -----------------------------------------------------------------------------
 # setup nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+if _is_macos && command -v brew >/dev/null 2>&1; then
+  [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
+elif [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+fi
 # -----------------------------------------------------------------------------
 # RVM completion
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
@@ -103,7 +116,7 @@ eval "$(starship init bash)"
 . "$HOME/.posthog/env"
 # -----------------------------------------------------------------------------
 # Enable shell command completion for gcloud.
-if [ -f '/Users/misham/google-cloud-sdk/completion.bash.inc' ]; then
-  . '/Users/misham/google-cloud-sdk/completion.bash.inc'
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then
+  . "$HOME/google-cloud-sdk/completion.bash.inc"
 fi
 

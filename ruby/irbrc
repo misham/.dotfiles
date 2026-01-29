@@ -5,6 +5,10 @@ require 'irb/completion'
 
 require 'pp'
 
+if defined?(Rails::Console)
+  ActiveRecord::Base.logger.level = :warn
+end
+
 # http://ozmm.org/posts/time_in_irb.html
 def time(times = 1)
   require 'benchmark'

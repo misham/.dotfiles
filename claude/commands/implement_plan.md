@@ -47,23 +47,45 @@ After implementing a phase:
 - Fix any issues before proceeding
 - Update your progress in both the plan and your todos
 - Check off completed items in the plan file itself using Edit
-- **Pause for human verification**: After completing all automated verification for a phase, pause and inform the human that the phase is ready for manual testing. Use this format:
-  ```
-  Phase [N] Complete - Ready for Manual Verification
 
-  Automated verification passed:
-  - [List automated checks that passed]
+### MANDATORY: Phase Gate Protocol
 
-  Please perform the manual verification steps listed in the plan:
-  - [List manual verification items from the plan]
+After completing all automated verification for a phase, you MUST:
 
-  Let me know when manual testing is complete so I can proceed to Phase [N+1].
-  ```
+1. **STOP implementation immediately** - do not proceed to the next phase
+2. **Mark phase status** in the plan file as `⏸️ AWAITING VERIFICATION` (not `✅ COMPLETE`)
+3. **Use AskUserQuestion tool** to force an explicit pause with this format:
 
-If instructed to execute multiple phases consecutively, skip the pause until the last phase. Otherwise, assume you are just doing one phase.
+═══════════════════════════════════════════════════════
+⏸️  PHASE [N] COMPLETE - AWAITING MANUAL VERIFICATION
+═══════════════════════════════════════════════════════
 
-do not check off items in the manual testing steps until confirmed by the user.
+Automated verification passed:
 
+[List automated checks that passed]
+Manual verification steps from plan:
+
+ Step 1
+ Step 2
+Reply "continue" to proceed to Phase [N+1]
+═══════════════════════════════════════════════════════
+
+4. **Wait for explicit user confirmation** before proceeding
+
+### Anti-Pattern Warning
+
+NEVER proceed to the next phase just because:
+- All tests pass
+- No errors occurred
+- The phase "seems complete"
+
+Passing tests are NOT implicit approval. Only explicit user confirmation (via AskUserQuestion response) allows proceeding.
+
+### Phase Status Updates
+
+- After completing automated work: mark as `⏸️ AWAITING VERIFICATION`
+- After user confirms manual verification: mark as `✅ COMPLETE`
+- Do not check off manual testing items until confirmed by the user
 
 ## If You Get Stuck
 

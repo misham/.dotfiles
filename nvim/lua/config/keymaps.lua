@@ -21,14 +21,14 @@ map("v", "//", 'y/<C-R>"<CR>', { desc = "Search for selection" })
 map("n", "<leader>W", [[:%s/\s\+$//<CR>:let @/=''<CR>]], { desc = "Strip trailing whitespace" })
 
 -- Capitalize words
-map("n", "gcu", "gUe", { desc = "Uppercase word" })
-map("n", "gcl", "gue", { desc = "Lowercase word" })
+map("n", "gU", "gUe", { desc = "Uppercase word" })
+map("n", "gu", "gue", { desc = "Lowercase word" })
 
--- Tab navigation (keeping your existing mappings)
-map("n", ",tn", "<Cmd>tabnew<CR>", { desc = "New tab" })
-map("n", ",tc", "<Cmd>tabclose<CR>", { desc = "Close tab" })
-map("n", ",t[", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
-map("n", ",t]", "<Cmd>tabnext<CR>", { desc = "Next tab" })
+-- Tab navigation
+map("n", "<leader>tn", "<Cmd>tabnew<CR>", { desc = "New tab" })
+map("n", "<leader>tc", "<Cmd>tabclose<CR>", { desc = "Close tab" })
+map("n", "<leader>t[", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
+map("n", "<leader>t]", "<Cmd>tabnext<CR>", { desc = "Next tab" })
 
 -- Better window navigation (will be overridden by tmux-navigator)
 map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })

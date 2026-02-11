@@ -3,14 +3,19 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     version = false,
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+      },
     },
-    opts = {
-      ensure_installed = {
+    config = function()
+      -- Install parsers
+      require("nvim-treesitter").install({
         -- Your languages
         "go",
         "gomod",
@@ -30,7 +35,6 @@ return {
         "html",
         "css",
         "json",
-        "jsonc",
 
         -- Config/Data
         "yaml",
@@ -59,25 +63,36 @@ return {
         "make",
         "regex",
         "jinja",
-      },
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { "ruby", "markdown" },
-      },
-      indent = {
-        enable = true,
-        disable = { "ruby" }, -- Ruby indentation can be quirky
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
-      textobjects = {
+      })
+
+      -- Enable treesitter features per filetype
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          local ok = pcall(vim.treesitter.start, args.buf)
+          if ok then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
+
+      -- Disable treesitter indent for ruby (can be quirky)
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "ruby" },
+        callback = function(args)
+          vim.bo[args.buf].indentexpr = ""
+        end,
+      })
+
+      -- Additional regex highlighting for ruby and markdown
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "ruby", "markdown" },
+        callback = function(args)
+          vim.bo[args.buf].syntax = "ON"
+        end,
+      })
+
+      -- Textobjects
+      require("nvim-treesitter-textobjects").setup({
         select = {
           enable = true,
           lookahead = true,
@@ -119,10 +134,7 @@ return {
             ["<leader>A"] = "@parameter.inner",
           },
         },
-      },
-    },
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      })
     end,
   },
 

@@ -13,10 +13,10 @@ return {
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", desc = "Navigate left" },
-      { "<C-j>", "<Cmd>TmuxNavigateDown<CR>", desc = "Navigate down" },
-      { "<C-k>", "<Cmd>TmuxNavigateUp<CR>", desc = "Navigate up" },
-      { "<C-l>", "<Cmd>TmuxNavigateRight<CR>", desc = "Navigate right" },
+      { "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", mode = { "n", "t" }, desc = "Navigate left" },
+      { "<C-j>", "<Cmd>TmuxNavigateDown<CR>", mode = { "n", "t" }, desc = "Navigate down" },
+      { "<C-k>", "<Cmd>TmuxNavigateUp<CR>", mode = { "n", "t" }, desc = "Navigate up" },
+      { "<C-l>", "<Cmd>TmuxNavigateRight<CR>", mode = { "n", "t" }, desc = "Navigate right" },
       { "<C-\\>", "<Cmd>TmuxNavigatePrevious<CR>", desc = "Navigate previous" },
     },
     init = function()

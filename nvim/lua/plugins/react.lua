@@ -9,7 +9,7 @@ return {
     cmd = { "ConformInfo" },
     keys = {
       {
-        "<leader>cf",
+        "<leader>lf",
         function()
           require("conform").format({ async = true, lsp_fallback = true })
         end,
@@ -152,9 +152,9 @@ return {
     dependencies = { "MunifTanjim/nui.nvim" },
     ft = { "json" },
     opts = {
-      colors = {
-        up_to_date = "#3C4048",
-        outdated = "#d19a66",
+      highlights = {
+        up_to_date = { fg = "#3C4048" },
+        outdated = { fg = "#d19a66" },
       },
       icons = {
         enable = true,
@@ -168,12 +168,12 @@ return {
       hide_unstable_versions = true,
     },
     keys = {
-      { "<leader>ns", function() require("package-info").show() end, desc = "Show package versions" },
-      { "<leader>nc", function() require("package-info").hide() end, desc = "Hide package versions" },
-      { "<leader>nu", function() require("package-info").update() end, desc = "Update package" },
-      { "<leader>nd", function() require("package-info").delete() end, desc = "Delete package" },
-      { "<leader>ni", function() require("package-info").install() end, desc = "Install package" },
-      { "<leader>np", function() require("package-info").change_version() end, desc = "Change package version" },
+      { "<leader>ps", function() require("package-info").show() end, desc = "Show package versions" },
+      { "<leader>pc", function() require("package-info").hide() end, desc = "Hide package versions" },
+      { "<leader>pu", function() require("package-info").update() end, desc = "Update package" },
+      { "<leader>pd", function() require("package-info").delete() end, desc = "Delete package" },
+      { "<leader>pi", function() require("package-info").install() end, desc = "Install package" },
+      { "<leader>pp", function() require("package-info").change_version() end, desc = "Change package version" },
     },
   },
 }

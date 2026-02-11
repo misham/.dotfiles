@@ -1,63 +1,12 @@
 -- Editor enhancements
 
 return {
-  -- Git signs in gutter
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      signs = {
-        add = { text = "│" },
-        change = { text = "│" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-        untracked = { text = "┆" },
-      },
-      on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
-        local map = function(mode, lhs, rhs, desc)
-          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
-        end
-
-        -- Navigation
-        map("n", "]c", function()
-          if vim.wo.diff then return "]c" end
-          vim.schedule(function() gs.next_hunk() end)
-          return "<Ignore>"
-        end, "Next hunk")
-
-        map("n", "[c", function()
-          if vim.wo.diff then return "[c" end
-          vim.schedule(function() gs.prev_hunk() end)
-          return "<Ignore>"
-        end, "Previous hunk")
-
-        -- Actions
-        map("n", "<leader>hs", gs.stage_hunk, "Stage hunk")
-        map("n", "<leader>hr", gs.reset_hunk, "Reset hunk")
-        map("v", "<leader>hs", function() gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Stage hunk")
-        map("v", "<leader>hr", function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Reset hunk")
-        map("n", "<leader>hS", gs.stage_buffer, "Stage buffer")
-        map("n", "<leader>hu", gs.undo_stage_hunk, "Undo stage hunk")
-        map("n", "<leader>hR", gs.reset_buffer, "Reset buffer")
-        map("n", "<leader>hp", gs.preview_hunk, "Preview hunk")
-        map("n", "<leader>hb", function() gs.blame_line({ full = true }) end, "Blame line")
-        map("n", "<leader>hd", gs.diffthis, "Diff this")
-        map("n", "<leader>hD", function() gs.diffthis("~") end, "Diff this ~")
-
-        -- Text object
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select hunk")
-      end,
-    },
-  },
-
   -- Git commands
   {
     "tpope/vim-fugitive",
     cmd = { "Git", "G", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" },
     keys = {
-      { "<leader>gf", "<Cmd>Git<CR>", desc = "Git fugitive" },
+      { "<leader>gs", "<Cmd>Git<CR>", desc = "Git status" },
       { "<leader>gB", "<Cmd>Git blame<CR>", desc = "Git blame" },
       { "<leader>gd", "<Cmd>Gdiffsplit<CR>", desc = "Git diff" },
       { "<leader>gl", "<Cmd>Git log<CR>", desc = "Git log" },
@@ -84,25 +33,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     version = "*",
     opts = {},
-  },
-
-  -- Auto pairs
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {
-      check_ts = true,
-      ts_config = {
-        lua = { "string", "source" },
-        javascript = { "string", "template_string" },
-      },
-    },
-    config = function(_, opts)
-      require("nvim-autopairs").setup(opts)
-      -- Integration with cmp
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-    end,
   },
 
   -- Better motions
@@ -183,6 +113,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
+      icons = { mappings = false },
       plugins = { spelling = true },
     },
     config = function(_, opts)

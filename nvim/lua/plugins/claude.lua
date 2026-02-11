@@ -1,154 +1,63 @@
--- Claude AI Integration
+-- Claude Code Integration
 
 return {
-  -- Avante: Cursor-like AI experience
+  -- Claude Code IDE integration (VS Code-like experience)
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    build = "make",
+    "coder/claudecode.nvim",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons",
-      {
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = { insert_mode = true },
-          },
-        },
-      },
+      "folke/snacks.nvim",
       {
         "MeanderingProgrammer/render-markdown.nvim",
-        opts = { file_types = { "markdown", "Avante" } },
-        ft = { "markdown", "Avante" },
+        opts = {
+          file_types = { "markdown" },
+          latex = { enabled = false },
+        },
+        ft = { "markdown" },
       },
     },
     opts = {
-      provider = "claude",
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-sonnet-4-20250514",
-        temperature = 0,
-        max_tokens = 4096,
-      },
-      behaviour = {
-        auto_set_highlight_group = true,
-        auto_set_keymaps = true,
-        auto_apply_diff_after_generation = false,
-        support_paste_from_clipboard = true,
-      },
-      mappings = {
-        ask = "<leader>ca",
-        edit = "<leader>ce",
-        refresh = "<leader>cr",
-        diff = {
-          ours = "co",
-          theirs = "ct",
-          both = "cb",
-          next = "]x",
-          prev = "[x",
-        },
-        jump = {
-          next = "]]",
-          prev = "[[",
-        },
-        submit = {
-          normal = "<CR>",
-          insert = "<C-s>",
-        },
-        toggle = {
-          debug = "<leader>cd",
-          hint = "<leader>ch",
-        },
-      },
-      hints = { enabled = true },
-      windows = {
-        position = "right",
-        width = 30,
-        sidebar_header = {
-          align = "center",
-          rounded = true,
-        },
+      auto_start = true,
+      terminal = {
+        split_side = "right",
+        split_width_percentage = 0.35,
+        provider = "snacks",
       },
     },
     keys = {
-      { "<leader>ca", mode = { "n", "v" }, "<Cmd>AvanteAsk<CR>", desc = "Avante: Ask" },
-      { "<leader>ce", mode = "v", "<Cmd>AvanteEdit<CR>", desc = "Avante: Edit" },
-      { "<leader>cr", "<Cmd>AvanteRefresh<CR>", desc = "Avante: Refresh" },
-      { "<leader>ct", "<Cmd>AvanteToggle<CR>", desc = "Avante: Toggle" },
+      { "<leader>cc", "<Cmd>ClaudeCode<CR>", desc = "Toggle Claude Code" },
+      { "<leader>cf", "<Cmd>ClaudeCodeFocus<CR>", desc = "Focus Claude Code" },
+      { "<leader>cr", "<Cmd>ClaudeCode --resume<CR>", desc = "Resume session" },
+      { "<leader>ck", "<Cmd>ClaudeCode --continue<CR>", desc = "Continue session" },
+      { "<leader>cs", "<Cmd>ClaudeCodeSend<CR>", mode = "v", desc = "Send to Claude" },
+      { "<leader>cb", "<Cmd>ClaudeCodeAdd %<CR>", desc = "Add buffer to context" },
+      { "<leader>ca", "<Cmd>ClaudeCodeDiffAccept<CR>", desc = "Accept diff" },
+      { "<leader>cd", "<Cmd>ClaudeCodeDiffDeny<CR>", desc = "Deny diff" },
+      { "<leader>cm", "<Cmd>ClaudeCodeSelectModel<CR>", desc = "Select model" },
+      {
+        "<leader>cs",
+        "<Cmd>ClaudeCodeTreeAdd<CR>",
+        desc = "Add file to context",
+        ft = { "NvimTree", "neo-tree", "oil" },
+      },
     },
   },
 
-  -- Terminal for Claude Code CLI
+  -- Snacks.nvim (terminal provider for claudecode)
   {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    cmd = { "ToggleTerm", "TermExec" },
+    "folke/snacks.nvim",
+    lazy = false,
+    opts = {},
+  },
+
+  -- Lazygit terminal (standalone, no toggleterm needed)
+  {
+    "folke/snacks.nvim",
     keys = {
-      { "<C-\\>", "<Cmd>ToggleTerm<CR>", mode = { "n", "t" }, desc = "Toggle terminal" },
-      { "<leader>tt", "<Cmd>ToggleTerm direction=float<CR>", desc = "Float terminal" },
-      { "<leader>th", "<Cmd>ToggleTerm direction=horizontal<CR>", desc = "Horizontal terminal" },
-      { "<leader>tv", "<Cmd>ToggleTerm direction=vertical size=80<CR>", desc = "Vertical terminal" },
-      { "<leader>cc", function()
-          local Terminal = require("toggleterm.terminal").Terminal
-          local claude = Terminal:new({
-            cmd = "claude",
-            direction = "float",
-            float_opts = {
-              border = "curved",
-              width = function() return math.floor(vim.o.columns * 0.9) end,
-              height = function() return math.floor(vim.o.lines * 0.9) end,
-            },
-            on_open = function(term)
-              vim.cmd("startinsert!")
-              vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<Cmd>close<CR>", { noremap = true, silent = true })
-            end,
-          })
-          claude:toggle()
-        end,
-        desc = "Claude Code"
-      },
-      { "<leader>cg", function()
-          local Terminal = require("toggleterm.terminal").Terminal
-          local lazygit = Terminal:new({
-            cmd = "lazygit",
-            direction = "float",
-            float_opts = { border = "curved" },
-          })
-          lazygit:toggle()
-        end,
-        desc = "Lazygit"
-      },
-    },
-    opts = {
-      size = function(term)
-        if term.direction == "horizontal" then
-          return 15
-        elseif term.direction == "vertical" then
-          return vim.o.columns * 0.4
-        end
-      end,
-      open_mapping = [[<C-\>]],
-      hide_numbers = true,
-      shade_terminals = true,
-      shading_factor = 2,
-      start_in_insert = true,
-      insert_mappings = true,
-      terminal_mappings = true,
-      persist_size = true,
-      direction = "float",
-      close_on_exit = true,
-      shell = vim.o.shell,
-      float_opts = {
-        border = "curved",
-        winblend = 0,
-      },
+      { "<leader>cg", function() Snacks.terminal.toggle("lazygit", { win = { border = "rounded" } }) end, desc = "Lazygit" },
+      { "<C-\\>", function() Snacks.terminal.toggle(nil, { win = { border = "rounded" } }) end, mode = { "n", "t" }, desc = "Toggle terminal" },
+      { "<leader>tt", function() Snacks.terminal.toggle(nil, { win = { position = "float", border = "rounded" } }) end, desc = "Float terminal" },
+      { "<leader>th", function() Snacks.terminal.toggle(nil, { win = { position = "bottom", height = 0.3 } }) end, desc = "Horizontal terminal" },
+      { "<leader>t|", function() Snacks.terminal.toggle(nil, { win = { position = "right", width = 0.4 } }) end, desc = "Vertical terminal" },
     },
   },
 }

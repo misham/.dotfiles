@@ -87,6 +87,9 @@ func main() {
 
 	fmt.Println()
 	logSuccess("Done! Some changes may require a new shell session.")
+	if runtime.GOOS == "darwin" {
+		logInfo("Run 'make macos' to apply macOS-specific settings (Finder, Touch ID for sudo, etc.)")
+	}
 }
 
 func bashModule() Module {

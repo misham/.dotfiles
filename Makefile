@@ -1,6 +1,6 @@
 # Dotfiles Makefile
 
-.PHONY: all install build build-all test test-unit clean help
+.PHONY: all install build build-all test test-unit clean help macos
 
 # Default target
 all: help
@@ -40,6 +40,12 @@ test:
 test-unit:
 	@cd cmd/dotfiles && go test -v ./...
 
+# Run macOS-specific setup (defaults, Finder, Touch ID, etc.)
+macos:
+	@if [ "$$(uname)" != "Darwin" ]; then echo "This target only runs on macOS"; exit 1; fi
+	@echo "Running macOS setup..."
+	@bash macos/setup.sh
+
 # Clean build artifacts
 clean:
 	@rm -rf bin/
@@ -57,4 +63,5 @@ help:
 	@echo "  make build-all       Build binaries for all platforms"
 	@echo "  make test            Run integration tests in Docker"
 	@echo "  make test-unit       Run unit tests locally"
+	@echo "  make macos           Apply macOS-specific settings (Darwin only)"
 	@echo "  make clean           Remove build artifacts"

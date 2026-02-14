@@ -40,6 +40,22 @@ If you encounter a mismatch:
   How should I proceed?
   ```
 
+## Within-Phase Implementation Loop
+
+For each change within a phase, follow a strict TDD cycle:
+
+1. **Red**: Write a failing test first. Run it to confirm it fails for the expected reason.
+2. **Green**: Write the minimum code to make the test pass. Run the test to confirm it passes.
+3. **Refactor**: Clean up if needed. Re-run the test to confirm it still passes.
+
+Rules for the loop:
+- Do NOT write implementation code before a failing test exists
+- Run the relevant test file after every edit — do not batch changes and test later
+- If a test fails unexpectedly, STOP and diagnose before continuing. Do not move to the next change until the failure is understood and resolved.
+- If your implementation approach causes repeated test failures (3+ attempts), reassess the approach rather than continuing to iterate on a broken path
+
+This loop runs continuously within a phase. The Phase Gate Protocol (below) only triggers after all changes in the phase are complete and passing.
+
 ## Verification Approach
 
 After implementing a phase:

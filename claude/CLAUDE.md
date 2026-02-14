@@ -2,6 +2,22 @@
 
 This directory contains configuration for [Claude Code](https://claude.ai/code), Anthropic's CLI tool.
 
+## Development Workflow
+
+Follow TDD (red/green/refactor) methodology for all implementations. Write failing tests first, then implement the minimum code to make them pass.
+
+## Debugging
+
+When asked to investigate a bug or discrepancy, start fresh with the current state of data. Do not carry over stale IDs, assumptions, or prior hypotheses from earlier in the conversation without re-verifying them.
+
+## Communication
+
+When asked a clarifying question, answer the specific question being asked. Do not assume a broader or different interpretation. If unsure, ask for clarification rather than guessing.
+
+## Code Editing
+
+When editing files, verify you are editing the file that is actually used in the running application, not a similarly-named unused or deprecated file. Check imports and routes to confirm.
+
 ## Structure
 
 ```

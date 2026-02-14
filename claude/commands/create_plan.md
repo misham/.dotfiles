@@ -206,6 +206,46 @@ After structure approval:
 
 [High-level strategy and reasoning]
 
+## API Contract
+
+[If this plan involves new or modified API endpoints, define the contract here. Remove this section if no API changes are needed.]
+
+### [METHOD] /api/[resource]
+**Request:**
+```json
+{
+  "field": "value"
+}
+```
+
+**Response ([status code]):**
+```json
+{
+  "id": 123,
+  "field": "value"
+}
+```
+
+**Error Response ([status code]):**
+```json
+{
+  "errors": { "field": ["message"] }
+}
+```
+
+### [METHOD] /api/[resource]?[query_params]
+**Query Parameters:**
+- `include` - Comma-separated related resources
+- `filter[field]` - Filter by field
+
+**Response (200 OK):**
+```json
+{
+  "data": [{ "id": 123, "field": "value" }],
+  "meta": { "total": 42 }
+}
+```
+
 ## Phase 1: [Descriptive Name]
 
 ### Overview

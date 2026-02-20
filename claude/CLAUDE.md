@@ -18,6 +18,16 @@ When asked a clarifying question, answer the specific question being asked. Do n
 
 When editing files, verify you are editing the file that is actually used in the running application, not a similarly-named unused or deprecated file. Check imports and routes to confirm.
 
+## Compact Instructions
+
+When compacting, always preserve:
+
+- All file modifications with exact paths
+- Decisions made and user-stated criteria/requirements
+- Configuration details (API keys, account info, IDs)
+- Current task state, blockers, and next steps
+- Anything the user explicitly asked to remember
+
 ## Structure
 
 ```
@@ -157,3 +167,20 @@ Claude Code maintains conversation context. Use `/clear` to reset.
 
 - Use `/compact` for shorter responses
 - Plan mode thinks before acting (more thorough but uses more tokens)
+
+<!--# BEGIN SNYK GLOBAL RULE -->
+---
+alwaysApply: true
+always_on: true
+trigger: always_on
+applyTo: "**"
+description: Snyk Security At Inception
+---
+
+# Project security best practices
+
+- Always run snyk_code_scan tool for new first party code that is generated in a Snyk-supported language.
+- If any security issues are found based on newly introduced or modified code or dependencies, attempt to fix the issues using the results context from Snyk.
+- Rescan the code after fixing the issues to ensure that the issues were fixed and that there are no newly introduced issues.
+- Repeat this process until no new issues are found.
+<!--# END SNYK GLOBAL RULE -->

@@ -103,6 +103,13 @@ elif [ -s "$NVM_DIR/nvm.sh" ]; then
   . "$NVM_DIR/nvm.sh"
 fi
 # -----------------------------------------------------------------------------
+# setup pyenv
+if command -v pyenv >/dev/null 2>&1; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+# -----------------------------------------------------------------------------
 # RVM completion
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 # -----------------------------------------------------------------------------

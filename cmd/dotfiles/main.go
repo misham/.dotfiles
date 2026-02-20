@@ -220,11 +220,18 @@ func claudeModule() Module {
 			{"claude/CLAUDE.md", ".claude/CLAUDE.md"},
 			{"claude/agents", ".claude/agents"},
 			{"claude/commands", ".claude/commands"},
+			{"claude/hooks", ".claude/hooks"},
+			{"claude/summarize-session.sh", ".local/bin/summarize-session.sh"},
 		},
 		PreHook: func(cfg *Config) error {
 			// Ensure .claude directory exists
 			claudeDir := filepath.Join(cfg.HomeDir, ".claude")
-			return os.MkdirAll(claudeDir, 0755)
+			if err := os.MkdirAll(claudeDir, 0755); err != nil {
+				return err
+			}
+			// Ensure .local/bin directory exists
+			localBinDir := filepath.Join(cfg.HomeDir, ".local", "bin")
+			return os.MkdirAll(localBinDir, 0755)
 		},
 	}
 }

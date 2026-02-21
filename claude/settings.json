@@ -5,10 +5,16 @@
   },
   "permissions": {
     "allow": [
-      "mcp__plugin_sentry_sentry__get_issue_details",
-      "mcp__plugin_sentry_sentry__find_organizations",
       "Bash(git show:*)",
-      "WebFetch(domain:*)"
+      "WebFetch(domain:*)",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__click",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__get_network_request",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_network_requests",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot",
+      "mcp__plugin_sentry_sentry__find_organizations",
+      "mcp__plugin_sentry_sentry__get_issue_details"
     ],
     "defaultMode": "plan"
   },
@@ -38,19 +44,19 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash -c '\"/Users/misham/.bun/bin/bun\" \"$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | head -1)src/index.ts\"'"
+    "command": "bun run $HOME/.claude/statusline.ts"
   },
   "enabledPlugins": {
-    "code-simplifier@claude-plugins-official": true,
     "claude-hud@claude-hud": true,
-    "security-guidance@claude-plugins-official": true,
-    "ralph-loop@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true,
-    "sentry@claude-plugins-official": true,
-    "linear@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
-    "hookify@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "linear@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "sentry@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {

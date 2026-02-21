@@ -254,6 +254,7 @@ func claudeModule() Module {
 			{"claude/agents", ".claude/agents"},
 			{"claude/commands", ".claude/commands"},
 			{"claude/hooks", ".claude/hooks"},
+			{"claude/statusline.ts", ".claude/statusline.ts"},
 			{"claude/summarize-session.sh", ".local/bin/summarize-session.sh"},
 		},
 		PreHook: func(cfg *Config) error {

@@ -77,6 +77,7 @@ func TestInstallation(t *testing.T) {
 		{"claude/CLAUDE.md", ".claude/CLAUDE.md", "claude/CLAUDE.md"},
 		{"claude/agents", ".claude/agents", "claude/agents"},
 		{"claude/commands", ".claude/commands", "claude/commands"},
+		{"claude/statusline.ts", ".claude/statusline.ts", "claude/statusline.ts"},
 	}
 
 	for _, tc := range tests {

@@ -6,3 +6,4 @@ vim/vim/bundle
 # Build artifacts
 bin/
 nvim/undo
+cmd/dotfiles/dotfiles

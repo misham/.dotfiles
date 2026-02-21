@@ -49,9 +49,10 @@ make install
 This creates:
 ```
 ~/.claude/settings.json → ~/.dotfiles/claude/settings.json
-~/.claude/CLAUDE.md     → ~/.dotfiles/claude/CLAUDE.md
-~/.claude/agents/       → ~/.dotfiles/claude/agents/
-~/.claude/commands/     → ~/.dotfiles/claude/commands/
+~/.claude/CLAUDE.md       → ~/.dotfiles/claude/CLAUDE.md
+~/.claude/statusline.ts   → ~/.dotfiles/claude/statusline.ts
+~/.claude/agents/         → ~/.dotfiles/claude/agents/
+~/.claude/commands/       → ~/.dotfiles/claude/commands/
 ```
 
 ## Settings

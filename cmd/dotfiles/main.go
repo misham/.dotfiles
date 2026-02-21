@@ -70,6 +70,7 @@ func main() {
 	// Define modules
 	modules := []Module{
 		bashModule(),
+		zshModule(),
 		gitModule(),
 		vimModule(),
 		neovimModule(),
@@ -105,6 +106,38 @@ func bashModule() Module {
 			// Ensure .config directory exists
 			configDir := filepath.Join(cfg.HomeDir, ".config")
 			return os.MkdirAll(configDir, 0755)
+		},
+	}
+}
+
+func zshModule() Module {
+	return Module{
+		Name: "zsh",
+		Symlinks: []SymlinkSpec{
+			{"zsh/zshrc", ".zshrc"},
+			{"zsh/zprofile", ".zprofile"},
+		},
+		PostHook: func(cfg *Config) error {
+			if !commandExists("zsh") {
+				logWarning("zsh not installed — skipping zsh post-setup")
+				return nil
+			}
+			// Generate gh completion for zsh
+			if commandExists("gh") {
+				ghCompletion := filepath.Join(cfg.HomeDir, ".zsh_completions", "_gh")
+				if err := os.MkdirAll(filepath.Dir(ghCompletion), 0755); err == nil {
+					out, err := exec.Command("gh", "completion", "-s", "zsh").Output()
+					if err == nil {
+						if err := os.WriteFile(ghCompletion, out, 0644); err == nil {
+							logSuccess("Generated gh zsh completion")
+						}
+					}
+				}
+			}
+			logInfo("Run: bun completions >> ~/.zsh_completions/_bun  (if using bun)")
+			logInfo("To switch default shell: chsh -s /bin/zsh")
+			logInfo("Install oh-my-zsh: https://ohmyz.sh/#install")
+			return nil
 		},
 	}
 }

@@ -1,0 +1,38 @@
+#!/bin/zsh
+#
+# https://github.com/misham/dotfiles
+#
+# Zsh completion configuration
+#
+# -----------------------------------------------------------------------------
+# Initialize zsh completion system
+#
+autoload -Uz compinit && compinit
+# -----------------------------------------------------------------------------
+# SSH host completion from ~/.ssh/config
+#
+if [ -e "$HOME/.ssh/config" ]; then
+  zstyle ':completion:*:ssh:*' hosts $(awk '/^Host / && $2 != "*" {print $2}' ~/.ssh/config 2>/dev/null)
+  zstyle ':completion:*:slogin:*' hosts $(awk '/^Host / && $2 != "*" {print $2}' ~/.ssh/config 2>/dev/null)
+fi
+# -----------------------------------------------------------------------------
+# project function completion
+#
+_project() {
+  local -a projects
+  projects=( $(ls "$HOME/$PROJECT_DIR" 2>/dev/null) )
+  compadd -- $projects
+}
+compdef _project project
+# -----------------------------------------------------------------------------
+# AWS CLI completion
+#
+if command -v aws_completer >/dev/null 2>&1; then
+  complete -C aws_completer aws
+fi
+# -----------------------------------------------------------------------------
+# gh CLI completion (generated at install time via: gh completion -s zsh)
+#
+if [ -f "$HOME/.zsh_completions/_gh" ]; then
+  fpath=("$HOME/.zsh_completions" $fpath)
+fi

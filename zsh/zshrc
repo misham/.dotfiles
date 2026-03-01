@@ -134,11 +134,15 @@ fi
 #
 [[ -s "$HOME/.zshrc.local" ]] && . "$HOME/.zshrc.local"
 # -----------------------------------------------------------------------------
+# Setup starship
+#
 eval "$(starship init zsh)"
 # -----------------------------------------------------------------------------
 [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"
 # -----------------------------------------------------------------------------
-. "$HOME/.posthog/env"
+# Enable Claude LSP support
+#
+export ENABLE_LSP_TOOL=1
 # -----------------------------------------------------------------------------
 # Enable shell command completion for gcloud.
 #

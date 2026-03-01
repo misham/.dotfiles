@@ -77,7 +77,11 @@ func TestInstallation(t *testing.T) {
 		{"claude/CLAUDE.md", ".claude/CLAUDE.md", "claude/CLAUDE.md"},
 		{"claude/agents", ".claude/agents", "claude/agents"},
 		{"claude/commands", ".claude/commands", "claude/commands"},
+		{"claude/hooks", ".claude/hooks", "claude/hooks"},
 		{"claude/statusline.ts", ".claude/statusline.ts", "claude/statusline.ts"},
+		{"claude/plugins/config.json", ".claude/plugins/config.json", "claude/plugins/config.json"},
+		{"claude/plugins/installed_plugins.json", ".claude/plugins/installed_plugins.json", "claude/plugins/installed_plugins.json"},
+		{"claude/plugins/known_marketplaces.json", ".claude/plugins/known_marketplaces.json", "claude/plugins/known_marketplaces.json"},
 	}
 
 	for _, tc := range tests {

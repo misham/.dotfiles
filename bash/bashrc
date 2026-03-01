@@ -120,7 +120,9 @@ eval "$(starship init bash)"
 # -----------------------------------------------------------------------------
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # -----------------------------------------------------------------------------
-. "$HOME/.posthog/env"
+# Enable Claude LSP support
+#
+export ENABLE_LSP_TOOL=1
 # -----------------------------------------------------------------------------
 # Enable shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then

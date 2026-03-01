@@ -35,7 +35,8 @@ claude/
 ├── settings.json    # Claude Code settings
 ├── CLAUDE.md        # This file (project instructions)
 ├── agents/          # Custom agent definitions
-└── commands/        # Custom slash commands
+├── commands/        # Custom slash commands
+└── plugins/         # Plugin configuration
 ```
 
 ## Installation
@@ -48,11 +49,15 @@ make install
 
 This creates:
 ```
-~/.claude/settings.json → ~/.dotfiles/claude/settings.json
-~/.claude/CLAUDE.md       → ~/.dotfiles/claude/CLAUDE.md
-~/.claude/statusline.ts   → ~/.dotfiles/claude/statusline.ts
-~/.claude/agents/         → ~/.dotfiles/claude/agents/
-~/.claude/commands/       → ~/.dotfiles/claude/commands/
+~/.claude/settings.json                    → ~/.dotfiles/claude/settings.json
+~/.claude/CLAUDE.md                        → ~/.dotfiles/claude/CLAUDE.md
+~/.claude/statusline.ts                    → ~/.dotfiles/claude/statusline.ts
+~/.claude/agents/                          → ~/.dotfiles/claude/agents/
+~/.claude/commands/                        → ~/.dotfiles/claude/commands/
+~/.claude/hooks/                           → ~/.dotfiles/claude/hooks/
+~/.claude/plugins/config.json              → ~/.dotfiles/claude/plugins/config.json
+~/.claude/plugins/installed_plugins.json   → ~/.dotfiles/claude/plugins/installed_plugins.json
+~/.claude/plugins/known_marketplaces.json  → ~/.dotfiles/claude/plugins/known_marketplaces.json
 ```
 
 ## Settings

@@ -1,19 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60"
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60",
+    "ENABLE_LSP_TOOL": "1"
   },
   "permissions": {
     "allow": [
+      "Bash(cat:*)",
+      "Bash(du:*)",
+      "Bash(find:*)",
+      "Bash(gemini:*)",
+      "Bash(git branch:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
       "Bash(git show:*)",
+      "Bash(git status:*)",
       "Bash(go test:*)",
+      "Bash(ls:*)",
       "Bash(lsof:*)",
+      "Bash(wc:*)",
+      "Bash(which:*)",
       "Bash(npm run build:*)",
       "Bash(npm run test:*)",
       "Bash(npm test:*)",
       "Bash(npx tsc:*)",
       "Bash(npx vitest run:*)",
       "WebFetch",
+      "WebSearch",
       "mcp__chrome-devtools__click",
       "mcp__chrome-devtools__evaluate_script",
       "mcp__chrome-devtools__fill",
@@ -52,7 +65,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "terminal-notifier -title \"Claude Code\" -message \"${CLAUDE_NOTIFICATION:-Task completed}\" -sound default"
+            "command": "terminal-notifier -title \"Claude Code\" -message \"${CLAUDE_NOTIFICATION:-Permission requested}\" -sound default"
           }
         ]
       }
@@ -84,10 +97,19 @@
     "plugin-dev@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "semgrep@claude-plugins-official": true
+    "semgrep@claude-plugins-official": true,
+    "chrome-devtools-mcp@chrome-devtools-plugins": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "playground@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-ruby-marketplace": true
   },
-  "alwaysThinkingEnabled": true,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754106602625
-  }
+  "alwaysThinkingEnabled": true
 }

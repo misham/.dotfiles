@@ -256,11 +256,19 @@ func claudeModule() Module {
 			{"claude/hooks", ".claude/hooks"},
 			{"claude/statusline.ts", ".claude/statusline.ts"},
 			{"claude/summarize-session.sh", ".local/bin/summarize-session.sh"},
+			{"claude/plugins/config.json", ".claude/plugins/config.json"},
+			{"claude/plugins/installed_plugins.json", ".claude/plugins/installed_plugins.json"},
+			{"claude/plugins/known_marketplaces.json", ".claude/plugins/known_marketplaces.json"},
 		},
 		PreHook: func(cfg *Config) error {
 			// Ensure .claude directory exists
 			claudeDir := filepath.Join(cfg.HomeDir, ".claude")
 			if err := os.MkdirAll(claudeDir, 0755); err != nil {
+				return err
+			}
+			// Ensure .claude/plugins directory exists
+			pluginsDir := filepath.Join(cfg.HomeDir, ".claude", "plugins")
+			if err := os.MkdirAll(pluginsDir, 0755); err != nil {
 				return err
 			}
 			// Ensure .local/bin directory exists

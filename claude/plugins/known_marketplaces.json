@@ -1,0 +1,26 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/Users/misham/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-03-01T08:07:44.635Z"
+  },
+  "chrome-devtools-plugins": {
+    "source": {
+      "source": "github",
+      "repo": "ChromeDevTools/chrome-devtools-mcp"
+    },
+    "installLocation": "/Users/misham/.claude/plugins/marketplaces/chrome-devtools-plugins",
+    "lastUpdated": "2026-02-19T18:43:21.990Z"
+  },
+  "claude-ruby-marketplace": {
+    "source": {
+      "source": "github",
+      "repo": "hoblin/claude-ruby-marketplace"
+    },
+    "installLocation": "/Users/misham/.claude/plugins/marketplaces/claude-ruby-marketplace",
+    "lastUpdated": "2026-02-28T23:57:15.356Z"
+  }
+}

@@ -176,10 +176,15 @@ After structure approval:
    - Examples:
      - With ticket: `2025-01-08-ENG-1478-parent-child-tracking.md`
      - Without ticket: `2025-01-08-improve-error-handling.md`
+
 2. **Use this template structure**:
 
 ````markdown
 # [Feature/Task Name] Implementation Plan
+
+## Research documents
+
+[List of research documents used to generate the plan]
 
 ## Overview
 

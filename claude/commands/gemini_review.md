@@ -1,17 +1,17 @@
 ---
-name: codex-review
+name: gemini-review
 description: >
-  Run a Codex session to get an independent review from a different model family.
+  Run a Gemini CLI session to get an independent review from a different model family.
   By default reviews the most recent plan from docs/ai/plans/. Can review
   any target: a plan, a branch diff, a file, a directory, or a custom prompt.
-  Trigger phrases: "/codex-review", "codex review", "get a second opinion",
-  "have codex review this", "outside review".
-version: 2.1.0
+  Trigger phrases: "/gemini-review", "gemini review", "get a second opinion",
+  "have gemini review this", "outside review".
+version: 3.0.0
 ---
 
-# Codex Review
+# Gemini Review
 
-Shell out to OpenAI Codex CLI to get an independent review — a second pair of eyes from a different model family. Codex has full disk read access; pass it file paths and let it do the reading.
+Shell out to Google Gemini CLI to get an independent review — a second pair of eyes from a different model family. Gemini has full disk read access in plan mode; pass it file paths and let it do the reading.
 
 ## Step 1: Determine the Review Target
 
@@ -24,7 +24,7 @@ Ask the user if unclear. Otherwise infer from context:
 | "review the branch" / "review the diff" | Branch diff (see base-branch resolution below) |
 | "review this" mid-conversation | Current work — summarize the task + relevant file paths |
 
-**Don't inline target contents into the prompt.** You may inspect files minimally to resolve paths and validate they exist, but let Codex do the actual reading.
+**Don't inline target contents into the prompt.** You may inspect files minimally to resolve paths and validate they exist, but let Gemini do the actual reading.
 
 ### Plan Discovery
 
@@ -38,7 +38,7 @@ If no plan is found, tell the user and ask them to specify a target.
 
 ## Step 2: Build the Prompt
 
-Keep it short. Codex shares no context with Claude Code, so the prompt must be self-contained — that means file paths and a clear ask, not inlined content.
+Keep it short. Gemini shares no context with Claude Code, so the prompt must be self-contained — that means file paths and a clear ask, not inlined content.
 
 **Use these prompts verbatim** (substituting only the bracketed placeholders). Do not embellish, add instructions, or reword.
 
@@ -59,58 +59,52 @@ Read <file paths> and <what you want reviewed>. Provide structured, actionable f
 
 If the target wouldn't make sense without context, add one sentence of project description. Nothing more.
 
-## Step 3: Launch Codex
+## Step 3: Launch Gemini
 
-`codex exec` streams session progress (thinking, tool calls) to **stderr** and prints only the **final agent message** to **stdout**. Use `-o` to capture the final message to a file for reliable reading.
+`gemini -p` runs in non-interactive (headless) mode and prints the final response to **stdout**. Use `-o text` to ensure clean text output and redirect stdout to capture the result to a file.
 
-**Important:** Use a Bash timeout of at least 300000ms (5 minutes) since Codex reviews can take a while on large targets.
+**Important:** Use a Bash timeout of at least 300000ms (5 minutes) since Gemini reviews can take a while on large targets.
 
 First, create unique temp files for this run:
 
 ```bash
-output_file=$(mktemp /tmp/codex-review-XXXXXX.md)
-debug_log=$(mktemp /tmp/codex-review-debug-XXXXXX.log)
+output_file=$(mktemp /tmp/gemini-review-XXXXXX.md)
+debug_log=$(mktemp /tmp/gemini-review-debug-XXXXXX.log)
 ```
 
 Then launch:
 
 ```bash
-codex exec -C <working-directory> -s read-only -o "$output_file" "<prompt>" 2>"$debug_log"
+(cd <working-directory> && gemini -p "<prompt>" --approval-mode plan -o text) >"$output_file" 2>"$debug_log"
 ```
 
 **Check the exit code immediately.** If non-zero, read the debug log and surface a summary of what went wrong to the user. Do not proceed to Step 4.
 
 **Flags:**
-- `-C <dir>` — working directory (defaults to cwd)
-- `-s read-only` — Codex can read the full filesystem but cannot write
-- `-o <file>` — write the final agent message to a file for reliable capture
-- `2><file>` — redirect stderr to a debug log (check this file if something goes wrong)
-
-### Capture Session ID
-
-Immediately after Codex finishes, capture the session ID for potential follow-ups:
-
-```bash
-basename "$(ls -t ~/.codex/sessions/*/*/*.jsonl 2>/dev/null | head -1)" .jsonl
-```
-
-**Remember this session ID for the rest of the conversation.** The capture is only reliable when done immediately after the run completes — if you delay, another Codex session could interleave.
+- `cd <dir>` — working directory via subshell (Gemini has no `-C` equivalent)
+- `--approval-mode plan` — read-only mode; Gemini can read the filesystem but cannot write
+- `-o text` — plain text output format (not to be confused with file output)
+- `>"$file"` — redirect stdout to capture the final response to a file
+- `2>"$file"` — redirect stderr to a debug log (check this file if something goes wrong)
 
 ### Follow-Up Reviews
 
-If the user wants a follow-up review (e.g., after making changes based on feedback), resume the prior session using the captured session ID:
+Gemini tracks sessions per project directory. For follow-up reviews, resume the latest session using `--resume latest`.
+
+If the user wants a follow-up review (e.g., after making changes based on feedback):
 
 ```bash
-codex exec resume -s read-only -o "$output_file" <SESSION_ID> "<follow-up prompt>" 2>"$debug_log"
+(cd <working-directory> && gemini --resume latest -p "<follow-up prompt>" --approval-mode plan -o text) >"$output_file" 2>"$debug_log"
 ```
 
-If the session ID is unavailable, fall back to `--last`:
+To list available sessions and resume a specific one by index:
 
 ```bash
-codex exec resume --last -s read-only -o "$output_file" "<follow-up prompt>" 2>"$debug_log"
+(cd <working-directory> && gemini --list-sessions)
+(cd <working-directory> && gemini --resume <index> -p "<follow-up prompt>" --approval-mode plan -o text) >"$output_file" 2>"$debug_log"
 ```
 
-The resumed session retains full context from the prior review. After the follow-up finishes, capture the new session ID (same command as above) — each resumed run creates a new session.
+The resumed session retains full context from the prior review.
 
 **Follow-up prompts:**
 
@@ -138,23 +132,25 @@ The user controls what gets incorporated. Your role is to present the feedback a
 
 ## Troubleshooting
 
-**Codex fails to start:**
-- Verify Codex is installed: `codex --version`
+**Gemini fails to start:**
+- Verify Gemini CLI is installed: `gemini --version`
 - Check the debug log for details
-- Verify flags against `codex exec --help` — CLI flags change across versions
+- Verify flags against `gemini --help` — CLI flags change across versions
+- Ensure Google authentication is configured (run `gemini` interactively to trigger OAuth if needed)
 
 **Non-zero exit code:**
 - Read the debug log and surface the relevant error to the user
-- Common causes: network issues, invalid model configuration, authentication problems
+- Common causes: network issues, invalid model configuration, expired OAuth tokens
 
 **Output file is empty or missing:**
-- Codex may have timed out or hit an error. Check the debug log.
+- Gemini may have timed out or hit an error. Check the debug log.
 - Try running with a simpler prompt or smaller target to isolate the issue.
 
 **Review takes too long:**
 - Increase the Bash timeout beyond 300000ms if needed (max 600000ms for Bash tool)
 - Consider reviewing a smaller scope (single file instead of full directory)
 
-**`codex exec resume` fails:**
-- Session files may have been cleaned up. Start a fresh review instead.
-- If using `--last` and it picks up the wrong session, specify the session ID explicitly.
+**`gemini --resume` fails:**
+- Session may have expired or been cleaned up. Start a fresh review instead.
+- Use `gemini --list-sessions` to see available sessions and specify the correct index.
+- Sessions are scoped to the project directory — ensure you run from the correct directory.

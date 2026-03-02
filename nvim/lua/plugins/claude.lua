@@ -11,6 +11,21 @@ return {
         opts = {
           file_types = { "markdown" },
           latex = { enabled = false },
+          preset = "obsidian",
+          heading = {
+            sign = false,
+            icons = { "󰌕 ", "󰌕󰌕 ", "󰌕󰌕󰌕 ", "󰌕󰌕󰌕󰌕 ", "󰌕󰌕󰌕󰌕󰌕 ", "󰌕󰌕󰌕󰌕󰌕󰌕 " },
+            position = "inline",
+            width = "block",
+            backgrounds = {
+              "Normal", "Normal", "Normal", "Normal", "Normal", "Normal",
+            },
+          },
+          checkbox = {
+            unchecked = { icon = "󰄱 " },
+            checked = { icon = "󰄵 " },
+          },
+          anti_conceal = { enabled = true },
         },
         ft = { "markdown" },
       },

@@ -136,7 +136,7 @@ return {
     opts = {
       options = {
         diagnostics = "nvim_lsp",
-        always_show_bufferline = false,
+        always_show_bufferline = true,
         custom_filter = function(buf)
           return vim.bo[buf].buftype ~= "terminal"
         end,

@@ -21,6 +21,11 @@ return {
         split_side = "right",
         split_width_percentage = 0.35,
         provider = "snacks",
+        snacks_win_opts = {
+          on_win = function(self)
+            vim.wo[self.win].winfixwidth = false
+          end,
+        },
       },
     },
     keys = {
@@ -46,7 +51,14 @@ return {
   {
     "folke/snacks.nvim",
     lazy = false,
-    opts = {},
+    opts = {
+      styles = {
+        terminal = {
+          bo = { buflisted = false },
+          wo = { winhighlight = "Normal:Normal,NormalNC:Normal", winbar = "" },
+        },
+      },
+    },
   },
 
   -- Lazygit terminal (standalone, no toggleterm needed)
@@ -54,7 +66,7 @@ return {
     "folke/snacks.nvim",
     keys = {
       { "<leader>cg", function() Snacks.terminal.toggle("lazygit", { win = { border = "rounded" } }) end, desc = "Lazygit" },
-      { "<C-\\>", function() Snacks.terminal.toggle(nil, { win = { border = "rounded" } }) end, mode = { "n", "t" }, desc = "Toggle terminal" },
+      { "<leader>ts", function() Snacks.terminal.toggle(nil, { win = { border = "rounded" } }) end, desc = "Toggle shell terminal" },
       { "<leader>tt", function() Snacks.terminal.toggle(nil, { win = { position = "float", border = "rounded" } }) end, desc = "Float terminal" },
       { "<leader>th", function() Snacks.terminal.toggle(nil, { win = { position = "bottom", height = 0.3 } }) end, desc = "Horizontal terminal" },
       { "<leader>t|", function() Snacks.terminal.toggle(nil, { win = { position = "right", width = 0.4 } }) end, desc = "Vertical terminal" },

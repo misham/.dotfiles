@@ -30,17 +30,10 @@ map("n", "<leader>tc", "<Cmd>tabclose<CR>", { desc = "Close tab" })
 map("n", "<leader>t[", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<leader>t]", "<Cmd>tabnext<CR>", { desc = "Next tab" })
 
--- Better window navigation (will be overridden by tmux-navigator)
-map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
-map("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
-map("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+-- Window navigation: use <C-w>h/j/k/l (Vim default) in normal mode
+-- and <C-w> prefix in terminal mode (Neovim built-in)
 
--- Resize windows with arrows
-map("n", "<C-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+-- Resize windows: use built-in C-w +/-/>/<  (prefix count for bigger steps, e.g. 5<C-w>>)
 
 -- Move lines up and down
 map("n", "<A-j>", "<Cmd>m .+1<CR>==", { desc = "Move line down" })

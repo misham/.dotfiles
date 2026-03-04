@@ -43,9 +43,22 @@
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page",
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot",
       "mcp__plugin_sentry_sentry__find_organizations",
-      "mcp__plugin_sentry_sentry__get_issue_details"
+      "mcp__plugin_sentry_sentry__get_issue_details",
+      "Bash(go mod:*)",
+      "Bash(go get:*)",
+      "Bash(golangci-lint version:*)",
+      "Bash(make build:*)",
+      "Bash(make fmt-check:*)",
+      "Bash(make vet:*)",
+      "Bash(make lint:*)",
+      "Bash(make:*)",
+      "Bash(gofumpt:*)",
+      "Bash(golangci-lint run:*)",
+      "Bash(go vet:*)",
+      "Bash(CGO_ENABLED=0 go build:*)",
+      "Bash(./kb:*)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "default"
   },
   "hooks": {
     "Stop": [

@@ -13,10 +13,10 @@
     "security-guidance@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/security-guidance/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/security-guidance/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-01-10T02:18:36.669Z",
-        "lastUpdated": "2026-02-25T05:55:05.654Z"
+        "lastUpdated": "2026-03-04T01:18:35.968Z"
       }
     ],
     "gopls-lsp@claude-plugins-official": [
@@ -32,10 +32,10 @@
     "pr-review-toolkit@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/pr-review-toolkit/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/pr-review-toolkit/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-01-24T18:41:15.869Z",
-        "lastUpdated": "2026-02-25T05:55:05.659Z",
+        "lastUpdated": "2026-03-04T01:18:35.976Z",
         "gitCommitSha": "e30768372b4150ca1bc0839d93283e8edc30d60d"
       }
     ],
@@ -52,40 +52,40 @@
     "frontend-design@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/frontend-design/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/frontend-design/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-06T16:45:03.753Z",
-        "lastUpdated": "2026-02-25T05:55:05.653Z",
+        "lastUpdated": "2026-03-04T01:18:35.970Z",
         "gitCommitSha": "236752ad9ab36029b648bfd94707944760242768"
       }
     ],
     "hookify@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/hookify/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/hookify/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-06T16:45:17.898Z",
-        "lastUpdated": "2026-02-25T05:55:05.720Z",
+        "lastUpdated": "2026-03-04T01:18:35.992Z",
         "gitCommitSha": "236752ad9ab36029b648bfd94707944760242768"
       }
     ],
     "playground@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/playground/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/playground/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-06T16:46:13.110Z",
-        "lastUpdated": "2026-02-25T05:55:05.660Z",
+        "lastUpdated": "2026-03-04T01:18:35.974Z",
         "gitCommitSha": "236752ad9ab36029b648bfd94707944760242768"
       }
     ],
     "code-review@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/code-review/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/code-review/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-06T16:46:45.102Z",
-        "lastUpdated": "2026-02-25T05:55:05.655Z",
+        "lastUpdated": "2026-03-04T01:18:35.969Z",
         "gitCommitSha": "236752ad9ab36029b648bfd94707944760242768"
       }
     ],
@@ -102,20 +102,20 @@
     "linear@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/linear/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/linear/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-11T17:58:26.300Z",
-        "lastUpdated": "2026-02-25T05:55:05.649Z",
+        "lastUpdated": "2026-03-04T01:18:35.967Z",
         "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3"
       }
     ],
     "feature-dev@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/feature-dev/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/feature-dev/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-13T17:31:21.682Z",
-        "lastUpdated": "2026-02-25T05:55:05.655Z",
+        "lastUpdated": "2026-03-04T01:18:35.972Z",
         "gitCommitSha": "2cd88e7947b7382e045666abee790c7f55f669f3"
       }
     ],
@@ -142,10 +142,10 @@
     "plugin-dev@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/plugin-dev/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/plugin-dev/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-23T23:27:26.874Z",
-        "lastUpdated": "2026-02-25T05:55:05.780Z",
+        "lastUpdated": "2026-03-04T01:18:36.003Z",
         "gitCommitSha": "aa296ec81e8ccb49c9784f167c2c0aa625a86cec"
       }
     ],
@@ -162,10 +162,10 @@
     "skill-creator@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/skill-creator/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/skill-creator/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-23T23:27:26.895Z",
-        "lastUpdated": "2026-02-25T05:55:05.713Z",
+        "lastUpdated": "2026-03-04T01:18:35.988Z",
         "gitCommitSha": "aa296ec81e8ccb49c9784f167c2c0aa625a86cec"
       }
     ],
@@ -182,10 +182,10 @@
     "context7@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/context7/55b58ec6e564",
-        "version": "55b58ec6e564",
+        "installPath": "/Users/misham/.claude/plugins/cache/claude-plugins-official/context7/205b6e0b3036",
+        "version": "205b6e0b3036",
         "installedAt": "2026-02-24T22:28:05.060Z",
-        "lastUpdated": "2026-02-25T05:55:05.650Z",
+        "lastUpdated": "2026-03-04T01:18:35.965Z",
         "gitCommitSha": "99e11d95926936deb21c3fa29a098511573100d1"
       }
     ],

@@ -5,5 +5,9 @@ vim/vim/bundle
 
 # Build artifacts
 bin/
+!claude/bin/
 nvim/undo
 cmd/dotfiles/dotfiles
+
+# External tools fetched from GitHub releases
+claude/bin/kb

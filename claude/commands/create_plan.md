@@ -1,9 +1,11 @@
 ---
 description: Create detailed implementation plans through interactive research and iteration
 model: opus
+argument-hint: [file path or ticket reference]
+allowed-tools: Read, Write, Edit, Grep, Glob, Bash(git:*), Bash(gh:*), Agent, TodoWrite
 ---
 
-# Implementation Plan
+# Create Implementation Plan
 
 You are tasked with creating detailed implementation plans through an interactive, iterative process. You should be skeptical, thorough, and work collaboratively with the user to produce high-quality technical specifications.
 
@@ -11,12 +13,12 @@ You are tasked with creating detailed implementation plans through an interactiv
 
 When this command is invoked:
 
-1. **Check if parameters were provided**:
-   - If a file path or ticket reference was provided as a parameter, skip the default message
+1. **Check if arguments were provided** (`$ARGUMENTS`):
+   - If `$ARGUMENTS` contains a file path or ticket reference, skip the default message
    - Immediately read any provided files FULLY
    - Begin the research process
 
-2. **If no parameters provided**, respond with:
+2. **If `$ARGUMENTS` is empty**, respond with:
 ```
 I'll help you create a detailed implementation plan. Let me start by understanding what we're building.
 
@@ -109,7 +111,7 @@ After getting initial clarifications:
    - **codebase-pattern-finder** - To find similar features we can model after
 
    **For historical context:**
-   - research-locator** - To find any research, plans, or decisions about this area
+   - **research-locator** - To find any research, plans, or decisions about this area
    - **research-analyzer** - To extract key insights from the most relevant documents
 
    **For related tickets:**
@@ -122,9 +124,9 @@ After getting initial clarifications:
    - Return specific file:line references
    - Find tests and examples
 
-3. **Wait for ALL sub-tasks to complete** before proceeding
+4. **Wait for ALL sub-tasks to complete** before proceeding
 
-4. **Present findings and design options**:
+5. **Present findings and design options**:
    ```
    Based on my research, here's what I found:
 
@@ -267,27 +269,29 @@ After structure approval:
 ```
 
 ### Success Criteria:
-
-#### Automated Verification:
+- [ ] Each change follows red/green TDD (failing test → implementation → refactor)
 - [ ] Migration applies cleanly: `make migrate`
 - [ ] Unit tests pass: `make test-component`
 - [ ] Type checking passes: `npm run typecheck`
 - [ ] Linting passes: `make lint`
 - [ ] Integration tests pass: `make test-integration`
 
-#### Manual Verification:
-- [ ] Feature works as expected when tested via UI
-- [ ] Performance is acceptable under load
-- [ ] Edge case handling verified manually
-- [ ] No regressions in related features
-
-**Implementation Note**: After completing this phase and all automated verification passes, pause here for manual confirmation from the human that the manual testing was successful before proceeding to the next phase.
-
 ---
 
 ## Phase 2: [Descriptive Name]
 
-[Similar structure with both automated and manual success criteria...]
+[Similar structure...]
+
+---
+
+## Final Manual Verification
+
+_Run once after all phases are complete and all automated checks pass._
+
+- [ ] Feature works as expected when tested via UI
+- [ ] Performance is acceptable under load
+- [ ] Edge case handling verified manually
+- [ ] No regressions in related features
 
 ---
 
@@ -360,7 +364,7 @@ After structure approval:
    - Read all context files COMPLETELY before planning
    - Research actual code patterns using parallel sub-tasks
    - Include specific file paths and line numbers
-   - Write measurable success criteria with clear automated vs manual distinction
+   - Write measurable success criteria with TDD and automated checks per phase, manual verification at end
 
 4. **Be Practical**:
    - Focus on incremental, testable changes
@@ -382,31 +386,39 @@ After structure approval:
 
 ## Success Criteria Guidelines
 
-**Always separate success criteria into two categories:**
+**Each phase has automated success criteria following red/green TDD. Manual verification is collected in a single "Final Manual Verification" section at the end of the plan.**
 
-1. **Automated Verification** (can be run by execution agents):
+1. **Per-Phase Automated Verification** (runs after each phase, must pass before proceeding):
+   - Red/green TDD: failing test written first, then implementation
    - Commands that can be run: `make test`, `npm run lint`, `rspec`, etc.
    - Specific files that should exist
    - Code compilation/type checking
    - Automated test suites
 
-2. **Manual Verification** (requires human testing):
+2. **Final Manual Verification** (runs once after all phases complete):
    - UI/UX functionality
    - Performance under real conditions
    - Edge cases that are hard to automate
    - User acceptance criteria
 
+**Per-phase manual verification**: Only add per-phase manual verification pauses if the user explicitly requests them.
+
 **Format example:**
 ```markdown
 ### Success Criteria:
-
-#### Automated Verification:
+- [ ] Each change follows red/green TDD (failing test → implementation → refactor)
 - [ ] Database migration runs successfully
 - [ ] All unit tests pass
 - [ ] No linting errors
 - [ ] API endpoint returns 200: `curl localhost:8080/api/new-endpoint`
+```
 
-#### Manual Verification:
+And at the end of the plan:
+```markdown
+## Final Manual Verification
+
+_Run once after all phases are complete and all automated checks pass._
+
 - [ ] New feature appears correctly in the UI
 - [ ] Performance is acceptable with 1000+ items
 - [ ] Error messages are user-friendly
@@ -457,18 +469,24 @@ When spawning research sub-tasks:
    - Cross-check findings against the actual codebase
    - Don't accept results that seem incorrect
 
-Example of spawning multiple tasks:
-```python
-# Spawn these tasks concurrently:
-tasks = [
-    Task("Research database schema", db_research_prompt),
-    Task("Find API patterns", api_research_prompt),
-    Task("Investigate UI components", ui_research_prompt),
-    Task("Check test patterns", test_research_prompt)
-]
-```
+Example of spawning multiple tasks concurrently:
+- **codebase-locator**: "Find all files related to the database schema for [feature]"
+- **codebase-analyzer**: "Analyze how the API layer handles [pattern]"
+- **codebase-pattern-finder**: "Find similar UI components we can model after"
+- **research-locator**: "Find any existing research or plans about [area]"
 
 ## Example Interaction Flow
+
+```
+User: /create_plan docs/ai/research/2025-01-08-parent-child-tracking.md
+Assistant: Let me read that research document completely first...
+
+[Reads file fully, spawns research agents]
+
+Based on the research and my analysis of the codebase, I understand we need to...
+
+[Interactive process continues...]
+```
 
 ```
 User: /create_plan
@@ -477,9 +495,9 @@ Assistant: I'll help you create a detailed implementation plan...
 User: We need to add parent-child tracking for Claude sub-tasks. See PRJ-111 Linear ticket
 Assistant: Let me read that ticket completely first...
 
-[Reads file fully]
+[Reads file fully, spawns research agents]
 
-Based on the ticket, I understand we need to track parent-child relationships for Claude sub-task events in the hld daemon. Before I start planning, I have some questions...
+Based on the ticket, I understand we need to track parent-child relationships...
 
 [Interactive process continues...]
 ```

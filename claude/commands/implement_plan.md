@@ -64,43 +64,45 @@ After implementing a phase:
 - Update your progress in both the plan and your todos
 - Check off completed items in the plan file itself using Edit
 
-### MANDATORY: Phase Gate Protocol
+### Phase Gate Protocol
 
-After completing all automated verification for a phase, you MUST:
+After completing all changes in a phase:
 
-1. **STOP implementation immediately** - do not proceed to the next phase
-2. **Mark phase status** in the plan file as `⏸️ AWAITING VERIFICATION` (not `✅ COMPLETE`)
-3. **Use AskUserQuestion tool** to force an explicit pause with this format:
+1. **Run all automated verification** listed in the phase's success criteria
+2. **Fix any failures** before proceeding — do not move to the next phase with failing checks
+3. **Mark phase as complete** (`✅ COMPLETE`) in the plan file
+4. **Proceed to the next phase** — no manual verification pause between phases
+
+If the plan explicitly requests per-phase manual verification for a specific phase, pause at that phase using the Plan Completion Gate format below. Otherwise, continue to the next phase.
+
+### Plan Completion Gate
+
+After ALL phases are complete and all automated checks pass:
+
+1. **STOP implementation**
+2. **Use AskUserQuestion tool** to present the final manual verification:
 
 ═══════════════════════════════════════════════════════
-⏸️  PHASE [N] COMPLETE - AWAITING MANUAL VERIFICATION
+⏸️  ALL PHASES COMPLETE - AWAITING MANUAL VERIFICATION
 ═══════════════════════════════════════════════════════
 
-Automated verification passed:
+All automated verification passed across [N] phases.
 
-[List automated checks that passed]
 Manual verification steps from plan:
 
- Step 1
- Step 2
-Reply "continue" to proceed to Phase [N+1]
+- [ ] Step 1
+- [ ] Step 2
+- [ ] ...
+
+Reply "done" when manual verification is complete.
 ═══════════════════════════════════════════════════════
 
-4. **Wait for explicit user confirmation** before proceeding
-
-### Anti-Pattern Warning
-
-NEVER proceed to the next phase just because:
-- All tests pass
-- No errors occurred
-- The phase "seems complete"
-
-Passing tests are NOT implicit approval. Only explicit user confirmation (via AskUserQuestion response) allows proceeding.
+3. **Wait for user confirmation** before marking the plan as fully complete
 
 ### Phase Status Updates
 
-- After completing automated work: mark as `⏸️ AWAITING VERIFICATION`
-- After user confirms manual verification: mark as `✅ COMPLETE`
+- After automated checks pass: mark phase as `✅ COMPLETE`
+- After plan completion gate: mark plan as fully complete
 - Do not check off manual testing items until confirmed by the user
 
 ## If You Get Stuck

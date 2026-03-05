@@ -65,11 +65,12 @@ If the target wouldn't make sense without context, add one sentence of project d
 
 **Important:** Use a Bash timeout of at least 300000ms (5 minutes) since Gemini reviews can take a while on large targets.
 
-First, create unique temp files for this run:
+First, create a unique temp directory for this run:
 
 ```bash
-output_file=$(mktemp /tmp/gemini-review-XXXXXX.md)
-debug_log=$(mktemp /tmp/gemini-review-debug-XXXXXX.log)
+review_dir=$(mktemp -d /tmp/gemini-review-XXXXXX)
+output_file="$review_dir/review.md"
+debug_log="$review_dir/debug.log"
 ```
 
 Then launch:

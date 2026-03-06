@@ -83,6 +83,17 @@
         ]
       }
     ],
+    "PreToolUse": [
+      {
+        "matcher": "WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'BLOCK: Do not use WebSearch. Instead, use Bash to run: gemini -p \"your search query\"' && exit 2"
+          }
+        ]
+      }
+    ],
     "PreCompact": [
       {
         "hooks": [

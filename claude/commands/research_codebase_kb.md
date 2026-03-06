@@ -54,8 +54,8 @@ If `$ARGUMENTS` was provided, proceed immediately with it as the research query.
 
 2. **Search existing knowledge base for prior research:**
    - Run `~/.claude/bin/kb search "<relevant terms>" --db kb.db --plain` to find related prior research
-   - Run `~/.claude/bin/kb list -t research --db kb.db --plain` to see all existing research documents
-   - If relevant documents are found, use `~/.claude/bin/kb get <id> --db kb.db --plain` to read them
+   - Note the IDs and titles of relevant documents — do NOT read them inline with `kb get`
+   - These will be analyzed by background agents in step 4
    - Use prior findings as supplementary context, but always verify against live code
 
 3. **Analyze and decompose the research question:**
@@ -68,6 +68,11 @@ If `$ARGUMENTS` was provided, proceed immediately with it as the research query.
 4. **Spawn parallel sub-agent tasks for comprehensive research:**
    - Create multiple Task agents to research different aspects concurrently
    - We now have specialized agents that know how to do specific research tasks:
+
+   **For kb document analysis (from step 2 results):**
+   - For each relevant kb document found in step 2, spawn a **research-analyzer** background agent
+   - Pass the kb document ID so it can fetch and analyze the content: "Analyze kb document <id> for insights related to <research question>"
+   - These run in the background alongside codebase research agents, keeping full kb document content out of the main context
 
    **For codebase research:**
    - Use the **codebase-locator** agent to find WHERE files and components live
@@ -88,15 +93,16 @@ If `$ARGUMENTS` was provided, proceed immediately with it as the research query.
    - Start with locator agents to find what exists
    - Then use analyzer agents on the most promising findings to document how they work
    - Run multiple agents in parallel when they're searching for different things
+   - Spawn kb document analyzers in the background alongside codebase agents
    - Each agent knows its job - just tell it what you're looking for
    - Don't write detailed prompts about HOW to search - the agents already know
    - Remind agents they are documenting, not evaluating or improving
 
 5. **Wait for all sub-agents to complete and synthesize findings:**
-   - IMPORTANT: Wait for ALL sub-agent tasks to complete before proceeding
-   - Compile all sub-agent results (both codebase and kb findings)
+   - IMPORTANT: Wait for ALL sub-agent tasks to complete before proceeding (including background kb analyzers)
+   - Compile all sub-agent results (codebase research, kb document analyses, and any other findings)
    - Prioritize live codebase findings as primary source of truth
-   - Use kb findings as supplementary historical context
+   - Use kb analyzer summaries as supplementary historical context (these are already distilled — no need to re-read full kb documents)
    - Connect findings across different components
    - Include specific file paths and line numbers for reference
    - Highlight patterns, connections, and architectural decisions

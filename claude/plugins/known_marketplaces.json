@@ -5,7 +5,7 @@
       "repo": "anthropics/claude-plugins-official"
     },
     "installLocation": "/Users/misham/.claude/plugins/marketplaces/claude-plugins-official",
-    "lastUpdated": "2026-03-06T05:35:41.309Z"
+    "lastUpdated": "2026-03-08T06:13:44.893Z"
   },
   "chrome-devtools-plugins": {
     "source": {
@@ -22,5 +22,13 @@
     },
     "installLocation": "/Users/misham/.claude/plugins/marketplaces/claude-ruby-marketplace",
     "lastUpdated": "2026-02-28T23:57:15.356Z"
+  },
+  "local-marketplace": {
+    "source": {
+      "source": "directory",
+      "path": "/Users/misham/.dotfiles/claude/plugins/local-marketplace"
+    },
+    "installLocation": "/Users/misham/.dotfiles/claude/plugins/local-marketplace",
+    "lastUpdated": "2026-03-08T05:17:07.807Z"
   }
 }

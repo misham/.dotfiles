@@ -11,6 +11,3 @@ cmd/dotfiles/dotfiles
 
 # External tools fetched from GitHub releases
 claude/bin/kb
-
-# Local plugin marketplace (has its own git repo)
-claude/plugins/local-marketplace/

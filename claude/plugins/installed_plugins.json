@@ -238,16 +238,6 @@
         "lastUpdated": "2026-02-28T23:57:49.358Z",
         "gitCommitSha": "cbb534c7579b28948ea773f9816f5219c72f7c04"
       }
-    ],
-    "thorough-review@local-marketplace": [
-      {
-        "scope": "user",
-        "installPath": "/Users/misham/.claude/plugins/cache/local-marketplace/thorough-review/1.0.0",
-        "version": "1.0.0",
-        "installedAt": "2026-03-08T05:17:19.635Z",
-        "lastUpdated": "2026-03-08T05:17:19.635Z",
-        "gitCommitSha": "f4118f0f72699479feac34ab79d8edf32f0568cc"
-      }
     ]
   }
 }

@@ -133,16 +133,8 @@
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
-    "ruby-lsp@claude-ruby-marketplace": true,
-    "thorough-review@local-marketplace": true
+    "ruby-lsp@claude-ruby-marketplace": true
   },
-  "extraKnownMarketplaces": {
-    "local-marketplace": {
-      "source": {
-        "source": "directory",
-        "path": "/Users/misham/.dotfiles/claude/plugins/local-marketplace"
-      }
-    }
-  },
+  "extraKnownMarketplaces": {},
   "alwaysThinkingEnabled": true
 }

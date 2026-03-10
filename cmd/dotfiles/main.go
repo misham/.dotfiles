@@ -265,7 +265,6 @@ func claudeModule() Module {
 			{"claude/agents", ".claude/agents"},
 			{"claude/commands", ".claude/commands"},
 			{"claude/hooks", ".claude/hooks"},
-			{"claude/scripts", ".claude/scripts"},
 			{"claude/statusline.ts", ".claude/statusline.ts"},
 			{"claude/summarize-session.sh", ".local/bin/summarize-session.sh"},
 		},
@@ -296,6 +295,7 @@ func claudeModule() Module {
 				filepath.Join(cfg.HomeDir, ".claude", "plugins", "installed_plugins.json"),
 				filepath.Join(cfg.HomeDir, ".claude", "plugins", "known_marketplaces.json"),
 				filepath.Join(cfg.HomeDir, ".claude", "bin"),
+			filepath.Join(cfg.HomeDir, ".claude", "scripts"),
 			}
 			for _, link := range staleSymlinks {
 				info, err := os.Lstat(link)

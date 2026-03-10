@@ -2,9 +2,11 @@
   "marketplaces": [
     "anthropics/claude-plugins-official",
     "ChromeDevTools/chrome-devtools-mcp",
-    "hoblin/claude-ruby-marketplace"
+    "hoblin/claude-ruby-marketplace",
+    "misham/twistedkeg-plugins"
   ],
   "plugins": [
+    {"name": "development-flow@twistedkeg-plugins"},
     {"name": "chrome-devtools-mcp@chrome-devtools-plugins"},
     {"name": "claude-code-setup@claude-plugins-official"},
     {"name": "claude-md-management@claude-plugins-official"},
@@ -27,6 +29,7 @@
     {"name": "skill-creator@claude-plugins-official"},
     {"name": "superpowers@claude-plugins-official"},
     {"name": "swift-lsp@claude-plugins-official"},
+    {"name": "thorough-review@twistedkeg-plugins"},
     {"name": "typescript-lsp@claude-plugins-official"}
   ]
 }

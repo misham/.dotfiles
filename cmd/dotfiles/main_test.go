@@ -78,7 +78,6 @@ func TestInstallation(t *testing.T) {
 		{"claude/agents", ".claude/agents", "claude/agents"},
 		{"claude/commands", ".claude/commands", "claude/commands"},
 		{"claude/hooks", ".claude/hooks", "claude/hooks"},
-		{"claude/scripts", ".claude/scripts", "claude/scripts"},
 		{"claude/statusline.ts", ".claude/statusline.ts", "claude/statusline.ts"},
 	}
 

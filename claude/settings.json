@@ -132,7 +132,9 @@
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
-    "ruby-lsp@claude-ruby-marketplace": true
+    "ruby-lsp@claude-ruby-marketplace": true,
+    "development-flow@twistedkeg-plugins": true,
+    "thorough-review@twistedkeg-plugins": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -151,6 +153,12 @@
       "source": {
         "source": "github",
         "repo": "hoblin/claude-ruby-marketplace"
+      }
+    },
+    "twistedkeg-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "misham/twistedkeg-plugins"
       }
     }
   },

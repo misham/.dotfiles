@@ -42,12 +42,12 @@ type Module struct {
 
 func main() {
 	cfg := &Config{}
-	var updateTools bool
+	var dumpPlugins bool
 
 	// Parse flags
 	flag.BoolVar(&cfg.DryRun, "dry-run", false, "Show what would be done without making changes")
 	flag.BoolVar(&cfg.Verbose, "verbose", false, "Enable verbose output")
-	flag.BoolVar(&updateTools, "update-tools", false, "Fetch latest versions of external tools (kb, etc.)")
+	flag.BoolVar(&dumpPlugins, "dump-plugins", false, "Generate claude/plugins.json from current installed state")
 	flag.Parse()
 
 	// Determine directories
@@ -65,17 +65,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Update-tools-only mode
-	if updateTools {
-		logInfo("Updating external tools...")
-		logInfo("Detected OS: %s/%s", runtime.GOOS, runtime.GOARCH)
-		fmt.Println()
-		if err := fetchAllTools(cfg, true); err != nil {
-			logError("Some tools failed to update: %v", err)
+	// Dump-plugins mode
+	if dumpPlugins {
+		if err := dumpPluginManifest(cfg); err != nil {
+			logError("Failed to dump plugin manifest: %v", err)
 			os.Exit(1)
 		}
-		fmt.Println()
-		logSuccess("Done!")
 		return
 	}
 
@@ -270,13 +265,9 @@ func claudeModule() Module {
 			{"claude/agents", ".claude/agents"},
 			{"claude/commands", ".claude/commands"},
 			{"claude/hooks", ".claude/hooks"},
-			{"claude/bin", ".claude/bin"},
 			{"claude/scripts", ".claude/scripts"},
 			{"claude/statusline.ts", ".claude/statusline.ts"},
 			{"claude/summarize-session.sh", ".local/bin/summarize-session.sh"},
-			{"claude/plugins/config.json", ".claude/plugins/config.json"},
-			{"claude/plugins/installed_plugins.json", ".claude/plugins/installed_plugins.json"},
-			{"claude/plugins/known_marketplaces.json", ".claude/plugins/known_marketplaces.json"},
 		},
 		PreHook: func(cfg *Config) error {
 			// Ensure .claude directory exists
@@ -284,17 +275,47 @@ func claudeModule() Module {
 			if err := os.MkdirAll(claudeDir, 0755); err != nil {
 				return err
 			}
-			// Ensure .claude/plugins directory exists
+			// Ensure .claude/plugins and marketplaces directories exist
 			pluginsDir := filepath.Join(cfg.HomeDir, ".claude", "plugins")
 			if err := os.MkdirAll(pluginsDir, 0755); err != nil {
 				return err
 			}
+			marketplacesDir := filepath.Join(pluginsDir, "marketplaces")
+			if err := os.MkdirAll(marketplacesDir, 0755); err != nil {
+				return err
+			}
 			// Ensure .local/bin directory exists
 			localBinDir := filepath.Join(cfg.HomeDir, ".local", "bin")
-			return os.MkdirAll(localBinDir, 0755)
+			if err := os.MkdirAll(localBinDir, 0755); err != nil {
+				return err
+			}
+
+			// Clean up stale symlinks from previous versions
+			staleSymlinks := []string{
+				filepath.Join(cfg.HomeDir, ".claude", "plugins", "config.json"),
+				filepath.Join(cfg.HomeDir, ".claude", "plugins", "installed_plugins.json"),
+				filepath.Join(cfg.HomeDir, ".claude", "plugins", "known_marketplaces.json"),
+				filepath.Join(cfg.HomeDir, ".claude", "bin"),
+			}
+			for _, link := range staleSymlinks {
+				info, err := os.Lstat(link)
+				if err != nil {
+					continue
+				}
+				if info.Mode()&os.ModeSymlink != 0 {
+					if cfg.DryRun {
+						logInfo("[DRY-RUN] Would remove stale symlink: %s", link)
+					} else {
+						os.Remove(link)
+						logInfo("Removed stale plugin symlink: %s", link)
+					}
+				}
+			}
+
+			return nil
 		},
 		PostHook: func(cfg *Config) error {
-			return fetchAllTools(cfg, false)
+			return installPlugins(cfg)
 		},
 	}
 }

@@ -1,0 +1,32 @@
+{
+  "marketplaces": [
+    "anthropics/claude-plugins-official",
+    "ChromeDevTools/chrome-devtools-mcp",
+    "hoblin/claude-ruby-marketplace"
+  ],
+  "plugins": [
+    {"name": "chrome-devtools-mcp@chrome-devtools-plugins"},
+    {"name": "claude-code-setup@claude-plugins-official"},
+    {"name": "claude-md-management@claude-plugins-official"},
+    {"name": "code-review@claude-plugins-official"},
+    {"name": "code-simplifier@claude-plugins-official"},
+    {"name": "context7@claude-plugins-official"},
+    {"name": "feature-dev@claude-plugins-official"},
+    {"name": "frontend-design@claude-plugins-official"},
+    {"name": "gopls-lsp@claude-plugins-official"},
+    {"name": "hookify@claude-plugins-official"},
+    {"name": "lua-lsp@claude-plugins-official"},
+    {"name": "playground@claude-plugins-official"},
+    {"name": "plugin-dev@claude-plugins-official"},
+    {"name": "pr-review-toolkit@claude-plugins-official"},
+    {"name": "pyright-lsp@claude-plugins-official"},
+    {"name": "ruby-lsp@claude-ruby-marketplace"},
+    {"name": "security-guidance@claude-plugins-official"},
+    {"name": "semgrep@claude-plugins-official"},
+    {"name": "sentry@claude-plugins-official"},
+    {"name": "skill-creator@claude-plugins-official"},
+    {"name": "superpowers@claude-plugins-official"},
+    {"name": "swift-lsp@claude-plugins-official"},
+    {"name": "typescript-lsp@claude-plugins-official"}
+  ]
+}

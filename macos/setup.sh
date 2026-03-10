@@ -4,6 +4,14 @@
 
 #find / -name *.DS_Store -depth -exec rm {} \;
 
+# Install oh-my-zsh if not present
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "Installing oh-my-zsh..."
+  git clone --depth=1 -c transfer.fsckObjects=false https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
+else
+  echo "oh-my-zsh is already installed."
+fi
+
 # show file extensions
 defaults write -g AppleShowAllExtensions -bool true
 # show hidden files

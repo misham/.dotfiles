@@ -1,13 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50",
     "ENABLE_LSP_TOOL": "1"
   },
   "permissions": {
     "allow": [
-      "Bash(cat:*)",
-      "Bash(du:*)",
       "Bash(find:*)",
       "Bash(gemini:*)",
       "Bash(git branch:*)",
@@ -15,16 +13,30 @@
       "Bash(git log:*)",
       "Bash(git show:*)",
       "Bash(git status:*)",
+      "Bash(go get:*)",
+      "Bash(go mod:*)",
       "Bash(go test:*)",
+      "Bash(go vet:*)",
+      "Bash(gofumpt:*)",
+      "Bash(golangci-lint run:*)",
+      "Bash(golangci-lint version:*)",
+      "Bash(kb:*)",
+      "Bash(/Users/misham/.claude/plugins/cache/twistedkeg-plugins/development-flow/1.0.0/bin/kb *)",
       "Bash(ls:*)",
       "Bash(lsof:*)",
-      "Bash(wc:*)",
-      "Bash(which:*)",
+      "Bash(make build:*)",
+      "Bash(make fmt-check:*)",
+      "Bash(make lint:*)",
+      "Bash(make vet:*)",
+      "Bash(make:*)",
       "Bash(npm run build:*)",
       "Bash(npm run test:*)",
       "Bash(npm test:*)",
       "Bash(npx tsc:*)",
       "Bash(npx vitest run:*)",
+      "Bash(spec_metadata.sh)",
+      "Bash(wc:*)",
+      "Bash(which:*)",
       "WebFetch",
       "WebSearch",
       "mcp__chrome-devtools__click",
@@ -43,20 +55,7 @@
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page",
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot",
       "mcp__plugin_sentry_sentry__find_organizations",
-      "mcp__plugin_sentry_sentry__get_issue_details",
-      "Bash(go mod:*)",
-      "Bash(go get:*)",
-      "Bash(golangci-lint version:*)",
-      "Bash(make build:*)",
-      "Bash(make fmt-check:*)",
-      "Bash(make vet:*)",
-      "Bash(make lint:*)",
-      "Bash(make:*)",
-      "Bash(gofumpt:*)",
-      "Bash(golangci-lint run:*)",
-      "Bash(go vet:*)",
-      "Bash(CGO_ENABLED=0 go build:*)",
-      "Bash(./kb:*)"
+      "mcp__plugin_sentry_sentry__get_issue_details"
     ],
     "defaultMode": "default"
   },
@@ -121,7 +120,6 @@
     "swift-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "semgrep@claude-plugins-official": true,
-    "chrome-devtools-mcp@chrome-devtools-plugins": true,
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
@@ -134,7 +132,8 @@
     "lua-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-ruby-marketplace": true,
     "development-flow@twistedkeg-plugins": true,
-    "thorough-review@twistedkeg-plugins": true
+    "thorough-review@twistedkeg-plugins": true,
+    "ruby-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {

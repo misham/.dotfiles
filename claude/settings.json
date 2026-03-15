@@ -57,6 +57,10 @@
       "mcp__plugin_sentry_sentry__find_organizations",
       "mcp__plugin_sentry_sentry__get_issue_details"
     ],
+    "deny": [
+      "Bash(terraform apply:*)",
+      "Bash(terraform apply)"
+    ],
     "defaultMode": "default"
   },
   "hooks": {
@@ -119,18 +123,13 @@
     "plugin-dev@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "semgrep@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "playground@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true,
-    "ruby-lsp@claude-ruby-marketplace": true,
     "development-flow@twistedkeg-plugins": true,
     "thorough-review@twistedkeg-plugins": true,
     "ruby-lsp@claude-plugins-official": true
@@ -148,12 +147,6 @@
         "repo": "ChromeDevTools/chrome-devtools-mcp"
       }
     },
-    "claude-ruby-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "hoblin/claude-ruby-marketplace"
-      }
-    },
     "twistedkeg-plugins": {
       "source": {
         "source": "github",
@@ -161,5 +154,6 @@
       }
     }
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "voiceEnabled": true
 }

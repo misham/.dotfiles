@@ -24,7 +24,6 @@
     {"name": "pyright-lsp@claude-plugins-official"},
     {"name": "ruby-lsp@claude-ruby-marketplace"},
     {"name": "security-guidance@claude-plugins-official"},
-    {"name": "semgrep@claude-plugins-official"},
     {"name": "sentry@claude-plugins-official"},
     {"name": "skill-creator@claude-plugins-official"},
     {"name": "superpowers@claude-plugins-official"},

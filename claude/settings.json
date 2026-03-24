@@ -97,6 +97,17 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "matcher": "WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/hooks/webfetch-chrome-fallback.sh"
+          }
+        ]
+      }
+    ],
     "PreCompact": [
       {
         "hooks": [
@@ -119,7 +130,6 @@
     "hookify@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "sentry@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
@@ -132,7 +142,10 @@
     "typescript-lsp@claude-plugins-official": true,
     "development-flow@twistedkeg-plugins": true,
     "thorough-review@twistedkeg-plugins": true,
-    "ruby-lsp@claude-plugins-official": true
+    "ruby-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "issue-manager@twistedkeg-plugins": true,
+    "lua-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -141,19 +154,15 @@
         "repo": "anthropics/claude-plugins-official"
       }
     },
-    "chrome-devtools-plugins": {
-      "source": {
-        "source": "github",
-        "repo": "ChromeDevTools/chrome-devtools-mcp"
-      }
-    },
     "twistedkeg-plugins": {
       "source": {
         "source": "github",
         "repo": "misham/twistedkeg-plugins"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "alwaysThinkingEnabled": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "autoDreamEnabled": true
 }

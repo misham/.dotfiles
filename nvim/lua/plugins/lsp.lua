@@ -207,6 +207,7 @@ return {
       })
 
       vim.lsp.config("ruby_lsp", {
+        root_markers = { "Gemfile", ".ruby-version" },
         init_options = {
           formatter = "auto",
           linters = { "rubocop" },

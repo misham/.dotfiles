@@ -53,4 +53,7 @@ alias la='ls -Ga'
 # -----------------------------------------------------------------------------
 # Use bat instead of cat for better UX
 alias cat='bat'
+# -----------------------------------------------------------------------------
+# Use npq-hero to audit npm packages before installing
+alias npm='npq-hero'
 

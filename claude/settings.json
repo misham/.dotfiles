@@ -86,17 +86,6 @@
         ]
       }
     ],
-    "PreToolUse": [
-      {
-        "matcher": "WebSearch",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo 'BLOCK: Do not use WebSearch. Instead, use Bash to run: gemini -p \"your search query\"' && exit 2"
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "matcher": "WebFetch",
@@ -104,6 +93,15 @@
           {
             "type": "command",
             "command": "bash $HOME/.claude/hooks/webfetch-chrome-fallback.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/hooks/websearch-gemini-supplement.sh"
           }
         ]
       }
@@ -145,7 +143,9 @@
     "ruby-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "issue-manager@twistedkeg-plugins": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "sentry@claude-plugins-official": true,
+    "diary@twistedkeg-plugins": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -161,6 +161,12 @@
       },
       "autoUpdate": true
     }
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Working..."
+    ]
   },
   "alwaysThinkingEnabled": true,
   "voiceEnabled": true,

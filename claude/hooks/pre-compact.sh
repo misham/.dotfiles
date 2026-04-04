@@ -153,6 +153,13 @@ Documents, specs, plans, or external resources that are driving the current work
 - External URLs, API docs, or specs referenced during the conversation
 Include both the reference and a brief note on what it contains or why it matters.
 
+## Active Diary
+If a diary was started or updated during this conversation, record:
+- The full file path to the diary
+- The current step number
+- A one-line summary of where the work left off
+This is critical — the post-compaction agent MUST resume adding steps to an active diary.
+
 ## Modified & Produced Artifacts
 Files created or modified during this conversation, with path:line references and a brief note on what changed and why. This is the OUTPUT of the work.
 

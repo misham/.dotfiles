@@ -249,6 +249,8 @@ return {
       })
 
       vim.lsp.config("eslint", {
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        root_markers = { ".eslintrc", ".eslintrc.js", ".eslintrc.json", ".eslintrc.yml", ".eslintrc.yaml", "eslint.config.js", "eslint.config.mjs", "eslint.config.cjs" },
         settings = {
           workingDirectories = { mode = "auto" },
         },

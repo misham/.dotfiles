@@ -7,13 +7,11 @@
   "permissions": {
     "allow": [
       "Bash(find:*)",
-      "Bash(gemini:*)",
-      "Bash(git branch:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git show:*)",
       "Bash(git status:*)",
-      "Bash(go get:*)",
+      "Bash(go env *)",
       "Bash(go mod:*)",
       "Bash(go test:*)",
       "Bash(go vet:*)",
@@ -21,14 +19,12 @@
       "Bash(golangci-lint run:*)",
       "Bash(golangci-lint version:*)",
       "Bash(kb:*)",
-      "Bash(/Users/misham/.claude/plugins/cache/twistedkeg-plugins/development-flow/1.0.0/bin/kb *)",
       "Bash(ls:*)",
       "Bash(lsof:*)",
       "Bash(make build:*)",
       "Bash(make fmt-check:*)",
       "Bash(make lint:*)",
       "Bash(make vet:*)",
-      "Bash(make:*)",
       "Bash(npm run build:*)",
       "Bash(npm run test:*)",
       "Bash(npm test:*)",
@@ -48,21 +44,53 @@
       "mcp__chrome-devtools__navigate_page",
       "mcp__chrome-devtools__take_screenshot",
       "mcp__chrome-devtools__take_snapshot",
+      "mcp__elation-docs__get-endpoint",
+      "mcp__elation-docs__list-endpoints",
+      "mcp__elation-docs__list-specs",
+      "mcp__elation-docs__search-endpoints",
+      "mcp__linear-server__extract_images",
+      "mcp__linear-server__get_issue",
+      "mcp__linear-server__get_project",
+      "mcp__linear-server__list_comments",
+      "mcp__linear-server__save_issue",
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__click",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__close_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__emulate",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__evaluate_script",
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill_form",
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__get_network_request",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_console_messages",
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_network_requests",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_pages",
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__new_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__resize_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__select_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_screenshot",
       "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__upload_file",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__wait_for",
+      "mcp__plugin_context7_context7__query-docs",
+      "mcp__plugin_context7_context7__resolve-library-id",
       "mcp__plugin_sentry_sentry__find_organizations",
-      "mcp__plugin_sentry_sentry__get_issue_details"
+      "mcp__plugin_sentry_sentry__get_doc",
+      "mcp__plugin_sentry_sentry__get_issue_details",
+      "mcp__plugin_sentry_sentry__get_sentry_resource",
+      "mcp__plugin_sentry_sentry__search_docs"
     ],
     "deny": [
-      "Bash(terraform apply:*)",
-      "Bash(terraform apply)"
+      "Agents",
+      "Bash(*cd *)",
+      "Bash(*terraform * apply *)",
+      "Bash(*git add *)",
+      "Bash(*git commit *)",
+      "Bash(*git ci *)",
+      "Bash(*git push *)"
     ],
     "defaultMode": "default"
   },
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -70,7 +98,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "terminal-notifier -title \"Claude Code\" -message \"${CLAUDE_NOTIFICATION:-Task completed}\" -sound default"
+            "command": "terminal-notifier -title \"Claude Code\" -message \"${CLAUDE_NOTIFICATION:-Task completed}\""
           }
         ]
       }
@@ -81,7 +109,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "terminal-notifier -title \"Claude Code\" -message \"${CLAUDE_NOTIFICATION:-Permission requested}\" -sound default"
+            "command": "terminal-notifier -title \"Claude Code\" -message \"${CLAUDE_NOTIFICATION:-Permission requested}\""
           }
         ]
       }
@@ -117,35 +145,28 @@
       }
     ]
   },
+  "enableArtifact": false,
+  "enableWorkflows": false,
+  "workflowKeywordTriggerEnabled": false,
   "statusLine": {
     "type": "command",
     "command": "bun run $HOME/.claude/statusline.ts"
   },
   "enabledPlugins": {
-    "code-simplifier@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "hookify@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true,
+    "hookify@claude-plugins-official": false,
     "security-guidance@claude-plugins-official": true,
-    "plugin-dev@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": false,
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
+    "code-review@claude-plugins-official": false,
     "frontend-design@claude-plugins-official": true,
-    "playground@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "development-flow@twistedkeg-plugins": true,
-    "thorough-review@twistedkeg-plugins": true,
     "ruby-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "issue-manager@twistedkeg-plugins": true,
     "lua-lsp@claude-plugins-official": true,
     "sentry@claude-plugins-official": true,
-    "diary@twistedkeg-plugins": true
+    "chrome-devtools-mcp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -154,12 +175,11 @@
         "repo": "anthropics/claude-plugins-official"
       }
     },
-    "twistedkeg-plugins": {
+    "chrome-devtools-plugins": {
       "source": {
         "source": "github",
-        "repo": "misham/twistedkeg-plugins"
-      },
-      "autoUpdate": true
+        "repo": "ChromeDevTools/chrome-devtools-mcp"
+      }
     }
   },
   "spinnerVerbs": {
@@ -169,6 +189,20 @@
     ]
   },
   "alwaysThinkingEnabled": true,
-  "voiceEnabled": true,
-  "autoDreamEnabled": true
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "autoMemoryEnabled": true,
+  "autoDreamEnabled": true,
+  "editorMode": "vim",
+  "verbose": true,
+  "preferredNotifChannel": "auto",
+  "switchModelsOnFlag": false,
+  "remoteControlAtStartup": false,
+  "agentPushNotifEnabled": false,
+  "useAutoModeDuringPlan": false,
+  "voiceEnabled": true
 }

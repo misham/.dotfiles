@@ -5,10 +5,6 @@
 # Zsh completion configuration
 #
 # -----------------------------------------------------------------------------
-# Initialize zsh completion system
-#
-autoload -Uz compinit && compinit
-# -----------------------------------------------------------------------------
 # SSH host completion from ~/.ssh/config
 #
 if [ -e "$HOME/.ssh/config" ]; then

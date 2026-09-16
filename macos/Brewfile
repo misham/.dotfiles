@@ -1,122 +1,379 @@
-tap "akonan/wiremd"
-tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/services"
-tap "stripe/stripe-cli"
+tap "aegixx/aws-loggy"
+tap "akonan/wiremd", trusted: true
+tap "goreleaser/tap", trusted: true
+tap "hashicorp/tap", trusted: true
+tap "humanlayer/humanlayer", trusted: true
+tap "misham/twistedkeg", trusted: true
+tap "stripe/stripe-cli", trusted: true
+# Search tool like grep, but optimized for programmers
 brew "ack"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
+# Automatic configure script builder
 brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# Text processing scripting language
 brew "awk"
+# Library for command-line editing
 brew "readline"
-brew "python@3.13"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# CLI tool for drawing AWS architecture
+brew "awsdac"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Programmable completion for Bash 4.2+
 brew "bash-completion@2"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-brew "brew-cask-completion"
+# Vector graphics library with cross-device output support
 brew "cairo"
-brew "circleci"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# Color-highlighted diff(1) output
 brew "colordiff"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Reimplementation of ctags(1)
 brew "ctags"
-brew "docker-completion"
+# Docker Credential Helper for Amazon ECR
 brew "docker-credential-helper-ecr"
+# Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
+# Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
+# Program that can automate interactive applications
 brew "expect"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
-brew "libomp", link: true
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
+# Prevents you from committing sensitive information to a git repo
 brew "git-secrets"
+# Audit git repos for secrets
+brew "gitleaks"
+# Render markdown on the CLI
 brew "glow"
+# Passphrase entry dialog utilizing the Assuan protocol
 brew "pinentry"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Generate introspection data for GObject libraries
 brew "gobject-introspection"
+# Database migrations CLI tool
 brew "golang-migrate"
+# Fast linters runner for Go
 brew "golangci-lint"
+# Development kit for the Java programming language
 brew "openjdk"
+# Open-source build automation tool based on the Groovy and Kotlin DSL
 brew "gradle"
+# Library to render SVG files using Cairo
 brew "librsvg"
+# Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-brew "htmlq"
-brew "htop"
-brew "shared-mime-info"
-brew "imessage-exporter"
-brew "jq"
-brew "kustomize"
-brew "lazygit"
-brew "libpq", link: true
+# YAML Parser
 brew "libyaml"
+# Client library for huggingface.co hub
+brew "hf"
+# Uses CSS selectors to extract bits content from HTML files
+brew "htmlq"
+# Improved top (interactive process viewer)
+brew "htop"
+# Command-line tool to export and inspect local iMessage database
+brew "imessage-exporter"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Template-free customization of Kubernetes YAML manifests
+brew "kustomize"
+# Simple terminal UI for git commands
+brew "lazygit"
+# LLVM's OpenMP runtime library
+brew "libomp", link: true
+# Postgres C API library
+brew "libpq", link: true
+# Access large language models from the command-line
+brew "llm"
+# Language Server for the Lua language
 brew "lua-language-server"
+# Syntax-aware git merge driver
 brew "mergiraf"
-brew "neovim"
-brew "ngrep"
-brew "nmap"
-brew "nvm"
-brew "packer-completion"
-brew "pgcli"
-brew "pinentry-mac"
-brew "pngpaste"
-brew "pnpm"
-brew "pyenv"
-brew "python@3.12"
-brew "redis"
-brew "ripgrep"
-brew "rtorrent"
-brew "ruby-build"
-brew "ruby-completion"
-brew "rust"
-brew "shellcheck"
-brew "starship"
-brew "subversion"
-brew "telnet"
-brew "terminal-notifier"
-brew "the_silver_searcher"
-brew "tmux"
-brew "tnftp"
-brew "transmission-cli"
-brew "tree"
+# Incremental parsing library
 brew "tree-sitter"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Network grep
+brew "ngrep"
+# Port scanning utility for large networks
+brew "nmap"
+# Manage multiple Node.js versions
+brew "nvm"
+# CLI for Postgres with auto-completion and syntax highlighting
+brew "pgcli"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Your Gateway to Embedded Software Development Excellence
+brew "platformio"
+# Paste PNG into files
+brew "pngpaste"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Python version management
+brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
+# Develop and deploy code with zero configuration
+brew "railway"
+# Persistent key-value database, with built-in net interface
+brew "redis"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Ncurses BitTorrent client based on libtorrent-rakshasa
+brew "rtorrent"
+# Install various Ruby versions and implementations
+brew "ruby-build"
+# Bash completion for Ruby
+brew "ruby-completion"
+# Safe, concurrent, practical language
+brew "rust"
+# Database of common MIME types
+brew "shared-mime-info"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Version control system designed to be a better CVS
+brew "subversion"
+# User interface to the TELNET protocol
+brew "telnet"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Terminal multiplexer
+brew "tmux"
+# NetBSD's FTP client
+brew "tnftp"
+# Lightweight BitTorrent client
+brew "transmission-cli"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Parser generator tool
 brew "tree-sitter-cli"
-brew "vips"
+# Find and verify credentials
+brew "trufflehog"
+# Watch files and take action when they change
 brew "watchman"
+# Internet file retriever
 brew "wget"
+# Why is this running?
 brew "witr"
+# Linter for YAML files
 brew "yamllint"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Find security issues in GitHub Actions setups
+brew "zizmor"
+# General-purpose lossless data-compression library
 brew "zlib"
-brew "hashicorp/tap/packer"
-brew "hashicorp/tap/terraform"
+# Packer
+brew "hashicorp/tap/packer", trusted: true
+# Terraform
+brew "hashicorp/tap/terraform", trusted: true
+# Stripe CLI utility
 brew "stripe/stripe-cli/stripe"
+# Command-line interface for 1Password
 cask "1password-cli"
+# Application uninstaller
 cask "appcleaner"
+# A fast, native desktop app for browsing and tailing AWS CloudWatch logs
+cask "aegixx/aws-loggy/aws-loggy", trusted: true
+# Securely stores and accesses AWS credentials in a development environment
 cask "aws-vault-binary"
+# Monitors common persistence locations
 cask "blockblock"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Virtual monitor for screen sharing
 cask "deskpad"
+# Voice and text chat software
 cask "discord"
 cask "font-dejavu-sans-mono-for-powerline"
 cask "font-hack-nerd-font"
+# Kext-less implementation of FUSE
 cask "fuse-t"
+# Release engineering, simplified
+cask "goreleaser/tap/goreleaser"
+# AI coding agent powered by Claude
+cask "humanlayer/humanlayer/humanlayer", trusted: true
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Menu bar manager
+cask "jordanbaird-ice@beta"
+# Utility for comparing and merging files and directories
 cask "kdiff3"
+# Animated screen capture application
 cask "licecap"
+# Reverse proxy that enables you to expose your localhost to the internet
+cask "localxpose"
+# Clipboard manager
 cask "maccy"
+# Open-source Markdown editor
 cask "macdown"
+# Text editor
 cask "macvim-app"
+# Minimal installer for conda specific to conda-forge
 cask "miniforge"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# App to write, plan, collaborate, and get organised
 cask "notion"
+# Replacement for Docker Desktop
 cask "orbstack"
+# Scans, detects, and monitors keyboard taps
 cask "reikey"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
+# Music streaming service
 cask "spotify"
+# Menu bar manager
 cask "thaw"
+# Open-source BitTorrent client
 cask "transmission"
+# Development environment
 cask "vagrant"
+# Multimedia player
 cask "vlc"
+vscode "auxislabs.python-uv-toolkit"
+vscode "bradlc.vscode-tailwindcss"
+vscode "bung87.vscode-gemfile"
+vscode "chrislajoie.vscode-modelines"
+vscode "coolbear.systemd-unit-file"
+vscode "craigmaslowski.erb"
+vscode "csstools.postcss"
+vscode "dbaeumer.vscode-eslint"
+vscode "dewski.simplecov"
+vscode "donjayamanne.githistory"
+vscode "donjayamanne.python-environment-manager"
+vscode "ecmel.vscode-html-css"
+vscode "editorconfig.editorconfig"
+vscode "esbenp.prettier-vscode"
+vscode "everspace.rightclick-git"
+vscode "extr0py.vscode-relative-line-numbers"
+vscode "formulahendry.auto-close-tag"
+vscode "github.vscode-github-actions"
+vscode "github.vscode-pull-request-github"
+vscode "golang.go"
+vscode "hashicorp.hcl"
+vscode "hashicorp.sentinel"
+vscode "hashicorp.terraform"
+vscode "inferrinizzard.prettier-sql-vscode"
+vscode "jdinhlife.gruvbox"
+vscode "jinliming2.vscode-go-template"
+vscode "kaiwood.endwise"
+vscode "kevinrose.vsc-python-indent"
+vscode "mechatroner.rainbow-csv"
+vscode "mikestead.dotenv"
+vscode "mistralai.mistral-vibe-code"
+vscode "ms-azuretools.vscode-containers"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-playwright.playwright"
+vscode "ms-python.autopep8"
+vscode "ms-python.black-formatter"
+vscode "ms-python.debugpy"
+vscode "ms-python.flake8"
+vscode "ms-python.isort"
+vscode "ms-python.pylint"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "ms-vscode-remote.vscode-remote-extensionpack"
+vscode "ms-vscode.makefile-tools"
+vscode "ms-vscode.remote-explorer"
+vscode "ms-vscode.remote-server"
+vscode "ms-vscode.test-adapter-converter"
+vscode "ms-vscode.vscode-typescript-next"
+vscode "msyrus.go-doc"
+vscode "nhoizey.gremlins"
+vscode "ninoseki.vscode-mogami"
+vscode "nonylene.dark-molokai-theme"
+vscode "openai.chatgpt"
+vscode "pflannery.vscode-versionlens"
+vscode "praveencrony.total-lines"
+vscode "quicktype.quicktype"
+vscode "redhat.vscode-yaml"
+vscode "shopify.ruby-extensions-pack"
+vscode "shopify.ruby-lsp"
+vscode "tamasfe.even-better-toml"
+vscode "timonwong.shellcheck"
+vscode "tomoki1207.selectline-statusbar"
+vscode "touyu.devcontainers-notifier"
+vscode "tuxtina.json2yaml"
+vscode "vitest.explorer"
+vscode "vscodevim.vim"
+vscode "waderyan.gitblame"
+vscode "yokoe.vscode-postfix-go"
+vscode "yutengjing.open-in-external-app"
+vscode "zizmor.zizmor-vscode"
+go "github.com/air-verse/air"
+go "github.com/klauspost/asmfmt/cmd/asmfmt"
+go "golang.org/x/tools/cmd/callgraph"
+go "github.com/go-delve/delve/cmd/dlv"
+go "github.com/kisielk/errcheck"
+go "github.com/davidrjenni/reftools/cmd/fillstruct"
+go "github.com/davidrjenni/reftools/cmd/fillswitch"
+go "github.com/Khan/genqlient"
+go "github.com/onsi/ginkgo/v2/ginkgo"
+go "github.com/abice/go-enum"
+go "github.com/rogpeppe/godef"
+go "mvdan.cc/gofumpt"
+go "golang.org/x/tools/cmd/goimports"
+go "github.com/twpayne/go-jsonstruct/v3/cmd/gojsonstruct"
+go "github.com/golangci/golangci-lint/cmd/golangci-lint"
+go "github.com/segmentio/golines"
+go "golang.org/x/lint/golint"
+go "github.com/fatih/gomodifytags"
+go "github.com/abenz1267/gomvp"
+go "golang.org/x/tools/cmd/gonew"
+go "github.com/pressly/goose/v3/cmd/goose"
+go "github.com/haya14busa/goplay/cmd/goplay"
+go "golang.org/x/tools/gopls"
+go "github.com/x-motemen/gore/cmd/gore"
+go "github.com/goreleaser/goreleaser/v2"
+go "golang.org/x/tools/cmd/gorename"
+go "github.com/jstemmer/gotags"
+go "github.com/cweill/gotests/gotests"
+go "gotest.tools/gotestsum"
+go "golang.org/x/vuln/cmd/govulncheck"
+go "github.com/mitranim/gow"
+go "golang.org/x/tools/cmd/guru"
+go "github.com/koron/iferr"
+go "github.com/josharian/impl"
+go "github.com/tmc/json-to-struct"
+go "honnef.co/go/tools/cmd/keyify"
+go "go.uber.org/mock/mockgen"
+go "github.com/fatih/motion"
+go "github.com/mgechev/revive"
+go "github.com/kyoh86/richgo"
+go "honnef.co/go/tools/cmd/staticcheck"
+uv "claude-monitor"
